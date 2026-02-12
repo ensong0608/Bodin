@@ -94,6 +94,7 @@
     if (page === 'letter') {
       renderLetter(content.letter);
       initReadProgress();
+      initLetterMusic();
     }
 
     initReveal();
@@ -598,6 +599,44 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+  }
+
+  function initLetterMusic() {
+    const audio = document.getElementById('letterAudio');
+    const notice = document.getElementById('letterAudioNotice');
+    const playButton = document.getElementById('letterAudioPlay');
+    if (!audio) return;
+
+    audio.volume = 0.75;
+
+    function showFallback() {
+      if (notice) notice.hidden = false;
+    }
+
+    function hideFallback() {
+      if (notice) notice.hidden = true;
+    }
+
+    const playAttempt = audio.play();
+    if (playAttempt && typeof playAttempt.then === 'function') {
+      playAttempt.then(function () {
+        hideFallback();
+      }).catch(function () {
+        showFallback();
+      });
+    } else {
+      showFallback();
+    }
+
+    if (playButton) {
+      playButton.addEventListener('click', function () {
+        audio.play().then(function () {
+          hideFallback();
+        }).catch(function () {
+          showFallback();
+        });
+      });
+    }
   }
 
   function setTextAll(selector, value) {
