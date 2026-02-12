@@ -9,7 +9,30 @@
     "anniversaryDateISO": "2026-02-14",
     "anniversaryDateText": "February 14, 2026",
     "privacyNote": "Privacy note: This is a lightweight gate for casual privacy, not true security.",
-    "passphrase": "teacher"
+    "enableLyrics": false,
+    "passphrase": "teacher",
+    "musicTracks": [
+      {
+        "title": "Poked Into Forever",
+        "src": "assets/Song/Poked Into Forever.mp3",
+        "lyrics": "assets/Song/lyrics/Poked Into Forever.txt"
+      },
+      {
+        "title": "Queen of Dindinburg",
+        "src": "assets/Song/Queen of Dindinburg.mp3",
+        "lyrics": "assets/Song/lyrics/Queen of Dindinburg.txt"
+      },
+      {
+        "title": "Baby With Me",
+        "src": "assets/Song/Baby With Me.mp3",
+        "lyrics": "assets/Song/lyrics/Baby With Me.txt"
+      },
+      {
+        "title": "Papi, Baby Me",
+        "src": "assets/Song/Papi, Baby Me.mp3",
+        "lyrics": "assets/Song/lyrics/Papi, Baby Me.txt"
+      }
+    ]
   },
   "timeline": {
     "title": "Us, Over Time",

@@ -681,6 +681,25 @@ body[data-locked="false"] #gateScreen {
   font-size: 0.9rem;
 }
 
+.music-track-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin: 0 0 0.45rem;
+}
+
+.music-track-button {
+  min-height: 2rem;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .music-audio {
   width: 100%;
   min-height: 2.4rem;
@@ -735,6 +754,53 @@ body[data-locked="false"] #gateScreen {
 .music-lyric-line.is-current {
   background: var(--accent-soft);
   color: #3f1d17;
+}
+
+.song-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+}
+
+.song-track-button {
+  min-height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+}
+
+.song-track-button.is-active {
+  border-color: #f2c7a5;
+  background: var(--accent-soft);
+  color: #52261f;
+}
+
+.song-lyrics-card {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  padding: 0.9rem;
+}
+
+.song-lyrics-status {
+  margin: 0.4rem 0 0.5rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.song-lyrics-body {
+  margin: 0;
+  max-height: 24rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  line-height: 1.5;
 }
 
 .js-reveal {
@@ -819,6 +885,10 @@ body[data-locked="false"] #gateScreen {
   }
 
   .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .song-gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

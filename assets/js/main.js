@@ -1,10 +1,11 @@
 ﻿(function () {
   const SESSION_KEY = 'anniversary_unlocked';
   const MUSIC_SESSION_KEY = 'music_player_state';
+  let enableLyrics = false;
   const body = document.body;
   const page = body.dataset.page || 'home';
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const playlist = discoverPlaylist();
+  let playlist = discoverPlaylist();
 
   const fallbackContent = {
     site: {
@@ -17,7 +18,8 @@
       anniversaryDateISO: '2026-02-14',
       anniversaryDateText: 'February 14, 2026',
       privacyNote: 'Privacy note: This is a lightweight gate for casual privacy, not true security.',
-      passphrase: 'teacher'
+      passphrase: 'teacher',
+      enableLyrics: false
     },
     timeline: {
       title: 'Us, Over Time',
@@ -77,6 +79,8 @@
 
   async function init() {
     const content = await loadContent();
+    playlist = resolvePlaylist(content);
+    enableLyrics = resolveLyricsEnabled(content);
 
     renderShared(content);
     try {
@@ -88,6 +92,7 @@
     if (page === 'home') {
       initGate(content.site.passphrase || '');
       renderHome(content);
+      renderSongGallery();
     }
 
     if (page === 'timeline') {
@@ -294,6 +299,70 @@
     const letterExcerpt = document.getElementById('letterExcerpt');
     if (letterExcerpt && letterParagraphs.length) {
       letterExcerpt.textContent = letterParagraphs.slice(0, 2).join(' ');
+    }
+  }
+
+  function renderSongGallery() {
+    const section = document.getElementById('songGallerySection');
+    const grid = document.getElementById('songGalleryGrid');
+    const title = document.getElementById('songLyricsTitle');
+    const status = document.getElementById('songLyricsStatus');
+    const bodyNode = document.getElementById('songLyricsBody');
+    if (!section || !grid || !title || !status || !bodyNode) return;
+
+    if (!playlist.length) {
+      status.textContent = 'No songs found in site.musicTracks.';
+      section.hidden = false;
+      return;
+    }
+
+    section.hidden = false;
+    grid.innerHTML = '';
+
+    const buttons = [];
+    let loadToken = 0;
+
+    playlist.forEach(function (track, index) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'song-track-button';
+      button.textContent = track.title;
+      button.addEventListener('click', function () {
+        showLyrics(index);
+      });
+      grid.appendChild(button);
+      buttons.push(button);
+    });
+
+    showLyrics(0);
+
+    async function showLyrics(index) {
+      const track = playlist[index];
+      if (!track) return;
+      loadToken += 1;
+      const token = loadToken;
+
+      buttons.forEach(function (button, idx) {
+        button.classList.toggle('is-active', idx === index);
+      });
+
+      title.textContent = 'Lyrics: ' + track.title;
+      status.textContent = 'Loading lyrics...';
+      bodyNode.textContent = '';
+
+      try {
+        const text = await fetchLyricsTextWithFallback(track.lyrics);
+        if (token !== loadToken) return;
+        if (!text.trim()) {
+          status.textContent = 'Lyrics file is empty.';
+          return;
+        }
+        bodyNode.textContent = text;
+        status.textContent = 'Lyrics loaded.';
+      } catch (error) {
+        if (token !== loadToken) return;
+        status.textContent = 'Lyrics unavailable for this song.';
+      }
     }
   }
 
@@ -650,7 +719,35 @@
     audio.className = 'music-audio';
     audio.controls = true;
     audio.preload = 'metadata';
-    audio.loop = true;
+    audio.loop = false;
+
+    const controlsRow = document.createElement('div');
+    controlsRow.className = 'music-track-controls';
+
+    const prevButton = document.createElement('button');
+    prevButton.type = 'button';
+    prevButton.className = 'music-track-button';
+    prevButton.textContent = 'Prev';
+
+    const rewindButton = document.createElement('button');
+    rewindButton.type = 'button';
+    rewindButton.className = 'music-track-button';
+    rewindButton.textContent = '-10s';
+
+    const forwardButton = document.createElement('button');
+    forwardButton.type = 'button';
+    forwardButton.className = 'music-track-button';
+    forwardButton.textContent = '+10s';
+
+    const nextButton = document.createElement('button');
+    nextButton.type = 'button';
+    nextButton.className = 'music-track-button';
+    nextButton.textContent = 'Next';
+
+    controlsRow.appendChild(prevButton);
+    controlsRow.appendChild(rewindButton);
+    controlsRow.appendChild(forwardButton);
+    controlsRow.appendChild(nextButton);
 
     const lyricsToggle = document.createElement('button');
     lyricsToggle.type = 'button';
@@ -677,15 +774,51 @@
     wrapper.appendChild(label);
     wrapper.appendChild(select);
     wrapper.appendChild(nowPlaying);
+    wrapper.appendChild(controlsRow);
     wrapper.appendChild(audio);
-    wrapper.appendChild(lyricsToggle);
-    wrapper.appendChild(lyricsPanel);
+    if (enableLyrics) {
+      wrapper.appendChild(lyricsToggle);
+      wrapper.appendChild(lyricsPanel);
+    }
     document.body.appendChild(wrapper);
 
     const state = getMusicState();
     const letterDefaultIndex = 0;
     const selectedIndex = clampIndex(Number(state.index));
     const startIndex = Number.isInteger(selectedIndex) ? selectedIndex : letterDefaultIndex;
+
+    function handleTrackSelection() {
+      const idx = Number(select.value);
+      setTrack(idx, true);
+    }
+    select.addEventListener('change', handleTrackSelection);
+    select.addEventListener('input', handleTrackSelection);
+    prevButton.addEventListener('click', function () { stepTrack(-1, true); });
+    nextButton.addEventListener('click', function () { stepTrack(1, true); });
+    rewindButton.addEventListener('click', function () { seekBy(-10); });
+    forwardButton.addEventListener('click', function () { seekBy(10); });
+
+    if (enableLyrics) {
+      lyricsToggle.addEventListener('click', function () {
+        const isOpen = lyricsToggle.getAttribute('aria-expanded') === 'true';
+        lyricsToggle.setAttribute('aria-expanded', String(!isOpen));
+        lyricsToggle.textContent = isOpen ? 'Show lyrics' : 'Hide lyrics';
+        lyricsPanel.hidden = isOpen;
+      });
+    }
+
+    audio.addEventListener('play', saveMusicState);
+    audio.addEventListener('pause', saveMusicState);
+    audio.addEventListener('timeupdate', saveMusicState);
+    audio.addEventListener('error', function () {
+      if (enableLyrics) {
+        lyricsStatus.textContent = 'Selected song failed to load. Try another track.';
+      }
+    });
+    audio.addEventListener('ended', function () {
+      stepTrack(1, true);
+    });
+    window.addEventListener('beforeunload', saveMusicState);
 
     setTrack(startIndex, false);
 
@@ -710,30 +843,12 @@
       });
     }
 
-    select.addEventListener('change', function () {
-      setTrack(Number(select.value), true);
-    });
-
-    lyricsToggle.addEventListener('click', function () {
-      const isOpen = lyricsToggle.getAttribute('aria-expanded') === 'true';
-      lyricsToggle.setAttribute('aria-expanded', String(!isOpen));
-      lyricsToggle.textContent = isOpen ? 'Show lyrics' : 'Hide lyrics';
-      lyricsPanel.hidden = isOpen;
-    });
-
-    audio.addEventListener('play', saveMusicState);
-    audio.addEventListener('pause', saveMusicState);
-    audio.addEventListener('timeupdate', saveMusicState);
-    audio.addEventListener('error', function () {
-      lyricsStatus.textContent = 'Selected song failed to load. Try another track.';
-    });
-    window.addEventListener('beforeunload', saveMusicState);
-
     let parsedTimedLyrics = [];
     let currentTimedIndex = -1;
+    let lyricLoadToken = 0;
 
     audio.addEventListener('timeupdate', function () {
-      if (!parsedTimedLyrics.length) return;
+      if (!enableLyrics || !parsedTimedLyrics.length) return;
       const now = audio.currentTime;
       let nextIndex = -1;
       for (let i = 0; i < parsedTimedLyrics.length; i += 1) {
@@ -761,25 +876,56 @@
       if (safeIndex === null) return;
       const track = playlist[safeIndex];
       select.value = String(safeIndex);
-      audio.pause();
-      audio.removeAttribute('src');
-      audio.load();
-      audio.src = track.src;
-      audio.load();
-      audio.currentTime = 0;
       nowPlaying.innerHTML = 'Now playing: <strong>' + track.title + '</strong>';
+      if (enableLyrics) {
+        lyricsStatus.textContent = 'Loading lyrics...';
+      }
+      try {
+        audio.pause();
+        audio.removeAttribute('src');
+        audio.load();
+        const srcUrl = track.src + (track.src.indexOf('?') === -1 ? '?t=' : '&t=') + Date.now();
+        audio.src = srcUrl;
+        audio.load();
+      } catch (error) {
+        console.warn('Failed to set track source:', error);
+        nowPlaying.innerHTML = 'Now playing: <strong>Unavailable</strong>';
+        return;
+      }
       parsedTimedLyrics = [];
       currentTimedIndex = -1;
-      loadLyrics(track);
+      if (enableLyrics) {
+        loadLyrics(track);
+      }
       saveMusicState();
       if (shouldPlay) {
         audio.play().catch(function () {
-          lyricsStatus.textContent = 'Tap play in the player to start this song.';
+          if (enableLyrics) {
+            lyricsStatus.textContent = 'Tap play in the player to start this song.';
+          }
         });
       }
     }
 
+    function stepTrack(delta, shouldPlay) {
+      if (!playlist.length) return;
+      const current = clampIndex(Number(select.value));
+      const base = Number.isInteger(current) ? current : 0;
+      const next = (base + delta + playlist.length) % playlist.length;
+      setTrack(next, shouldPlay);
+    }
+
+    function seekBy(seconds) {
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      const target = Math.max(0, Math.min(audio.currentTime + seconds, audio.duration));
+      audio.currentTime = target;
+      saveMusicState();
+    }
+
     async function loadLyrics(track) {
+      if (!enableLyrics) return;
+      lyricLoadToken += 1;
+      const token = lyricLoadToken;
       lyricsBody.innerHTML = '';
       lyricsStatus.textContent = 'Loading lyrics...';
 
@@ -789,9 +935,8 @@
       }
 
       try {
-        const response = await fetch(track.lyrics, { cache: 'no-store' });
-        if (!response.ok) throw new Error('Lyrics file not found');
-        const raw = await response.text();
+        const raw = await fetchLyricsText(track.lyrics);
+        if (token !== lyricLoadToken) return;
         if (!raw.trim()) {
           lyricsStatus.textContent = 'Lyrics file is empty.';
           return;
@@ -806,7 +951,50 @@
           lyricsStatus.textContent = 'Lyrics loaded.';
         }
       } catch (error) {
+        if (token !== lyricLoadToken) return;
         lyricsStatus.textContent = 'Lyrics unavailable. Add a .txt or .lrc file under assets/Song/lyrics/.';
+      }
+    }
+
+    async function fetchLyricsText(lyricsPath) {
+      const candidates = [lyricsPath];
+      const decoded = safeDecodePath(lyricsPath);
+      if (decoded && decoded !== lyricsPath) candidates.push(decoded);
+
+      let lastError = null;
+      for (let i = 0; i < candidates.length; i += 1) {
+        const candidate = candidates[i];
+        try {
+          const response = await fetchWithTimeout(candidate, {
+            cache: 'no-store',
+            headers: { Accept: 'text/plain, text/*;q=0.9, */*;q=0.1' }
+          }, 8000);
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          return await response.text();
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      throw lastError || new Error('Unable to load lyrics');
+    }
+
+    async function fetchWithTimeout(url, options, timeoutMs) {
+      const controller = new AbortController();
+      const timer = window.setTimeout(function () {
+        controller.abort();
+      }, timeoutMs);
+      try {
+        return await fetch(url, Object.assign({}, options, { signal: controller.signal }));
+      } finally {
+        window.clearTimeout(timer);
+      }
+    }
+
+    function safeDecodePath(path) {
+      try {
+        return decodeURIComponent(path);
+      } catch (error) {
+        return path;
       }
     }
 
@@ -836,8 +1024,9 @@
         for (const match of matches) {
           const mm = Number(match[1] || 0);
           const ss = Number(match[2] || 0);
-          const cs = Number(match[3] || 0);
-          const time = (mm * 60) + ss + (cs / 100);
+          const fractionRaw = match[3] || '';
+          const fraction = fractionRaw ? Number('0.' + fractionRaw) : 0;
+          const time = (mm * 60) + ss + fraction;
           result.push({ time: time, text: lyricText });
         }
       });
@@ -864,6 +1053,7 @@
   }
 
   function clampIndex(value) {
+    if (!playlist.length) return null;
     if (!Number.isInteger(value)) return null;
     if (value < 0) return 0;
     if (value >= playlist.length) return playlist.length - 1;
@@ -886,6 +1076,85 @@
         lyrics: encodePath('assets/Song/lyrics/' + title + '.txt')
       };
     });
+  }
+
+  function resolvePlaylist(content) {
+    const tracks = content && content.site && Array.isArray(content.site.musicTracks)
+      ? content.site.musicTracks
+      : [];
+    const normalized = tracks
+      .map(function (item) {
+        if (typeof item === 'string') {
+          const title = item.split('/').pop().replace(/\.mp3$/i, '');
+          return {
+            title: title,
+            src: encodePath(item),
+            lyrics: encodePath('assets/Song/lyrics/' + title + '.txt')
+          };
+        }
+        if (!item || typeof item !== 'object') return null;
+        if (!item.src) return null;
+        const fallbackTitle = String(item.src).split('/').pop().replace(/\.mp3$/i, '');
+        return {
+          title: item.title || fallbackTitle,
+          src: encodePath(item.src),
+          lyrics: item.lyrics ? encodePath(item.lyrics) : encodePath('assets/Song/lyrics/' + fallbackTitle + '.txt')
+        };
+      })
+      .filter(Boolean);
+
+    return normalized.length ? normalized : discoverPlaylist();
+  }
+
+  function resolveLyricsEnabled(content) {
+    const configured = content && content.site && content.site.enableLyrics;
+    if (typeof configured === 'boolean') return configured;
+    return false;
+  }
+
+  async function fetchLyricsTextWithFallback(path) {
+    if (!path) throw new Error('Missing lyrics path');
+    const candidates = [path];
+    const decoded = safeDecodePath(path);
+    if (decoded && decoded !== path) {
+      candidates.push(decoded);
+    }
+
+    let lastError = null;
+    for (let i = 0; i < candidates.length; i += 1) {
+      try {
+        const response = await fetchWithTimeout(candidates[i], {
+          cache: 'no-store',
+          headers: { Accept: 'text/plain, text/*;q=0.9, */*;q=0.1' }
+        }, 8000);
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return await response.text();
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    throw lastError || new Error('Unable to load lyrics');
+  }
+
+  async function fetchWithTimeout(url, options, timeoutMs) {
+    const controller = new AbortController();
+    const timer = window.setTimeout(function () {
+      controller.abort();
+    }, timeoutMs);
+
+    try {
+      return await fetch(url, Object.assign({}, options, { signal: controller.signal }));
+    } finally {
+      window.clearTimeout(timer);
+    }
+  }
+
+  function safeDecodePath(path) {
+    try {
+      return decodeURIComponent(path);
+    } catch (error) {
+      return path;
+    }
   }
 
   function encodePath(path) {

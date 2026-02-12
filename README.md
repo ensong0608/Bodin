@@ -26,6 +26,8 @@ Edit these sections:
 - `site.brand`, `site.homeTitle`, `site.homeIntro`, `site.homeSummary`
 - `site.anniversaryDateISO`, `site.anniversaryDateText`
 - `site.passphrase` (the unlock passphrase)
+- `site.enableLyrics` (`true` or `false` to show/hide lyrics panel)
+- `site.musicTracks` (array of songs for the player; each song can include `title`, `src`, and `lyrics`)
 - `timeline.events` (array of `{ "label", "text" }`)
 - `gallery.items` (array of `{ "src", "alt", "caption" }`)
 - `letter.title`, `letter.greeting`, `letter.paragraphs`, `letter.signature`
@@ -38,6 +40,12 @@ Edit these sections:
    - `assets/images/our-first-trip.jpg`
    - `assets/images/valentines-2026.png`
 4. Add meaningful `alt` text for accessibility.
+
+## Song Gallery + Lyrics
+
+- Home now includes a **Song Gallery** section that lists songs from `site.musicTracks`.
+- Selecting a song loads lyrics from its `lyrics` path and shows them in the lyrics panel.
+- Keep lyrics files in `assets/Song/lyrics/` and ensure each track entry has a matching `lyrics` value.
 
 ## Run Locally
 
