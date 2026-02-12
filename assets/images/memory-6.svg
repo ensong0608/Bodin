@@ -1,0 +1,12 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='900' viewBox='0 0 1200 900' role='img' aria-label='Placeholder memory 6'>
+  <defs>
+    <linearGradient id='bg6' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#f9ecde'/>
+      <stop offset='100%' stop-color='#e5d1bc'/>
+    </linearGradient>
+  </defs>
+  <rect width='1200' height='900' fill='url(#bg6)'/>
+  <circle cx='960' cy='180' r='86' fill='#f0dcc6' opacity='0.75'/>
+  <circle cx='220' cy='720' r='120' fill='#e9d1bb' opacity='0.7'/>
+  <text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' fill='#6e5a4c' font-family='Georgia, serif' font-size='54'>Memory 6</text>
+</svg>

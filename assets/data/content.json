@@ -1,0 +1,115 @@
+﻿{
+  "site": {
+    "brand": "Bodin + Ensong",
+    "eyebrow": "Valentine's Day 2026",
+    "homeTitle": "Bodin, My Baby",
+    "homeIntro": "We've been together for almost 25 years now and you still annoy me a lot. I thought that as we grew older we would mellow out, but I was wrong. I will always try to get on your nerves so you know I love you very much.",
+    "homeSummary": "Almost 25 years in and we still have the same chaotic energy.",
+    "footerText": "Valentine's Day Love",
+    "anniversaryDateISO": "2026-02-14",
+    "anniversaryDateText": "February 14, 2026",
+    "privacyNote": "Privacy note: This is a lightweight gate for casual privacy, not true security.",
+    "passphrase": "teacher"
+  },
+  "timeline": {
+    "title": "Us, Over Time",
+    "subtitle": "Our version of romance: sarcastic, goofy, and serious when it counts.",
+    "events": [
+      {
+        "label": "First Message",
+        "text": "You poked my ass and I pretended to be cool. You saw through it."
+      },
+      {
+        "label": "First Official Date",
+        "text": "I was nervous. You were perfect."
+      },
+      {
+        "label": "Officially Us",
+        "text": "It was already official from day one."
+      },
+      {
+        "label": "First Trip",
+        "text": "We packed too much, laughed even more."
+      },
+      {
+        "label": "Today",
+        "text": "Gray hair, less teeth, still hot and sexy."
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "subtitle": "Placeholder photos for now. Swap these with your real pictures later.",
+    "items": [
+      {
+        "src": "assets/images/memory-1.svg",
+        "alt": "Placeholder memory one",
+        "caption": "The beginning of trouble."
+      },
+      {
+        "src": "assets/images/memory-2.svg",
+        "alt": "Placeholder memory two",
+        "caption": "We clean up nice."
+      },
+      {
+        "src": "assets/images/memory-3.svg",
+        "alt": "Placeholder memory three",
+        "caption": "Still hand in hand."
+      },
+      {
+        "src": "assets/images/memory-4.svg",
+        "alt": "Placeholder memory four",
+        "caption": "One laugh away from chaos."
+      },
+      {
+        "src": "assets/images/memory-5.svg",
+        "alt": "Placeholder memory five",
+        "caption": "My favorite smile."
+      },
+      {
+        "src": "assets/images/memory-6.svg",
+        "alt": "Placeholder memory six",
+        "caption": "Still choosing each other."
+      }
+    ]
+  },
+  "letter": {
+    "title": "A Letter to My Baby Bodin",
+    "greeting": "Bodin my Baby,",
+    "paragraphs": [
+      "Almost 25 years together... and somehow you are still my favorite person to argue with about absolutely nothing.",
+      "I honestly thought by now we'd be calm, mature adults who handle disagreements with wisdom and grace. Instead, we still debate like it's a competitive sport. We have Olympic-level stamina for teasing each other, misunderstanding each other, and then laughing about it five minutes later.",
+      "You drive me crazy. And somehow, that is still one of my favorite places to be.",
+      "You are demanding - yes, I said it. You want to be my baby. You want to be taken care of. You want attention. You want cuddles. You want reassurance. You want the blanket tucked just right. You want to feel chosen every single day.",
+      "And the truth is... I love that about you.",
+      "I love that you want all of that from me.",
+      "Because it means I am your safe place. It means I'm the one you trust to hold you when you're tired. It means I'm the one you expect to show up.",
+      "And I always will.",
+      "You are gorgeous. Not just \"pretty.\" Not just \"cute.\" Gorgeous.",
+      "For almost 25 years, I still look at you and think, \"How did I get this hot, sexy woman to choose me?\" The way you smile. The way you laugh when I tell the worst corny joke. The way you look at me when you're annoyed but still secretly entertained. The way you pout when your lips form that little expression that says, \"You better fix this.\"",
+      "You are stunning. Yes, physically - that part is undeniable and unfairly impressive - but even more in the way you carry yourself. Your determination. Your standards. The way you protect what's yours. The way you fight for our family like a warrior in cute clothes.",
+      "You demand the best from me - even when I don't want to give it. And because of you, I grow. Because of you, I try harder. Because of you, I am not the same man I was 25 years ago.",
+      "You make me better. Even when your lips are pouting at me about something small. Even when you're giving me that look that says I messed up. Even when you're reorganizing a room that was already organized.",
+      "You sharpen me. You steady me. You challenge me.",
+      "And you love me.",
+      "Thank you for loving me. The stubborn one. The immature one. The quiet one. The loud one. The one who pretends he doesn't care but cares deeply. The version of me that was still figuring life out. The version that made mistakes. The version that didn't always say the right thing.",
+      "Through all of it... you stayed.",
+      "You chose me. Again and again. Not just on easy days - but on the complicated ones. On the tired ones. On the \"we're not talking right now\" ones.",
+      "That kind of love isn't luck.",
+      "That's commitment. That's loyalty. That's real.",
+      "If I had to start over - if I had to relive every argument, every blanket stealing battle, every snoring war, every cleanliness inspection and thermostat disagreement - I would still pick you.",
+      "Every time.",
+      "Not because we're perfect.",
+      "But because we're us.",
+      "And behind all the sarcasm and teasing, here's the truth I don't joke about:",
+      "You are my home. You are my comfort. You are my fire. You are my peace. You are my chaos and my calm. You are my baby.",
+      "And after 25 years, I don't love you out of habit.",
+      "I love you with intention.",
+      "I love you because I see you. I know you. And I still choose you.",
+      "For as long as I breathe, I will keep choosing you - on the loud days, on the quiet days, on the annoying days, on the passionate days.",
+      "Even if you steal the blankets first."
+    ],
+    "closing": "Forever yours,",
+    "signature": "Papi"
+  }
+}

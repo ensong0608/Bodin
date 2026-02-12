@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 120" role="img" aria-labelledby="title">
+  <title id="title">Dog doodle</title>
+  <rect width="150" height="120" rx="18" fill="#fff8ef"/>
+  <circle cx="75" cy="62" r="28" fill="#ffd9bf" stroke="#2a2d2f" stroke-width="4"/>
+  <ellipse cx="53" cy="48" rx="12" ry="18" fill="#d9a980" stroke="#2a2d2f" stroke-width="4"/>
+  <ellipse cx="97" cy="48" rx="12" ry="18" fill="#d9a980" stroke="#2a2d2f" stroke-width="4"/>
+  <circle cx="65" cy="62" r="4" fill="#2a2d2f"/>
+  <circle cx="85" cy="62" r="4" fill="#2a2d2f"/>
+  <path d="M73 69c5 0 9 0 12 4-3 4-7 4-12 4-5 0-9 0-12-4 3-4 7-4 12-4z" fill="#2a2d2f"/>
+  <path d="M66 85c5 6 13 6 18 0" fill="none" stroke="#2a2d2f" stroke-width="4" stroke-linecap="round"/>
+  <path d="M20 95c24-12 36-12 52 0" fill="none" stroke="#ef6a5b" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,20 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 380" role="img" aria-labelledby="title desc">
+  <title id="title">Playful couple illustration</title>
+  <desc id="desc">A simple original hand-drawn style couple with hearts.</desc>
+  <rect width="480" height="380" rx="26" fill="#fff7ef"/>
+  <path d="M96 292c34-38 92-38 126 0" fill="none" stroke="#2a2d2f" stroke-width="6" stroke-linecap="round"/>
+  <path d="M260 292c34-38 92-38 126 0" fill="none" stroke="#2a2d2f" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="164" cy="200" r="52" fill="#ffd7bf" stroke="#2a2d2f" stroke-width="5"/>
+  <circle cx="320" cy="200" r="52" fill="#ffe2cf" stroke="#2a2d2f" stroke-width="5"/>
+  <path d="M121 191c10-20 31-33 43-33 15 0 31 11 43 32" fill="#2a2d2f"/>
+  <path d="M278 190c10-24 32-37 44-37 17 0 31 12 42 37" fill="#2a2d2f"/>
+  <circle cx="151" cy="206" r="5" fill="#2a2d2f"/>
+  <circle cx="178" cy="206" r="5" fill="#2a2d2f"/>
+  <circle cx="306" cy="206" r="5" fill="#2a2d2f"/>
+  <circle cx="333" cy="206" r="5" fill="#2a2d2f"/>
+  <path d="M148 226c8 10 24 10 32 0" fill="none" stroke="#2a2d2f" stroke-width="4" stroke-linecap="round"/>
+  <path d="M302 226c8 10 24 10 32 0" fill="none" stroke="#2a2d2f" stroke-width="4" stroke-linecap="round"/>
+  <path d="M232 96c14-16 38-14 45 4 6 16-4 30-45 53-40-22-50-36-44-53 7-18 31-20 44-4z" fill="#ef6a5b"/>
+  <path d="M103 104c8-10 22-8 27 3 4 10-3 18-27 31-24-13-31-22-27-31 5-11 19-13 27-3z" fill="#ffb58d"/>
+  <path d="M376 111c8-10 22-8 27 3 4 10-3 18-27 31-24-13-31-22-27-31 5-11 19-13 27-3z" fill="#ffb58d"/>
+</svg>

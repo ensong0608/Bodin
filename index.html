@@ -1,0 +1,149 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Private-ish anniversary website for Bodin and her partner.">
+  <title>Home | Our Story</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand js-brand" href="index.html">Bodin + You</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="letter.html">Letter</a>
+        <button id="lockButton" class="lock-button" type="button">Lock</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="gateScreen" class="gate-screen" aria-labelledby="gate-title">
+      <div class="gate-card">
+        <img class="gate-illust" src="assets/illust/heart-doodle.svg" alt="Heart doodle illustration">
+        <h1 id="gate-title">Private Memory Vault</h1>
+        <p>Enter the passphrase to unlock our story.</p>
+        <form id="gateForm" class="gate-form" novalidate>
+          <label for="passphraseInput">Passphrase</label>
+          <input id="passphraseInput" name="passphrase" type="password" autocomplete="off" required>
+          <button type="submit" class="button button-primary">Unlock</button>
+          <p id="gateError" class="gate-error" role="status" aria-live="polite"></p>
+        </form>
+        <p class="privacy-note js-privacy-note">Privacy note: This is a lightweight gate for casual privacy, not true security.</p>
+      </div>
+    </section>
+
+    <div id="homeContent" class="protected-content">
+      <section class="page-section hero-section js-reveal">
+        <div class="container section-grid">
+          <div class="section-copy">
+            <p class="eyebrow js-eyebrow">Valentine's Day 2026</p>
+            <h1 class="display js-home-title">Bodin, My Baby</h1>
+            <p class="lead js-home-intro">We've been together for almost 25 years now and you still annoy me a lot.</p>
+            <div class="cta-row">
+              <a class="button button-primary" href="timeline.html">Start our story</a>
+              <a class="button button-secondary" href="letter.html">Read the letter</a>
+            </div>
+          </div>
+          <div class="section-art js-reveal">
+            <img class="illustration js-float js-parallax" src="assets/illust/couple-hero.svg" alt="Playful illustration of a couple in love">
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section js-reveal">
+        <div class="container section-grid section-grid-flip">
+          <div class="section-copy">
+            <h2>Highlights</h2>
+            <p class="section-sub">The moments we still laugh about, cry about, and keep choosing.</p>
+            <div id="highlightsGrid" class="highlight-grid">
+              <article class="soft-card js-reveal"><h3>Year we met</h3><p>The day everything changed.</p></article>
+              <article class="soft-card js-reveal"><h3>Funniest fight</h3><p>Thermostat wars and blanket drama.</p></article>
+              <article class="soft-card js-reveal"><h3>Favorite memory</h3><p>A trip with too many bags and nonstop laughter.</p></article>
+              <article class="soft-card js-reveal"><h3>Still my baby</h3><p>Still hot, still funny, still us.</p></article>
+            </div>
+          </div>
+          <div class="section-art">
+            <img class="illustration small js-float js-parallax" src="assets/illust/flower-doodle.svg" alt="Playful flower doodle">
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section js-reveal">
+        <div class="container section-grid">
+          <div class="section-copy">
+            <h2>Timeline Preview</h2>
+            <p class="section-sub">A few checkpoints from almost 25 years of love and sarcasm.</p>
+            <ol id="timelinePreview" class="mini-list">
+              <li class="mini-item">First Message: you saw right through me.</li>
+              <li class="mini-item">First Official Date: I was nervous, you were perfect.</li>
+              <li class="mini-item">Today: still hot, still stubborn, still in love.</li>
+            </ol>
+            <a class="text-link" href="timeline.html">Open full timeline</a>
+          </div>
+          <div class="section-art">
+            <img class="illustration small js-float js-parallax" src="assets/illust/sparkle-doodle.svg" alt="Sparkle doodle illustration">
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section js-reveal">
+        <div class="container section-grid section-grid-flip">
+          <div class="section-copy">
+            <h2>Gallery Preview</h2>
+            <p class="section-sub">Photos now, more memories later.</p>
+            <div id="galleryPreview" class="preview-grid">
+              <figure class="soft-card preview-card"><img src="assets/images/memory-1.svg" alt="Memory preview"><figcaption>The beginning of trouble.</figcaption></figure>
+              <figure class="soft-card preview-card"><img src="assets/images/memory-2.svg" alt="Memory preview"><figcaption>We clean up nice.</figcaption></figure>
+              <figure class="soft-card preview-card"><img src="assets/images/memory-3.svg" alt="Memory preview"><figcaption>Still hand in hand.</figcaption></figure>
+            </div>
+            <a class="text-link" href="gallery.html">Open gallery</a>
+          </div>
+          <div class="section-art">
+            <img class="illustration small js-float js-parallax" src="assets/illust/heart-doodle.svg" alt="Heart doodle illustration">
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section js-reveal">
+        <div class="container section-grid">
+          <div class="section-copy">
+            <h2>Letter Preview</h2>
+            <p id="letterExcerpt" class="lead">You are my home. You are my comfort. You are my fire. You are my peace.</p>
+            <a class="button button-secondary" href="letter.html">Read full letter</a>
+          </div>
+          <div class="section-art">
+            <img class="illustration small js-float js-parallax" src="assets/illust/sparkle-doodle.svg" alt="Sparkle doodle illustration">
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <noscript>
+      <section class="page-section">
+        <div class="container">
+          <h2>JavaScript is disabled</h2>
+          <p>This site needs JavaScript for the passphrase gate and dynamic content from <code>assets/data/content.json</code>.</p>
+        </div>
+      </section>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><span class="js-footer-text">Valentine's Day Love</span> - <time class="js-date" datetime="2026-02-14">February 14, 2026</time></p>
+      <p class="privacy-note js-privacy-note">Privacy note: This is a lightweight gate for casual privacy, not true security.</p>
+    </div>
+  </footer>
+</body>
+</html>

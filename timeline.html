@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Relationship timeline page.">
+  <title>Timeline | Our Story</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body data-page="timeline">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand js-brand" href="index.html">Bodin + You</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="timeline.html" aria-current="page">Timeline</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="letter.html">Letter</a>
+        <button id="lockButton" class="lock-button" type="button">Lock</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-section js-reveal">
+      <div class="container section-grid">
+        <div class="section-copy">
+          <p class="eyebrow">Our Milestones</p>
+          <h1 class="display js-timeline-title">Us, Over Time</h1>
+          <p class="lead js-timeline-subtitle">Our version of romance: sarcastic, goofy, and serious when it counts.</p>
+        </div>
+        <div class="section-art">
+          <img class="illustration small js-float js-parallax" src="assets/illust/flower-doodle.svg" alt="Decorative flower doodle">
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section js-reveal">
+      <div class="container">
+        <ol id="timelineList" class="timeline-list" aria-label="Relationship timeline">
+          <li class="timeline-card js-reveal">
+            <span class="timeline-marker">First Message</span>
+            <p>You poked my ass and I pretended to be cool. You saw through it.</p>
+            <img class="tiny-doodle" src="assets/illust/heart-doodle.svg" alt="">
+          </li>
+          <li class="timeline-card js-reveal">
+            <span class="timeline-marker">First Official Date</span>
+            <p>I was nervous. You were perfect.</p>
+            <img class="tiny-doodle" src="assets/illust/sparkle-doodle.svg" alt="">
+          </li>
+          <li class="timeline-card js-reveal">
+            <span class="timeline-marker">Today</span>
+            <p>Gray hair, less teeth, still hot and sexy.</p>
+            <img class="tiny-doodle" src="assets/illust/heart-doodle.svg" alt="">
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><span class="js-footer-text">Valentine's Day Love</span> - <time class="js-date" datetime="2026-02-14">February 14, 2026</time></p>
+      <p class="privacy-note js-privacy-note">Privacy note: This is a lightweight gate for casual privacy, not true security.</p>
+    </div>
+  </footer>
+</body>
+</html>
