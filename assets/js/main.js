@@ -1,8 +1,10 @@
 ﻿(function () {
   const SESSION_KEY = 'anniversary_unlocked';
+  const MUSIC_SESSION_KEY = 'music_player_state';
   const body = document.body;
   const page = body.dataset.page || 'home';
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const playlist = discoverPlaylist();
 
   const fallbackContent = {
     site: {
@@ -15,7 +17,7 @@
       anniversaryDateISO: '2026-02-14',
       anniversaryDateText: 'February 14, 2026',
       privacyNote: 'Privacy note: This is a lightweight gate for casual privacy, not true security.',
-      passphrase: 'ourinsidejoke'
+      passphrase: 'teacher'
     },
     timeline: {
       title: 'Us, Over Time',
@@ -77,6 +79,11 @@
     const content = await loadContent();
 
     renderShared(content);
+    try {
+      initMusicPlayer();
+    } catch (error) {
+      console.warn('Music player init failed:', error);
+    }
 
     if (page === 'home') {
       initGate(content.site.passphrase || '');
@@ -94,7 +101,6 @@
     if (page === 'letter') {
       renderLetter(content.letter);
       initReadProgress();
-      initLetterMusic();
     }
 
     initReveal();
@@ -156,18 +162,24 @@
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      const value = input.value.trim();
+      const value = normalizePassphrase(input.value);
+      const expected = normalizePassphrase(passphrase);
 
       if (!passphrase) {
         error.textContent = 'Passphrase is not configured yet in assets/data/content.json.';
         return;
       }
 
-      if (value === passphrase) {
+      if (value === expected) {
         setUnlocked(true);
         error.textContent = '';
         input.value = '';
         applyGateState(true);
+        try {
+          initMusicPlayer();
+        } catch (error) {
+          console.warn('Music player init failed:', error);
+        }
         const target = document.querySelector('.js-home-title');
         if (target) {
           target.setAttribute('tabindex', '-1');
@@ -177,6 +189,10 @@
         error.textContent = 'Close, but not quite. Try your favorite inside joke.';
       }
     });
+  }
+
+  function normalizePassphrase(value) {
+    return String(value || '').trim().toLowerCase();
   }
 
   function applyGateState(unlocked) {
@@ -601,42 +617,282 @@
     update();
   }
 
-  function initLetterMusic() {
-    const audio = document.getElementById('letterAudio');
-    const notice = document.getElementById('letterAudioNotice');
-    const playButton = document.getElementById('letterAudioPlay');
-    if (!audio) return;
+  function initMusicPlayer() {
+    if (document.getElementById('musicPlayer')) return;
+    if (page === 'home' && !isUnlocked()) return;
 
-    audio.volume = 0.75;
+    const wrapper = document.createElement('aside');
+    wrapper.id = 'musicPlayer';
+    wrapper.className = 'music-player';
+    wrapper.setAttribute('aria-label', 'Site music player');
 
-    function showFallback() {
-      if (notice) notice.hidden = false;
-    }
+    const label = document.createElement('label');
+    label.className = 'music-label';
+    label.setAttribute('for', 'musicTrackSelect');
+    label.textContent = 'Song';
 
-    function hideFallback() {
-      if (notice) notice.hidden = true;
-    }
+    const select = document.createElement('select');
+    select.id = 'musicTrackSelect';
+    select.className = 'music-select';
+    playlist.forEach(function (track, index) {
+      const option = document.createElement('option');
+      option.value = String(index);
+      option.textContent = track.title;
+      select.appendChild(option);
+    });
 
-    const playAttempt = audio.play();
-    if (playAttempt && typeof playAttempt.then === 'function') {
-      playAttempt.then(function () {
-        hideFallback();
-      }).catch(function () {
-        showFallback();
+    const nowPlaying = document.createElement('p');
+    nowPlaying.className = 'music-now-playing';
+    nowPlaying.innerHTML = 'Now playing: <strong>None</strong>';
+
+    const audio = document.createElement('audio');
+    audio.id = 'siteAudio';
+    audio.className = 'music-audio';
+    audio.controls = true;
+    audio.preload = 'metadata';
+    audio.loop = true;
+
+    const lyricsToggle = document.createElement('button');
+    lyricsToggle.type = 'button';
+    lyricsToggle.className = 'music-lyrics-toggle';
+    lyricsToggle.setAttribute('aria-expanded', 'true');
+    lyricsToggle.setAttribute('aria-controls', 'musicLyricsPanel');
+    lyricsToggle.textContent = 'Hide lyrics';
+
+    const lyricsPanel = document.createElement('div');
+    lyricsPanel.id = 'musicLyricsPanel';
+    lyricsPanel.className = 'music-lyrics-panel';
+    lyricsPanel.hidden = false;
+
+    const lyricsStatus = document.createElement('p');
+    lyricsStatus.className = 'music-lyrics-status';
+    lyricsStatus.textContent = 'Lyrics will appear here when available.';
+
+    const lyricsBody = document.createElement('div');
+    lyricsBody.className = 'music-lyrics-body';
+
+    lyricsPanel.appendChild(lyricsStatus);
+    lyricsPanel.appendChild(lyricsBody);
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+    wrapper.appendChild(nowPlaying);
+    wrapper.appendChild(audio);
+    wrapper.appendChild(lyricsToggle);
+    wrapper.appendChild(lyricsPanel);
+    document.body.appendChild(wrapper);
+
+    const state = getMusicState();
+    const letterDefaultIndex = 0;
+    const selectedIndex = clampIndex(Number(state.index));
+    const startIndex = Number.isInteger(selectedIndex) ? selectedIndex : letterDefaultIndex;
+
+    setTrack(startIndex, false);
+
+    const resumeTime = (typeof state.time === 'number' && Number.isFinite(state.time) && state.time > 0)
+      ? state.time
+      : 0;
+    if (resumeTime > 0) {
+      audio.addEventListener('loadedmetadata', function handleLoaded() {
+        try {
+          audio.currentTime = Math.min(resumeTime, Number.isFinite(audio.duration) ? audio.duration : resumeTime);
+        } catch (error) {
+          // Ignore seek errors; playback can still proceed from start.
+        }
+        audio.removeEventListener('loadedmetadata', handleLoaded);
       });
-    } else {
-      showFallback();
     }
 
-    if (playButton) {
-      playButton.addEventListener('click', function () {
-        audio.play().then(function () {
-          hideFallback();
-        }).catch(function () {
-          showFallback();
+    const shouldAutoPlay = page === 'letter' || state.playing === true;
+    if (shouldAutoPlay) {
+      audio.play().catch(function () {
+        // Autoplay can be blocked by browser policy.
+      });
+    }
+
+    select.addEventListener('change', function () {
+      setTrack(Number(select.value), true);
+    });
+
+    lyricsToggle.addEventListener('click', function () {
+      const isOpen = lyricsToggle.getAttribute('aria-expanded') === 'true';
+      lyricsToggle.setAttribute('aria-expanded', String(!isOpen));
+      lyricsToggle.textContent = isOpen ? 'Show lyrics' : 'Hide lyrics';
+      lyricsPanel.hidden = isOpen;
+    });
+
+    audio.addEventListener('play', saveMusicState);
+    audio.addEventListener('pause', saveMusicState);
+    audio.addEventListener('timeupdate', saveMusicState);
+    audio.addEventListener('error', function () {
+      lyricsStatus.textContent = 'Selected song failed to load. Try another track.';
+    });
+    window.addEventListener('beforeunload', saveMusicState);
+
+    let parsedTimedLyrics = [];
+    let currentTimedIndex = -1;
+
+    audio.addEventListener('timeupdate', function () {
+      if (!parsedTimedLyrics.length) return;
+      const now = audio.currentTime;
+      let nextIndex = -1;
+      for (let i = 0; i < parsedTimedLyrics.length; i += 1) {
+        if (now >= parsedTimedLyrics[i].time) {
+          nextIndex = i;
+        } else {
+          break;
+        }
+      }
+      if (nextIndex === currentTimedIndex || nextIndex < 0) return;
+      currentTimedIndex = nextIndex;
+      const lines = lyricsBody.querySelectorAll('.music-lyric-line');
+      lines.forEach(function (line, idx) {
+        if (idx === currentTimedIndex) {
+          line.classList.add('is-current');
+          line.scrollIntoView({ block: 'nearest' });
+        } else {
+          line.classList.remove('is-current');
+        }
+      });
+    });
+
+    function setTrack(index, shouldPlay) {
+      const safeIndex = clampIndex(index);
+      if (safeIndex === null) return;
+      const track = playlist[safeIndex];
+      select.value = String(safeIndex);
+      audio.pause();
+      audio.removeAttribute('src');
+      audio.load();
+      audio.src = track.src;
+      audio.load();
+      audio.currentTime = 0;
+      nowPlaying.innerHTML = 'Now playing: <strong>' + track.title + '</strong>';
+      parsedTimedLyrics = [];
+      currentTimedIndex = -1;
+      loadLyrics(track);
+      saveMusicState();
+      if (shouldPlay) {
+        audio.play().catch(function () {
+          lyricsStatus.textContent = 'Tap play in the player to start this song.';
         });
+      }
+    }
+
+    async function loadLyrics(track) {
+      lyricsBody.innerHTML = '';
+      lyricsStatus.textContent = 'Loading lyrics...';
+
+      if (!track.lyrics) {
+        lyricsStatus.textContent = 'Lyrics unavailable for this song.';
+        return;
+      }
+
+      try {
+        const response = await fetch(track.lyrics, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Lyrics file not found');
+        const raw = await response.text();
+        if (!raw.trim()) {
+          lyricsStatus.textContent = 'Lyrics file is empty.';
+          return;
+        }
+
+        if (/^\s*\[\d{1,2}:\d{2}/m.test(raw)) {
+          parsedTimedLyrics = parseLrc(raw);
+          renderTimedLyrics(parsedTimedLyrics);
+          lyricsStatus.textContent = 'Timed lyrics ready. Press play to sing along.';
+        } else {
+          renderPlainLyrics(raw);
+          lyricsStatus.textContent = 'Lyrics loaded.';
+        }
+      } catch (error) {
+        lyricsStatus.textContent = 'Lyrics unavailable. Add a .txt or .lrc file under assets/Song/lyrics/.';
+      }
+    }
+
+    function renderPlainLyrics(text) {
+      const pre = document.createElement('pre');
+      pre.className = 'music-lyrics-text';
+      pre.textContent = text;
+      lyricsBody.appendChild(pre);
+    }
+
+    function renderTimedLyrics(lines) {
+      lyricsBody.innerHTML = '';
+      lines.forEach(function (line) {
+        const p = document.createElement('p');
+        p.className = 'music-lyric-line';
+        p.textContent = line.text || '...';
+        lyricsBody.appendChild(p);
       });
     }
+
+    function parseLrc(text) {
+      const result = [];
+      const rows = text.split(/\r?\n/);
+      rows.forEach(function (row) {
+        const matches = row.matchAll(/\[(\d{1,2}):(\d{2})(?:\.(\d{1,2}))?\]/g);
+        const lyricText = row.replace(/\[[^\]]+\]/g, '').trim();
+        for (const match of matches) {
+          const mm = Number(match[1] || 0);
+          const ss = Number(match[2] || 0);
+          const cs = Number(match[3] || 0);
+          const time = (mm * 60) + ss + (cs / 100);
+          result.push({ time: time, text: lyricText });
+        }
+      });
+      return result.sort(function (a, b) { return a.time - b.time; });
+    }
+
+    function saveMusicState() {
+      const payload = {
+        index: clampIndex(Number(select.value)) || 0,
+        time: Number.isFinite(audio.currentTime) ? audio.currentTime : 0,
+        playing: !audio.paused
+      };
+      sessionStorage.setItem(MUSIC_SESSION_KEY, JSON.stringify(payload));
+    }
+  }
+
+  function getMusicState() {
+    try {
+      const raw = sessionStorage.getItem(MUSIC_SESSION_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (error) {
+      return {};
+    }
+  }
+
+  function clampIndex(value) {
+    if (!Number.isInteger(value)) return null;
+    if (value < 0) return 0;
+    if (value >= playlist.length) return playlist.length - 1;
+    return value;
+  }
+
+  function discoverPlaylist() {
+    const sources = [
+      'assets/Song/Poked Into Forever.mp3',
+      'assets/Song/Queen of Dindinburg.mp3',
+      'assets/Song/Baby With Me.mp3',
+      'assets/Song/Papi, Baby Me.mp3'
+    ];
+
+    return sources.map(function (src) {
+      const title = src.split('/').pop().replace(/\.mp3$/i, '');
+      return {
+        title: title,
+        src: encodePath(src),
+        lyrics: encodePath('assets/Song/lyrics/' + title + '.txt')
+      };
+    });
+  }
+
+  function encodePath(path) {
+    return path
+      .split('/')
+      .map(function (segment) { return encodeURIComponent(segment); })
+      .join('/');
   }
 
   function setTextAll(selector, value) {

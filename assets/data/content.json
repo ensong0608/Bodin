@@ -16,24 +16,24 @@
     "subtitle": "Our version of romance: sarcastic, goofy, and serious when it counts.",
     "events": [
       {
-        "label": "First Message",
-        "text": "You poked my ass and I pretended to be cool. You saw through it."
+        "label": "First Encounter",
+        "text": "You poked my ass and I was embarassed. You did not care."
       },
       {
-        "label": "First Official Date",
-        "text": "I was nervous. You were perfect."
+        "label": "Your First Occupation",
+        "text": "I was nervous. You were perfect. Teacher"
       },
       {
-        "label": "Officially Us",
-        "text": "It was already official from day one."
+        "label": "First time apart",
+        "text": "It was hard. But nothing will keep me away from you."
       },
       {
-        "label": "First Trip",
-        "text": "We packed too much, laughed even more."
+        "label": "First Home of our own",
+        "text": "I get to impress you with my home rennovation skills."
       },
       {
         "label": "Today",
-        "text": "Gray hair, less teeth, still hot and sexy."
+        "text": "More Gray hair, more wrinkles, still hot and sexy."
       }
     ]
   },

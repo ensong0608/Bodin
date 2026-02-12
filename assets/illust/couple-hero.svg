@@ -1,20 +1,30 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 380" role="img" aria-labelledby="title desc">
-  <title id="title">Playful couple illustration</title>
-  <desc id="desc">A simple original hand-drawn style couple with hearts.</desc>
-  <rect width="480" height="380" rx="26" fill="#fff7ef"/>
-  <path d="M96 292c34-38 92-38 126 0" fill="none" stroke="#2a2d2f" stroke-width="6" stroke-linecap="round"/>
-  <path d="M260 292c34-38 92-38 126 0" fill="none" stroke="#2a2d2f" stroke-width="6" stroke-linecap="round"/>
-  <circle cx="164" cy="200" r="52" fill="#ffd7bf" stroke="#2a2d2f" stroke-width="5"/>
-  <circle cx="320" cy="200" r="52" fill="#ffe2cf" stroke="#2a2d2f" stroke-width="5"/>
-  <path d="M121 191c10-20 31-33 43-33 15 0 31 11 43 32" fill="#2a2d2f"/>
-  <path d="M278 190c10-24 32-37 44-37 17 0 31 12 42 37" fill="#2a2d2f"/>
-  <circle cx="151" cy="206" r="5" fill="#2a2d2f"/>
-  <circle cx="178" cy="206" r="5" fill="#2a2d2f"/>
-  <circle cx="306" cy="206" r="5" fill="#2a2d2f"/>
-  <circle cx="333" cy="206" r="5" fill="#2a2d2f"/>
-  <path d="M148 226c8 10 24 10 32 0" fill="none" stroke="#2a2d2f" stroke-width="4" stroke-linecap="round"/>
-  <path d="M302 226c8 10 24 10 32 0" fill="none" stroke="#2a2d2f" stroke-width="4" stroke-linecap="round"/>
-  <path d="M232 96c14-16 38-14 45 4 6 16-4 30-45 53-40-22-50-36-44-53 7-18 31-20 44-4z" fill="#ef6a5b"/>
-  <path d="M103 104c8-10 22-8 27 3 4 10-3 18-27 31-24-13-31-22-27-31 5-11 19-13 27-3z" fill="#ffb58d"/>
-  <path d="M376 111c8-10 22-8 27 3 4 10-3 18-27 31-24-13-31-22-27-31 5-11 19-13 27-3z" fill="#ffb58d"/>
+﻿<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 380' role='img' aria-labelledby='title desc'>
+  <title id='title'>Original older couple illustration</title>
+  <desc id='desc'>A colorful hand-drawn style older couple standing together with balloons and hearts.</desc>
+  <rect width='520' height='380' rx='30' fill='#fff7ea'/>
+  <ellipse cx='260' cy='338' rx='180' ry='20' fill='#ead9c6'/>
+
+  <circle cx='185' cy='146' r='50' fill='#ffd9c1' stroke='#2a2830' stroke-width='5'/>
+  <path d='M146 136c6-31 26-47 39-47 17 0 32 14 41 42' fill='#3e3a58'/>
+  <circle cx='170' cy='151' r='4.5' fill='#2a2830'/>
+  <circle cx='197' cy='151' r='4.5' fill='#2a2830'/>
+  <circle cx='170' cy='151' r='12' fill='none' stroke='#2a2830' stroke-width='3'/>
+  <circle cx='197' cy='151' r='12' fill='none' stroke='#2a2830' stroke-width='3'/>
+  <path d='M171 171c7 9 20 9 27 0' fill='none' stroke='#2a2830' stroke-width='4' stroke-linecap='round'/>
+  <path d='M142 282c9-41 29-62 44-62 22 0 41 18 50 62' fill='#ff8f67' stroke='#2a2830' stroke-width='5' stroke-linejoin='round'/>
+
+  <circle cx='334' cy='146' r='50' fill='#ffd9c1' stroke='#2a2830' stroke-width='5'/>
+  <path d='M293 136c8-29 27-44 41-44 16 0 30 12 40 40' fill='#d5dfff'/>
+  <circle cx='320' cy='151' r='4.5' fill='#2a2830'/>
+  <circle cx='347' cy='151' r='4.5' fill='#2a2830'/>
+  <path d='M321 171c7 9 20 9 27 0' fill='none' stroke='#2a2830' stroke-width='4' stroke-linecap='round'/>
+  <path d='M292 282c9-41 29-62 44-62 22 0 41 18 50 62' fill='#5f7bff' stroke='#2a2830' stroke-width='5' stroke-linejoin='round'/>
+
+  <path d='M226 248c21 20 52 20 73 0' fill='none' stroke='#2a2830' stroke-width='5' stroke-linecap='round'/>
+
+  <path d='M107 84c16-21 46-18 54 6 8 20-5 39-54 66-49-27-61-46-53-66 8-24 38-28 53-6z' fill='#ff6d57'/>
+  <path d='M416 96c16-21 46-18 54 6 8 20-5 39-54 66-49-27-61-46-53-66 8-24 38-28 53-6z' fill='#ff9e54'/>
+  <path d='M247 64l7 24 24 7-24 7-7 24-7-24-24-7 24-7z' fill='#5f7bff' stroke='#2a2830' stroke-width='4' stroke-linejoin='round'/>
+
+  <path d='M106 112v70M417 126v70' stroke='#2a2830' stroke-width='4' stroke-linecap='round'/>
 </svg>
