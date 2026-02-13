@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Relationship timeline page.">
-  <title>Timeline | Our Story</title>
+  <meta name="description" content="Songs, lyrics, and downloads.">
+  <title>Songs | Our Story</title>
   <link rel="stylesheet" href="assets/css/styles.css?v=20260213a">
   <script defer src="assets/js/main.js?v=20260213a"></script>
 </head>
-<body data-page="timeline">
+<body data-page="songs">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
@@ -19,10 +19,10 @@
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a href="timeline.html" aria-current="page">Timeline</a>
+        <a href="timeline.html">Timeline</a>
         <a href="gallery.html">Gallery</a>
         <a href="letter.html">Letter</a>
-        <a href="songs.html">Songs</a>
+        <a href="songs.html" aria-current="page">Songs</a>
         <button id="lockButton" class="lock-button" type="button">Lock</button>
       </nav>
     </div>
@@ -32,35 +32,36 @@
     <section class="page-section js-reveal">
       <div class="container section-grid">
         <div class="section-copy">
-          <p class="eyebrow">Our Milestones</p>
-          <h1 class="display js-timeline-title">Us, Over Time</h1>
-          <p class="lead js-timeline-subtitle">Our version of romance: sarcastic, goofy, and Perfect.</p>
+          <p class="eyebrow">Our Music</p>
+          <h1 class="display">Songs for You</h1>
+          <p class="lead">Open a dropdown for lyrics or direct song downloads.</p>
         </div>
         <div class="section-art">
-          <img class="illustration small js-float js-parallax" src="assets/images/bodin%26pap1stdate-cutout.png" alt="Hand-drawn sketch of you both together">
+          <img class="illustration small js-float js-parallax" src="assets/illust/sparkle-doodle.svg" alt="Decorative music section illustration">
         </div>
       </div>
     </section>
 
     <section class="page-section js-reveal">
       <div class="container">
-        <ol id="timelineList" class="timeline-list" aria-label="Relationship timeline">
-          <li class="timeline-card js-reveal">
-            <span class="timeline-marker">First Encounter</span>
-            <p>You poked my ass and I pretended to be cool. You saw through it.</p>
-            <img class="tiny-doodle" src="assets/illust/heart-doodle.svg" alt="">
-          </li>
-          <li class="timeline-card js-reveal">
-            <span class="timeline-marker">Your First Occupation</span>
-            <p>I was nervous. You were perfect. Teacher</p>
-            <img class="tiny-doodle" src="assets/illust/sparkle-doodle.svg" alt="">
-          </li>
-          <li class="timeline-card js-reveal">
-            <span class="timeline-marker">Today</span>
-            <p>More Gray hair, more wrinkles, still hot and sexy.</p>
-            <img class="tiny-doodle" src="assets/illust/heart-doodle.svg" alt="">
-          </li>
-        </ol>
+        <details class="songs-accordion" open>
+          <summary>Lyrics</summary>
+          <div class="songs-accordion-body">
+            <div id="songsLyricsList" class="song-gallery-grid"></div>
+            <article class="song-lyrics-card">
+              <h3 id="songsLyricsTitle">Lyrics</h3>
+              <p id="songsLyricsStatus" class="song-lyrics-status">Choose a song to view lyrics.</p>
+              <pre id="songsLyricsBody" class="song-lyrics-body"></pre>
+            </article>
+          </div>
+        </details>
+
+        <details class="songs-accordion">
+          <summary>Download</summary>
+          <div class="songs-accordion-body">
+            <div id="songsDownloadList" class="song-download-list"></div>
+          </div>
+        </details>
       </div>
     </section>
   </main>
@@ -73,9 +74,4 @@
   </footer>
 </body>
 </html>
-
-
-
-
-
 

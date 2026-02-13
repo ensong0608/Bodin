@@ -803,6 +803,58 @@ body[data-locked="false"] #gateScreen {
   line-height: 1.5;
 }
 
+.songs-accordion {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.songs-accordion + .songs-accordion {
+  margin-top: 0.8rem;
+}
+
+.songs-accordion summary {
+  cursor: pointer;
+  font-weight: 800;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(180deg, #fffefb, #fff5e8);
+}
+
+.songs-accordion[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.songs-accordion-body {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.song-download-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.song-download-link {
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.55rem 0.8rem;
+}
+
+.song-download-link:hover,
+.song-download-link:focus-visible {
+  background: #fff7ee;
+}
+
 .js-reveal {
   opacity: 0;
   transform: translateY(12px);

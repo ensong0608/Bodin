@@ -8,6 +8,7 @@ This project is a static, mobile-first, accessible love-story site with a lightw
 - `timeline.html` - Timeline page (protected)
 - `gallery.html` - Gallery page with lightbox (protected)
 - `letter.html` - Letter page (protected)
+- `songs.html` - Songs page with lyrics and download dropdowns (protected)
 - `assets/css/styles.css` - Shared styles
 - `assets/js/main.js` - Gate logic, rendering, timeline reveal, gallery lightbox
 - `assets/data/content.json` - Main editable content source

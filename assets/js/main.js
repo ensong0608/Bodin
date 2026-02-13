@@ -108,6 +108,10 @@
       initReadProgress();
     }
 
+    if (page === 'songs') {
+      renderSongsHub();
+    }
+
     initReveal();
     initParallax();
   }
@@ -362,6 +366,87 @@
       } catch (error) {
         if (token !== loadToken) return;
         status.textContent = 'Lyrics unavailable for this song.';
+      }
+    }
+  }
+
+  function renderSongsHub() {
+    const lyricsList = document.getElementById('songsLyricsList');
+    const lyricsTitle = document.getElementById('songsLyricsTitle');
+    const lyricsStatus = document.getElementById('songsLyricsStatus');
+    const lyricsBody = document.getElementById('songsLyricsBody');
+    const downloadList = document.getElementById('songsDownloadList');
+    if (!lyricsList || !lyricsTitle || !lyricsStatus || !lyricsBody || !downloadList) return;
+
+    if (!playlist.length) {
+      lyricsStatus.textContent = 'No songs found in site.musicTracks.';
+      downloadList.innerHTML = '<p class="song-lyrics-status">No songs available to download yet.</p>';
+      return;
+    }
+
+    lyricsList.innerHTML = '';
+    downloadList.innerHTML = '';
+    const buttons = [];
+    let loadToken = 0;
+
+    playlist.forEach(function (track, index) {
+      const lyricButton = document.createElement('button');
+      lyricButton.type = 'button';
+      lyricButton.className = 'song-track-button';
+      lyricButton.textContent = track.title;
+      lyricButton.addEventListener('click', function () {
+        showLyrics(index);
+      });
+      lyricsList.appendChild(lyricButton);
+      buttons.push(lyricButton);
+
+      const downloadLink = document.createElement('a');
+      downloadLink.className = 'song-download-link';
+      downloadLink.href = track.src;
+      downloadLink.textContent = 'Download: ' + track.title;
+      const decodedSrc = safeDecodePath(track.src);
+      const filename = decodedSrc.split('/').pop();
+      if (filename) {
+        downloadLink.setAttribute('download', filename);
+      } else {
+        downloadLink.setAttribute('download', '');
+      }
+      downloadList.appendChild(downloadLink);
+    });
+
+    showLyrics(0);
+
+    async function showLyrics(index) {
+      const track = playlist[index];
+      if (!track) return;
+      loadToken += 1;
+      const token = loadToken;
+
+      buttons.forEach(function (button, idx) {
+        button.classList.toggle('is-active', idx === index);
+      });
+
+      lyricsTitle.textContent = 'Lyrics: ' + track.title;
+      lyricsStatus.textContent = 'Loading lyrics...';
+      lyricsBody.textContent = '';
+
+      if (!track.lyrics) {
+        lyricsStatus.textContent = 'Lyrics unavailable for this song.';
+        return;
+      }
+
+      try {
+        const text = await fetchLyricsTextWithFallback(track.lyrics);
+        if (token !== loadToken) return;
+        if (!text.trim()) {
+          lyricsStatus.textContent = 'Lyrics file is empty.';
+          return;
+        }
+        lyricsBody.textContent = text;
+        lyricsStatus.textContent = 'Lyrics loaded.';
+      } catch (error) {
+        if (token !== loadToken) return;
+        lyricsStatus.textContent = 'Lyrics unavailable for this song.';
       }
     }
   }
