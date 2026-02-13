@@ -1037,6 +1037,10 @@ body[data-locked="false"] #gateScreen {
     order: 1;
   }
 
+  .section-grid.section-grid-flip {
+    grid-template-columns: minmax(240px, 28rem) minmax(0, 1fr);
+  }
+
   .highlight-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
