@@ -95,10 +95,6 @@
       renderSongGallery();
     }
 
-    if (page === 'timeline') {
-      renderTimeline(content.timeline);
-    }
-
     if (page === 'gallery') {
       renderGallery(content.gallery);
     }
@@ -109,7 +105,7 @@
     }
 
     if (page === 'songs') {
-      renderSongsHub();
+      renderSongsHub(content);
     }
 
     initReveal();
@@ -238,6 +234,7 @@
   function renderHome(content) {
     const timelineEvents = Array.isArray(content.timeline && content.timeline.events) ? content.timeline.events : [];
     const galleryItems = Array.isArray(content.gallery && content.gallery.items) ? content.gallery.items : [];
+    const galleryGroups = groupGalleryItems(galleryItems);
     const letterParagraphs = Array.isArray(content.letter && content.letter.paragraphs) ? content.letter.paragraphs : [];
 
     const highlights = [
@@ -272,29 +269,19 @@
       });
     }
 
-    const timelinePreview = document.getElementById('timelinePreview');
-    if (timelinePreview) {
-      timelinePreview.innerHTML = '';
-      timelineEvents.slice(0, 3).forEach(function (event) {
-        const li = document.createElement('li');
-        li.className = 'mini-item';
-        li.textContent = event.label + ': ' + event.text;
-        timelinePreview.appendChild(li);
-      });
-    }
-
     const galleryPreview = document.getElementById('galleryPreview');
     if (galleryPreview) {
       galleryPreview.innerHTML = '';
-      galleryItems.slice(0, 3).forEach(function (item) {
+      galleryGroups.slice(0, 3).forEach(function (group) {
+        const cover = group.cover || {};
         const figure = document.createElement('figure');
         figure.className = 'soft-card preview-card js-reveal';
-        const img = document.createElement('img');
+        const media = createGalleryMediaElement(cover, 'preview-media');
         const cap = document.createElement('figcaption');
-        img.src = item.src || 'assets/images/memory-1.svg';
-        img.alt = item.alt || 'Gallery preview image';
-        cap.textContent = item.caption || 'Memory';
-        figure.appendChild(img);
+        cap.textContent = group.items.length > 1
+          ? (group.title + ' album (' + group.items.length + ' photos)')
+          : (group.caption || 'Memory');
+        figure.appendChild(media);
         figure.appendChild(cap);
         galleryPreview.appendChild(figure);
       });
@@ -370,13 +357,15 @@
     }
   }
 
-  function renderSongsHub() {
+  function renderSongsHub(content) {
     const lyricsList = document.getElementById('songsLyricsList');
     const lyricsTitle = document.getElementById('songsLyricsTitle');
     const lyricsStatus = document.getElementById('songsLyricsStatus');
     const lyricsBody = document.getElementById('songsLyricsBody');
     const downloadList = document.getElementById('songsDownloadList');
     if (!lyricsList || !lyricsTitle || !lyricsStatus || !lyricsBody || !downloadList) return;
+
+    initProudPapiCarousel(content);
 
     if (!playlist.length) {
       lyricsStatus.textContent = 'No songs found in site.musicTracks.';
@@ -451,39 +440,69 @@
     }
   }
 
-  function renderTimeline(timeline) {
-    if (!timeline) return;
+  function initProudPapiCarousel(content) {
+    const carousel = document.getElementById('proudPapiCarousel');
+    const image = document.getElementById('proudPapiImage');
+    const caption = document.getElementById('proudPapiCaption');
+    const prev = document.getElementById('proudPapiPrev');
+    const next = document.getElementById('proudPapiNext');
+    if (!carousel || !image || !caption || !prev || !next) return;
 
-    setTextAll('.js-timeline-title', timeline.title);
-    setTextAll('.js-timeline-subtitle', timeline.subtitle);
-
-    const list = document.getElementById('timelineList');
-    if (!list || !Array.isArray(timeline.events)) return;
-
-    const doodles = ['assets/illust/heart-doodle.svg', 'assets/illust/sparkle-doodle.svg', 'assets/illust/flower-doodle.svg'];
-
-    list.innerHTML = '';
-    timeline.events.forEach(function (event, index) {
-      const li = document.createElement('li');
-      li.className = 'timeline-card js-reveal';
-
-      const marker = document.createElement('span');
-      marker.className = 'timeline-marker';
-      marker.textContent = event.label || 'Moment';
-
-      const text = document.createElement('p');
-      text.textContent = event.text || '';
-
-      const icon = document.createElement('img');
-      icon.className = 'tiny-doodle';
-      icon.src = doodles[index % doodles.length];
-      icon.alt = '';
-
-      li.appendChild(marker);
-      li.appendChild(text);
-      li.appendChild(icon);
-      list.appendChild(li);
+    const items = Array.isArray(content && content.gallery && content.gallery.items) ? content.gallery.items : [];
+    const proudPapiItems = items.filter(function (item, index) {
+      return String(inferMemoryId(item, index)) === '5';
     });
+
+    if (!proudPapiItems.length) {
+      carousel.hidden = true;
+      return;
+    }
+
+    let activeIndex = 0;
+    let intervalId = null;
+
+    function render(index) {
+      const safeIndex = ((index % proudPapiItems.length) + proudPapiItems.length) % proudPapiItems.length;
+      activeIndex = safeIndex;
+      const item = proudPapiItems[safeIndex];
+      image.src = item.src || '';
+      image.alt = item.alt || ("I'm a proud papi photo " + (safeIndex + 1));
+      const baseCaption = item.caption || "I'm a proud papi";
+      caption.textContent = baseCaption + ' (' + (safeIndex + 1) + '/' + proudPapiItems.length + ')';
+    }
+
+    function startAutoRotate() {
+      stopAutoRotate();
+      intervalId = window.setInterval(function () {
+        render(activeIndex + 1);
+      }, 4800);
+    }
+
+    function stopAutoRotate() {
+      if (!intervalId) return;
+      window.clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    prev.addEventListener('click', function () {
+      render(activeIndex - 1);
+      startAutoRotate();
+    });
+    next.addEventListener('click', function () {
+      render(activeIndex + 1);
+      startAutoRotate();
+    });
+
+    carousel.addEventListener('mouseenter', stopAutoRotate);
+    carousel.addEventListener('mouseleave', startAutoRotate);
+    carousel.addEventListener('focusin', stopAutoRotate);
+    carousel.addEventListener('focusout', function (event) {
+      if (carousel.contains(event.relatedTarget)) return;
+      startAutoRotate();
+    });
+
+    render(0);
+    startAutoRotate();
   }
 
   function renderGallery(gallery) {
@@ -494,63 +513,104 @@
 
     const grid = document.getElementById('galleryGrid');
     const items = Array.isArray(gallery.items) ? gallery.items : [];
-    if (!grid || !items.length) return;
+    const groups = groupGalleryItems(items);
+    if (!grid || !groups.length) return;
 
     grid.innerHTML = '';
-    items.forEach(function (item, index) {
+    groups.forEach(function (group, index) {
+      const cover = group.cover || {};
       const figure = document.createElement('figure');
       figure.className = 'gallery-card js-reveal';
 
       const button = document.createElement('button');
       button.className = 'gallery-trigger';
       button.type = 'button';
-      button.dataset.index = String(index);
-      button.setAttribute('aria-label', 'Open image ' + (index + 1));
+      button.dataset.groupIndex = String(index);
+      button.setAttribute('aria-label', 'Open ' + (group.title || ('memory ' + (index + 1))));
 
-      const img = document.createElement('img');
-      img.src = item.src || 'assets/images/memory-1.svg';
-      img.alt = item.alt || 'Memory image';
+      const media = createGalleryMediaElement(cover, '');
 
       const cap = document.createElement('figcaption');
-      cap.textContent = item.caption || 'Memory caption';
+      cap.textContent = group.items.length > 1
+        ? (group.title + ' album (' + group.items.length + ' photos)')
+        : (group.caption || 'Memory caption');
 
-      button.appendChild(img);
+      button.appendChild(media);
       figure.appendChild(button);
       figure.appendChild(cap);
       grid.appendChild(figure);
     });
 
-    initLightbox(items);
+    initLightbox(groups);
   }
 
-  function initLightbox(items) {
+  function initLightbox(groups) {
     const lightbox = document.getElementById('lightbox');
     const image = document.getElementById('lightboxImage');
+    const video = document.getElementById('lightboxVideo');
     const caption = document.getElementById('lightboxCaption');
     const closeButton = document.getElementById('lightboxClose');
     const prevButton = document.getElementById('lightboxPrev');
     const nextButton = document.getElementById('lightboxNext');
     const triggers = Array.from(document.querySelectorAll('.gallery-trigger'));
 
-    if (!lightbox || !image || !caption || !closeButton || !prevButton || !nextButton || !triggers.length) return;
+    if (!lightbox || !caption || !closeButton || !prevButton || !nextButton || !triggers.length) return;
 
     const focusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    let activeIndex = 0;
+    let activeGroupIndex = 0;
+    let activePhotoIndex = 0;
     let previousFocus = null;
     let touchStartX = 0;
 
-    function update(index) {
-      const safe = ((index % items.length) + items.length) % items.length;
-      activeIndex = safe;
-      const item = items[safe];
-      image.src = item.src || 'assets/images/memory-1.svg';
-      image.alt = item.alt || 'Memory image';
-      caption.textContent = item.caption || 'Memory caption';
+    function updateLightboxMedia(item) {
+      const source = item.src || 'assets/images/memory-1.svg';
+      const alt = item.alt || 'Memory image';
+
+      if (isVideoSource(source) && video) {
+        if (image) {
+          image.hidden = true;
+          image.removeAttribute('src');
+        }
+        video.hidden = false;
+        video.pause();
+        video.src = source;
+        video.setAttribute('aria-label', alt);
+        video.load();
+        return;
+      }
+
+      if (video) {
+        video.pause();
+        video.hidden = true;
+        video.removeAttribute('src');
+      }
+      if (image) {
+        image.hidden = false;
+        image.src = source;
+        image.alt = alt;
+      }
     }
 
-    function open(index) {
+    function update(groupIndex, photoIndex) {
+      const safeGroup = ((groupIndex % groups.length) + groups.length) % groups.length;
+      activeGroupIndex = safeGroup;
+      const group = groups[safeGroup] || {};
+      const photos = Array.isArray(group.items) && group.items.length ? group.items : [group.cover].filter(Boolean);
+      const safePhoto = ((photoIndex % photos.length) + photos.length) % photos.length;
+      activePhotoIndex = safePhoto;
+      const item = photos[safePhoto] || {};
+      updateLightboxMedia(item);
+      if (photos.length > 1) {
+        const label = group.title || 'Memory';
+        caption.textContent = label + ' (' + (safePhoto + 1) + '/' + photos.length + ')';
+      } else {
+        caption.textContent = item.caption || group.caption || 'Memory caption';
+      }
+    }
+
+    function open(groupIndex) {
       previousFocus = document.activeElement;
-      update(index);
+      update(groupIndex, 0);
       lightbox.hidden = false;
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -561,6 +621,7 @@
       lightbox.hidden = true;
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (video) video.pause();
       if (previousFocus && typeof previousFocus.focus === 'function') {
         previousFocus.focus();
       }
@@ -585,33 +646,35 @@
 
     triggers.forEach(function (trigger) {
       trigger.addEventListener('click', function () {
-        open(Number(trigger.dataset.index || 0));
+        open(Number(trigger.dataset.groupIndex || 0));
       });
     });
 
     closeButton.addEventListener('click', close);
-    prevButton.addEventListener('click', function () { update(activeIndex - 1); });
-    nextButton.addEventListener('click', function () { update(activeIndex + 1); });
+    prevButton.addEventListener('click', function () { update(activeGroupIndex, activePhotoIndex - 1); });
+    nextButton.addEventListener('click', function () { update(activeGroupIndex, activePhotoIndex + 1); });
 
     lightbox.addEventListener('click', function (event) {
       if (event.target === lightbox) close();
     });
 
-    image.addEventListener('touchstart', function (event) {
-      if (!event.changedTouches[0]) return;
-      touchStartX = event.changedTouches[0].clientX;
-    }, { passive: true });
+    [image, video].filter(Boolean).forEach(function (mediaNode) {
+      mediaNode.addEventListener('touchstart', function (event) {
+        if (!event.changedTouches[0]) return;
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
 
-    image.addEventListener('touchend', function (event) {
-      if (!event.changedTouches[0]) return;
-      const deltaX = event.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(deltaX) < 40) return;
-      if (deltaX > 0) {
-        update(activeIndex - 1);
-      } else {
-        update(activeIndex + 1);
-      }
-    }, { passive: true });
+      mediaNode.addEventListener('touchend', function (event) {
+        if (!event.changedTouches[0]) return;
+        const deltaX = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(deltaX) < 40) return;
+        if (deltaX > 0) {
+          update(activeGroupIndex, activePhotoIndex - 1);
+        } else {
+          update(activeGroupIndex, activePhotoIndex + 1);
+        }
+      }, { passive: true });
+    });
 
     document.addEventListener('keydown', function (event) {
       if (lightbox.hidden) return;
@@ -620,15 +683,83 @@
         return;
       }
       if (event.key === 'ArrowLeft') {
-        update(activeIndex - 1);
+        update(activeGroupIndex, activePhotoIndex - 1);
         return;
       }
       if (event.key === 'ArrowRight') {
-        update(activeIndex + 1);
+        update(activeGroupIndex, activePhotoIndex + 1);
         return;
       }
       trapFocus(event);
     });
+  }
+
+  function groupGalleryItems(items) {
+    const groups = [];
+    const byMemory = {};
+    items.forEach(function (item, index) {
+      if (!item) return;
+      const memoryId = inferMemoryId(item, index);
+      const key = String(memoryId);
+      if (!byMemory[key]) {
+        byMemory[key] = {
+          memoryId: memoryId,
+          title: String(memoryId) === '3'
+            ? 'Honeymoon'
+            : (String(memoryId) === '4'
+              ? 'Older and Grayer but better'
+              : (String(memoryId) === '5' ? "I'm a proud papi" : ('Memory ' + memoryId))),
+          caption: item.caption || ('Memory ' + memoryId),
+          cover: item,
+          items: []
+        };
+        groups.push(byMemory[key]);
+      }
+      byMemory[key].items.push(item);
+    });
+    return groups;
+  }
+
+  function inferMemoryId(item, index) {
+    if (item && item.memory !== undefined && item.memory !== null && String(item.memory).trim() !== '') {
+      return String(item.memory).trim();
+    }
+
+    const src = String(item && item.src ? item.src : '');
+    const sourceMatch = src.match(/memory-(\d+)/i);
+    if (sourceMatch && sourceMatch[1]) {
+      return sourceMatch[1];
+    }
+
+    return String(index + 1);
+  }
+
+  function isVideoSource(source) {
+    return /\.(mp4|webm|ogg|mov|m4v)(?:$|[?#])/i.test(String(source || ''));
+  }
+
+  function createGalleryMediaElement(item, className) {
+    const source = item && item.src ? item.src : 'assets/images/memory-1.svg';
+    const alt = item && item.alt ? item.alt : 'Memory image';
+
+    if (isVideoSource(source)) {
+      const video = document.createElement('video');
+      video.src = source;
+      video.muted = true;
+      video.loop = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      video.setAttribute('aria-label', alt);
+      if (className) video.className = className;
+      return video;
+    }
+
+    const img = document.createElement('img');
+    img.src = source;
+    img.alt = alt;
+    if (className) img.className = className;
+    return img;
   }
 
   function renderLetter(letter) {
@@ -806,34 +937,6 @@
     audio.preload = 'metadata';
     audio.loop = false;
 
-    const controlsRow = document.createElement('div');
-    controlsRow.className = 'music-track-controls';
-
-    const prevButton = document.createElement('button');
-    prevButton.type = 'button';
-    prevButton.className = 'music-track-button';
-    prevButton.textContent = 'Prev';
-
-    const rewindButton = document.createElement('button');
-    rewindButton.type = 'button';
-    rewindButton.className = 'music-track-button';
-    rewindButton.textContent = '-10s';
-
-    const forwardButton = document.createElement('button');
-    forwardButton.type = 'button';
-    forwardButton.className = 'music-track-button';
-    forwardButton.textContent = '+10s';
-
-    const nextButton = document.createElement('button');
-    nextButton.type = 'button';
-    nextButton.className = 'music-track-button';
-    nextButton.textContent = 'Next';
-
-    controlsRow.appendChild(prevButton);
-    controlsRow.appendChild(rewindButton);
-    controlsRow.appendChild(forwardButton);
-    controlsRow.appendChild(nextButton);
-
     const lyricsToggle = document.createElement('button');
     lyricsToggle.type = 'button';
     lyricsToggle.className = 'music-lyrics-toggle';
@@ -859,7 +962,6 @@
     wrapper.appendChild(label);
     wrapper.appendChild(select);
     wrapper.appendChild(nowPlaying);
-    wrapper.appendChild(controlsRow);
     wrapper.appendChild(audio);
     if (enableLyrics) {
       wrapper.appendChild(lyricsToggle);
@@ -878,10 +980,6 @@
     }
     select.addEventListener('change', handleTrackSelection);
     select.addEventListener('input', handleTrackSelection);
-    prevButton.addEventListener('click', function () { stepTrack(-1, true); });
-    nextButton.addEventListener('click', function () { stepTrack(1, true); });
-    rewindButton.addEventListener('click', function () { seekBy(-10); });
-    forwardButton.addEventListener('click', function () { seekBy(10); });
 
     if (enableLyrics) {
       lyricsToggle.addEventListener('click', function () {
@@ -998,13 +1096,6 @@
       const base = Number.isInteger(current) ? current : 0;
       const next = (base + delta + playlist.length) % playlist.length;
       setTrack(next, shouldPlay);
-    }
-
-    function seekBy(seconds) {
-      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
-      const target = Math.max(0, Math.min(audio.currentTime + seconds, audio.duration));
-      audio.currentTime = target;
-      saveMusicState();
     }
 
     async function loadLyrics(track) {

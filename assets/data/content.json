@@ -1,149 +1,473 @@
-﻿{
-  "site": {
-    "brand": "Bodin + Ensong",
-    "eyebrow": "Valentine's Day 2026",
-    "homeTitle": "Bodin, My Baby",
-    "homeIntro": "We've been together for almost 25 years now and you still annoy me a lot. I thought that as we grew older we would mellow out, but I was wrong. I will always try to get on your nerves so you know I love you very much.",
-    "homeSummary": "Almost 25 years in and we still have the same chaotic energy.",
-    "footerText": "Valentine's Day Love",
-    "anniversaryDateISO": "2026-02-14",
-    "anniversaryDateText": "February 14, 2026",
-    "privacyNote": "Privacy note: This is a lightweight gate for casual privacy, not true security.",
-    "enableLyrics": false,
-    "passphrase": "teacher",
-    "musicTracks": [
-      {
-        "title": "Poked Into Forever",
-        "src": "assets/Song/Poked Into Forever.mp3",
-        "lyrics": "assets/Song/lyrics/Poked Into Forever.txt"
-      },
-      {
-        "title": "Queen of Dindinburg",
-        "src": "assets/Song/Queen of Dindinburg.mp3",
-        "lyrics": "assets/Song/lyrics/Queen of Dindinburg.txt"
-      },
-      {
-        "title": "Baby With Me",
-        "src": "assets/Song/Baby With Me.mp3",
-        "lyrics": "assets/Song/lyrics/Baby With Me.txt"
-      },
-      {
-        "title": "Papi, Baby Me",
-        "src": "assets/Song/Papi, Baby Me.mp3",
-        "lyrics": "assets/Song/lyrics/Papi, Baby Me.txt"
-      },
-      {
-        "title": "Bodin reyna ko(Illonggo Rap)",
-        "src": "assets/Song/Bodin reyna ko(Illonggo Rap).mp3",
-        "lyrics": "assets/Song/lyrics/Bodin reyna ko(Illonggo Rap).txt"
-      },
-      {
-        "title": "Bodin reyna ko(Illonggo RnB Rap) V2",
-        "src": "assets/Song/Bodin reyna ko(Illonggo RnB Rap) V2.mp3",
-        "lyrics": "assets/Song/lyrics/Bodin reyna ko(Illonggo RnB Rap) V2.txt"
-      }
-    ]
-  },
-  "timeline": {
-    "title": "Us, Over Time",
-    "subtitle": "Our version of romance: sarcastic, goofy, and serious when it counts.",
-    "events": [
-      {
-        "label": "First Encounter",
-        "text": "You poked my ass and I was embarassed. You did not care."
-      },
-      {
-        "label": "Your First Occupation",
-        "text": "I was nervous. You were perfect. Teacher"
-      },
-      {
-        "label": "First time apart",
-        "text": "It was hard. But nothing will keep me away from you."
-      },
-      {
-        "label": "First Home of our own",
-        "text": "I get to impress you with my home rennovation skills."
-      },
-      {
-        "label": "Today",
-        "text": "More Gray hair, more wrinkles, still hot and sexy."
-      }
-    ]
-  },
-  "gallery": {
-    "title": "Photo Gallery",
-    "subtitle": "Placeholder photos for now. Swap these with your real pictures later.",
-    "items": [
-      {
-        "src": "assets/images/memory-1.svg",
-        "alt": "Placeholder memory one",
-        "caption": "The beginning of trouble."
-      },
-      {
-        "src": "assets/images/memory-2.svg",
-        "alt": "Placeholder memory two",
-        "caption": "We clean up nice."
-      },
-      {
-        "src": "assets/images/memory-3.svg",
-        "alt": "Placeholder memory three",
-        "caption": "Still hand in hand."
-      },
-      {
-        "src": "assets/images/memory-4.svg",
-        "alt": "Placeholder memory four",
-        "caption": "One laugh away from chaos."
-      },
-      {
-        "src": "assets/images/memory-5.svg",
-        "alt": "Placeholder memory five",
-        "caption": "My favorite smile."
-      },
-      {
-        "src": "assets/images/memory-6.svg",
-        "alt": "Placeholder memory six",
-        "caption": "Still choosing each other."
-      }
-    ]
-  },
-  "letter": {
-    "title": "A Letter to My Baby Bodin",
-    "greeting": "Bodin my Baby,",
-    "paragraphs": [
-      "Almost 25 years together... and somehow you are still my favorite person to argue with about absolutely nothing.",
-      "I honestly thought by now we'd be calm, mature adults who handle disagreements with wisdom and grace. Instead, we still debate like it's a competitive sport. Bu I guess we both both are just very passionate. We have Olympic-level stamina for teasing each other, misunderstanding each other, and then laughing about it five minutes later.",
-      "You drive me crazy. And somehow, that is still one of my favorite places to be.",
-      "You are demanding - yes, you are. You always want to be treated like a baby. You want to be taken care of. You want attention. You want cuddles. You want reassurance. You want to feel assurance every single day. You want to feel chosen every single day.",
-      "And the truth is... I love that about you.",
-      "I love that you want all of that from me. It annoys me like crazy. But it also makes me feel so special. It makes me feel like the most important person in the world to you.",
-      "Because it means I am your safe place. It means I'm the one you trust to hold you when you're tired. It means I'm the one you expect to show up.",
-      "And I always have and I will always be there..",
-      "You are gorgeous. Not just \"pretty.\" Not just \"cute.\" Gorgeous.",
-      "For almost 25 years, I still look at you and think, \"How did I get this hot, sexy woman to choose me?\" The way you smile. The way you laugh when I tell the worst corny joke. The way you look at me when you're annoyed but still secretly entertained. The way you pout when your lips form that little expression that says, \"You better fix this.\"",
-      "You are stunning. Yes, physically - that part is undeniable and unfairly impressive for me even though you don't agree. I don't care!- but even more in the way you carry yourself. Your determination. Your standards. The way you protect what's yours. The way you fight for our family like a viking warrior.",
-      "You demand the best from me - even when I don't want to give it. And because of you, I grow. Because of you, I try harder. Because of you, I am not the same man I was 25 years ago.",
-      "You make me better. Even when your lips are pouting at me about something small. Even when you're giving me that look that says I messed up. Even when you're refolding the clothes that I already folded.",
-      "You sharpen me. You steady me. You challenge me.",
-      "And you love me.",
-      "Thank you for loving me. The stubborn one. The immature one. The quiet one. The loud one. The one who pretends he doesn't care but cares deeply. The version of me that was still figuring life out. The version that made mistakes. The version that didn't always say the right thing.",
-      "Through all of it... you stayed.",
-      "You chose me. Again and again. Not just on easy days - but on the complicated ones. On the tired ones. On the \"we're not talking right now\" ones.",
-      "That kind of love isn't luck.",
-      "That's commitment. That's loyalty. That's real.",
-      "If I had to start over - if I had to relive every argument, every blanket stealing battle, every snoring war, every cleanliness inspection and memory lapse disagreement - I would still pick you.",
-      "Every time.",
-      "Not because we're perfect.",
-      "But because we're us.",
-      "And behind all the sarcasm and teasing, here's the truth I don't joke about:",
-      "You are my home. You are my comfort. You are my fire. You are my peace. You are my chaos and my calm. You are my baby.",
-      "And after 25 years, I don't love you out of habit.",
-      "I love you with intention.",
-      "I love you because I see you. I know you. And I choose you.",
-      "For as long as I breathe, I will keep choosing you - on the loud days, on the quiet days, on the annoying days, on the passionate days.",
-      "Even if you steal the blankets first.",
-      "I love you. Happy Valentine's Day, Baby."
-    ],
-    "closing": "Forever yours,",
-    "signature": "Papi"
-  }
+{
+    "site":  {
+                 "brand":  "Bodin + Ensong",
+                 "eyebrow":  "Valentine\u0027s Day 2026",
+                 "homeTitle":  "Bodin, My Baby",
+                 "homeIntro":  "We\u0027ve been together for almost 25 years now and you still annoy me a lot. I thought that as we grew older we would mellow out, but I was wrong. I will always try to get on your nerves so you know I love you very much.",
+                 "homeSummary":  "Almost 25 years in and we still have the same chaotic energy.",
+                 "footerText":  "Valentine\u0027s Day Love",
+                 "anniversaryDateISO":  "2026-02-14",
+                 "anniversaryDateText":  "February 14, 2026",
+                 "privacyNote":  "Privacy note: This is a lightweight gate for casual privacy, not true security.",
+                 "enableLyrics":  false,
+                 "passphrase":  "teacher",
+                 "musicTracks":  [
+                                     {
+                                         "title":  "Poked Into Forever",
+                                         "src":  "assets/Song/Poked Into Forever.mp3",
+                                         "lyrics":  "assets/Song/lyrics/Poked Into Forever.txt"
+                                     },
+                                     {
+                                         "title":  "Queen of Dindinburg",
+                                         "src":  "assets/Song/Queen of Dindinburg.mp3",
+                                         "lyrics":  "assets/Song/lyrics/Queen of Dindinburg.txt"
+                                     },
+                                     {
+                                         "title":  "Baby With Me",
+                                         "src":  "assets/Song/Baby With Me.mp3",
+                                         "lyrics":  "assets/Song/lyrics/Baby With Me.txt"
+                                     },
+                                     {
+                                         "title":  "Papi, Baby Me",
+                                         "src":  "assets/Song/Papi, Baby Me.mp3",
+                                         "lyrics":  "assets/Song/lyrics/Papi, Baby Me.txt"
+                                     },
+                                     {
+                                         "title":  "Bodin reyna ko(Illonggo Rap)",
+                                         "src":  "assets/Song/Bodin reyna ko(Illonggo Rap).mp3",
+                                         "lyrics":  "assets/Song/lyrics/Bodin reyna ko(Illonggo Rap).txt"
+                                     },
+                                     {
+                                         "title":  "Bodin reyna ko(Illonggo RnB Rap) V2",
+                                         "src":  "assets/Song/Bodin reyna ko(Illonggo RnB Rap) V2.mp3",
+                                         "lyrics":  "assets/Song/lyrics/Bodin reyna ko(Illonggo RnB Rap) V2.txt"
+                                     },
+                                     {
+                                         "title":  "Papigator _ Babydile",
+                                         "src":  "assets/Song/Papigator _ Babydile.mp3",
+                                         "lyrics":  "assets/Song/lyrics/Papigator _ Babydile.txt"
+                                     }
+                                 ]
+             },
+    "timeline":  {
+                     "title":  "Us, Over Time",
+                     "subtitle":  "Our version of romance: sarcastic, goofy, and serious when it counts.",
+                     "events":  [
+                                    {
+                                        "label":  "First Encounter",
+                                        "text":  "You poked my ass and I was embarassed. You did not care."
+                                    },
+                                    {
+                                        "label":  "Your First Occupation",
+                                        "text":  "I was nervous. You were perfect. Teacher"
+                                    },
+                                    {
+                                        "label":  "First time apart",
+                                        "text":  "It was hard. But nothing will keep me away from you."
+                                    },
+                                    {
+                                        "label":  "First Home of our own",
+                                        "text":  "I get to impress you with my home rennovation skills."
+                                    },
+                                    {
+                                        "label":  "Today",
+                                        "text":  "More Gray hair, more wrinkles, still hot and sexy."
+                                    }
+                                ]
+                 },
+    "gallery":  {
+                    "title":  "Photo Gallery",
+                    "subtitle":  "Honeymoon in HK",
+                    "items":  [
+                                  {
+                                      "src":  "assets/videos/memory-1-the-beggining-of-trouble.mp4",
+                                      "alt":  "The beggining of trouble",
+                                      "caption":  "The beggining of trouble."
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170715_190003.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 1",
+                                      "caption":  "Honeymoon in HK - Memory 1"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170716_180313.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 2",
+                                      "caption":  "Honeymoon in HK - Memory 2"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170716_183456.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 3",
+                                      "caption":  "Honeymoon in HK - Memory 3"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170716_184730.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 4",
+                                      "caption":  "Honeymoon in HK - Memory 4"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170716_190925.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 5",
+                                      "caption":  "Honeymoon in HK - Memory 5"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170716_191125.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 6",
+                                      "caption":  "Honeymoon in HK - Memory 6"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170716_191321.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 7",
+                                      "caption":  "Honeymoon in HK - Memory 7"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170716_194315.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 8",
+                                      "caption":  "Honeymoon in HK - Memory 8"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170717_121428.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 9",
+                                      "caption":  "Honeymoon in HK - Memory 9"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170717_125611.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 10",
+                                      "caption":  "Honeymoon in HK - Memory 10"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170717_143707.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 11",
+                                      "caption":  "Honeymoon in HK - Memory 11"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170717_144124.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 12",
+                                      "caption":  "Honeymoon in HK - Memory 12"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170718_002237.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 13",
+                                      "caption":  "Honeymoon in HK - Memory 13"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170718_172036.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 14",
+                                      "caption":  "Honeymoon in HK - Memory 14"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170718_185223.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 15",
+                                      "caption":  "Honeymoon in HK - Memory 15"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170718_211729.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 16",
+                                      "caption":  "Honeymoon in HK - Memory 16"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170719_130343.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 17",
+                                      "caption":  "Honeymoon in HK - Memory 17"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170719_134706.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 18",
+                                      "caption":  "Honeymoon in HK - Memory 18"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170719_142156.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 19",
+                                      "caption":  "Honeymoon in HK - Memory 19"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170719_142324.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 20",
+                                      "caption":  "Honeymoon in HK - Memory 20"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170719_155429.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 21",
+                                      "caption":  "Honeymoon in HK - Memory 21"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170719_184805.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 22",
+                                      "caption":  "Honeymoon in HK - Memory 22"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170719_190958.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 23",
+                                      "caption":  "Honeymoon in HK - Memory 23"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170720_142804.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 24",
+                                      "caption":  "Honeymoon in HK - Memory 24"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/20170724_122545.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 25",
+                                      "caption":  "Honeymoon in HK - Memory 25"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/BeautyPlus_20170717231308_save.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 26",
+                                      "caption":  "Honeymoon in HK - Memory 26"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/IMG_20190409_001247_317.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 27",
+                                      "caption":  "Honeymoon in HK - Memory 27"
+                                  },
+                                  {
+                                      "src":  "assets/images/memory-3-hk/IMG_20190413_234802_044.jpg",
+                                      "alt":  "Honeymoon in Hong Kong photo 28",
+                                      "caption":  "Honeymoon in HK - Memory 28"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-01.jpg",
+                                      "alt":  "Older and Grayer but better photo 1",
+                                      "caption":  "Older and Grayer but better - Memory 1",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-02.jpg",
+                                      "alt":  "Older and Grayer but better photo 2",
+                                      "caption":  "Older and Grayer but better - Memory 2",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-03.jpg",
+                                      "alt":  "Older and Grayer but better photo 3",
+                                      "caption":  "Older and Grayer but better - Memory 3",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-04.jpg",
+                                      "alt":  "Older and Grayer but better photo 4",
+                                      "caption":  "Older and Grayer but better - Memory 4",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-05.jpg",
+                                      "alt":  "Older and Grayer but better photo 5",
+                                      "caption":  "Older and Grayer but better - Memory 5",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-06.jpg",
+                                      "alt":  "Older and Grayer but better photo 6",
+                                      "caption":  "Older and Grayer but better - Memory 6",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-07.jpg",
+                                      "alt":  "Older and Grayer but better photo 7",
+                                      "caption":  "Older and Grayer but better - Memory 7",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-08.jpg",
+                                      "alt":  "Older and Grayer but better photo 8",
+                                      "caption":  "Older and Grayer but better - Memory 8",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-09.jpg",
+                                      "alt":  "Older and Grayer but better photo 9",
+                                      "caption":  "Older and Grayer but better - Memory 9",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-10.jpg",
+                                      "alt":  "Older and Grayer but better photo 10",
+                                      "caption":  "Older and Grayer but better - Memory 10",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/older-and-grayer-but-better-11.jpg",
+                                      "alt":  "Older and Grayer but better photo 11",
+                                      "caption":  "Older and Grayer but better - Memory 11",
+                                      "memory":  "4"
+                                  },
+                                  {
+                                      "src":  "assets/images/1.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 1",
+                                      "caption":  "I\u0027m a proud papi - Memory 1",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/2.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 2",
+                                      "caption":  "I\u0027m a proud papi - Memory 2",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/3.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 3",
+                                      "caption":  "I\u0027m a proud papi - Memory 3",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/4.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 4",
+                                      "caption":  "I\u0027m a proud papi - Memory 4",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/5.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 5",
+                                      "caption":  "I\u0027m a proud papi - Memory 5",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/6.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 6",
+                                      "caption":  "I\u0027m a proud papi - Memory 6",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/7.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 7",
+                                      "caption":  "I\u0027m a proud papi - Memory 7",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/8.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 8",
+                                      "caption":  "I\u0027m a proud papi - Memory 8",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/9.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 9",
+                                      "caption":  "I\u0027m a proud papi - Memory 9",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/10.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 10",
+                                      "caption":  "I\u0027m a proud papi - Memory 10",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/11.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 11",
+                                      "caption":  "I\u0027m a proud papi - Memory 11",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/12.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 12",
+                                      "caption":  "I\u0027m a proud papi - Memory 12",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/13.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 13",
+                                      "caption":  "I\u0027m a proud papi - Memory 13",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/14.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 14",
+                                      "caption":  "I\u0027m a proud papi - Memory 14",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/15.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 15",
+                                      "caption":  "I\u0027m a proud papi - Memory 15",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/16.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 16",
+                                      "caption":  "I\u0027m a proud papi - Memory 16",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/17.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 17",
+                                      "caption":  "I\u0027m a proud papi - Memory 17",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/18.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 18",
+                                      "caption":  "I\u0027m a proud papi - Memory 18",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/19.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 19",
+                                      "caption":  "I\u0027m a proud papi - Memory 19",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/20.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 20",
+                                      "caption":  "I\u0027m a proud papi - Memory 20",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/21.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 21",
+                                      "caption":  "I\u0027m a proud papi - Memory 21",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/22.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 22",
+                                      "caption":  "I\u0027m a proud papi - Memory 22",
+                                      "memory":  "5"
+                                  },
+                                  {
+                                      "src":  "assets/images/23.jpg",
+                                      "alt":  "I\u0027m a proud papi photo 23",
+                                      "caption":  "I\u0027m a proud papi - Memory 23",
+                                      "memory":  "5"
+                                  }
+                              ]
+                },
+    "letter":  {
+                   "title":  "A Letter to My Baby Bodin",
+                   "greeting":  "Bodin my Baby,",
+                   "paragraphs":  [
+                                      "Almost 25 years together... and somehow you are still my favorite person to argue with about absolutely nothing.",
+                                      "I honestly thought by now we\u0027d be calm, mature adults who handle disagreements with wisdom and grace. Instead, we still debate like it\u0027s a competitive sport. Bu I guess we both both are just very passionate. We have Olympic-level stamina for teasing each other, misunderstanding each other, and then laughing about it five minutes later.",
+                                      "You drive me crazy. And somehow, that is still one of my favorite places to be.",
+                                      "You are demanding - yes, you are. You always want to be treated like a baby. You want to be taken care of. You want attention. You want cuddles. You want reassurance. You want to feel assurance every single day. You want to feel chosen every single day.",
+                                      "And the truth is... I love that about you.",
+                                      "I love that you want all of that from me. It annoys me like crazy. But it also makes me feel so special. It makes me feel like the most important person in the world to you.",
+                                      "Because it means I am your safe place. It means I\u0027m the one you trust to hold you when you\u0027re tired. It means I\u0027m the one you expect to show up.",
+                                      "And I always have and I will always be there..",
+                                      "You are gorgeous. Not just \"pretty.\" Not just \"cute.\" Gorgeous.",
+                                      "For almost 25 years, I still look at you and think, \"How did I get this hot, sexy woman to choose me?\" The way you smile. The way you laugh when I tell the worst corny joke. The way you look at me when you\u0027re annoyed but still secretly entertained. The way you pout when your lips form that little expression that says, \"You better fix this.\"",
+                                      "You are stunning. Yes, physically - that part is undeniable and unfairly impressive for me even though you don\u0027t agree. I don\u0027t care!- but even more in the way you carry yourself. Your determination. Your standards. The way you protect what\u0027s yours. The way you fight for our family like a viking warrior.",
+                                      "You demand the best from me - even when I don\u0027t want to give it. And because of you, I grow. Because of you, I try harder. Because of you, I am not the same man I was 25 years ago.",
+                                      "You make me better. Even when your lips are pouting at me about something small. Even when you\u0027re giving me that look that says I messed up. Even when you\u0027re refolding the clothes that I already folded.",
+                                      "You sharpen me. You steady me. You challenge me.",
+                                      "And you love me.",
+                                      "Thank you for loving me. The stubborn one. The immature one. The quiet one. The loud one. The one who pretends he doesn\u0027t care but cares deeply. The version of me that was still figuring life out. The version that made mistakes. The version that didn\u0027t always say the right thing.",
+                                      "Through all of it... you stayed.",
+                                      "You chose me. Again and again. Not just on easy days - but on the complicated ones. On the tired ones. On the \"we\u0027re not talking right now\" ones.",
+                                      "That kind of love isn\u0027t luck.",
+                                      "That\u0027s commitment. That\u0027s loyalty. That\u0027s real.",
+                                      "If I had to start over - if I had to relive every argument, every blanket stealing battle, every snoring war, every cleanliness inspection and memory lapse disagreement - I would still pick you.",
+                                      "Every time.",
+                                      "Not because we\u0027re perfect.",
+                                      "But because we\u0027re us.",
+                                      "And behind all the sarcasm and teasing, here\u0027s the truth I don\u0027t joke about:",
+                                      "You are my home. You are my comfort. You are my fire. You are my peace. You are my chaos and my calm. You are my baby.",
+                                      "And after 25 years, I don\u0027t love you out of habit.",
+                                      "I love you with intention.",
+                                      "I love you because I see you. I know you. And I choose you.",
+                                      "For as long as I breathe, I will keep choosing you - on the loud days, on the quiet days, on the annoying days, on the passionate days.",
+                                      "Even if you steal the blankets first.",
+                                      "I love you. Happy Valentine\u0027s Day, Baby."
+                                  ],
+                   "closing":  "Forever yours,",
+                   "signature":  "Papi"
+               }
 }

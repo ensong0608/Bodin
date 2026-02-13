@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Songs, lyrics, and downloads.">
   <title>Songs | Our Story</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260213a">
-  <script defer src="assets/js/main.js?v=20260213a"></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260213i">
+  <script defer src="assets/js/main.js?v=20260213i"></script>
 </head>
 <body data-page="songs">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -19,7 +19,7 @@
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a href="timeline.html">Timeline</a>
+        
         <a href="gallery.html">Gallery</a>
         <a href="letter.html">Letter</a>
         <a href="songs.html" aria-current="page">Songs</a>
@@ -37,7 +37,16 @@
           <p class="lead">Open a dropdown for lyrics or direct song downloads.</p>
         </div>
         <div class="section-art">
-          <img class="illustration small js-float js-parallax" src="assets/illust/sparkle-doodle.svg" alt="Decorative music section illustration">
+          <section id="proudPapiCarousel" class="songs-carousel js-reveal" aria-label="I'm a proud papi carousel">
+            <div class="songs-carousel-frame">
+              <img id="proudPapiImage" class="songs-carousel-image" src="assets/images/1.jpg" alt="I'm a proud papi photo 1">
+            </div>
+            <div class="songs-carousel-controls">
+              <button id="proudPapiPrev" class="songs-carousel-button" type="button" aria-label="Previous photo">Prev</button>
+              <p id="proudPapiCaption" class="songs-carousel-caption" aria-live="polite">I'm a proud papi - Memory 1</p>
+              <button id="proudPapiNext" class="songs-carousel-button" type="button" aria-label="Next photo">Next</button>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -74,4 +83,5 @@
   </footer>
 </body>
 </html>
+
 
