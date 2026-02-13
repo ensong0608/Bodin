@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const SESSION_KEY = 'anniversary_unlocked';
   const MUSIC_SESSION_KEY = 'music_player_state';
   let enableLyrics = false;
