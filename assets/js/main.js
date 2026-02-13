@@ -239,20 +239,20 @@
 
     const highlights = [
       {
-        title: timelineEvents[0] ? timelineEvents[0].label : 'Year we met',
-        text: timelineEvents[0] ? timelineEvents[0].text : 'The day everything changed.'
+        title: 'Year we met',
+        text: 'Is the time you like to poke.'
       },
       {
-        title: 'Funniest fight',
-        text: 'Thermostat debates, blanket thefts, and dramatic eye-roll finals.'
+        title: 'Favorite expression',
+        text: 'Pouting Lips.'
       },
       {
         title: 'Favorite memory',
-        text: timelineEvents[3] ? timelineEvents[3].text : 'We packed too much, laughed even more.'
+        text: 'First time cutting you hair.'
       },
       {
         title: 'Still my baby',
-        text: timelineEvents[timelineEvents.length - 1] ? timelineEvents[timelineEvents.length - 1].text : 'Still hot, still stubborn, still in love.'
+        text: 'Still hot, still funny and sexy.'
       }
     ];
 
