@@ -5,12 +5,11 @@ This project is a static, mobile-first, accessible love-story site.
 ## Project Structure
 
 - `index.html` - Home page
-- `timeline.html` - Timeline page
 - `gallery.html` - Gallery page with lightbox
 - `letter.html` - Letter page
 - `songs.html` - Songs page with lyrics and download dropdowns
 - `assets/css/styles.css` - Shared styles
-- `assets/js/main.js` - Rendering, timeline reveal, gallery lightbox, music player
+- `assets/js/main.js` - Rendering, gallery lightbox, and music player
 - `assets/data/content.json` - Main editable content source
 - `assets/images/` - Place your photos here
 
@@ -24,7 +23,6 @@ Edit these sections:
 - `site.anniversaryDateISO`, `site.anniversaryDateText`
 - `site.enableLyrics` (`true` or `false` to show/hide lyrics panel)
 - `site.musicTracks` (array of songs for the player; each song can include `title`, `src`, and `lyrics`)
-- `timeline.events` (array of `{ "label", "text" }`)
 - `gallery.items` (array of `{ "src", "alt", "caption" }`)
 - `letter.title`, `letter.greeting`, `letter.paragraphs`, `letter.signature`
 
