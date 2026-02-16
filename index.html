@@ -23,28 +23,12 @@
         <a href="gallery.html">Gallery</a>
         <a href="letter.html">Letter</a>
         <a href="songs.html">Songs</a>
-        <button id="lockButton" class="lock-button" type="button">Lock</button>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section id="gateScreen" class="gate-screen" aria-labelledby="gate-title">
-      <div class="gate-card">
-        <img class="gate-illust" src="assets/illust/heart-doodle.svg" alt="Heart doodle illustration">
-        <h1 id="gate-title">Private Memory Vault</h1>
-        <p>What did I ask you to be 25 years ago?</p>
-        <form id="gateForm" class="gate-form" novalidate>
-          <label for="passphraseInput">No Hints</label>
-          <input id="passphraseInput" name="passphrase" type="password" autocomplete="off" required>
-          <button type="submit" class="button button-primary">Unlock</button>
-          <p id="gateError" class="gate-error" role="status" aria-live="polite"></p>
-        </form>
-        <p class="privacy-note js-privacy-note">Privacy note: This is a lightweight gate for casual privacy, not true security.</p>
-      </div>
-    </section>
-
-    <div id="homeContent" class="protected-content">
+    
       <section class="page-section hero-section js-reveal">
         <div class="container section-grid">
           <div class="section-copy">
@@ -114,13 +98,12 @@
           </div>
         </div>
       </section>
-    </div>
 
     <noscript>
       <section class="page-section">
         <div class="container">
           <h2>JavaScript is disabled</h2>
-          <p>This site needs JavaScript for the passphrase gate and dynamic content from <code>assets/data/content.json</code>.</p>
+          <p>This site needs JavaScript for dynamic content from <code>assets/data/content.json</code>.</p>
         </div>
       </section>
     </noscript>
@@ -129,7 +112,7 @@
   <footer class="site-footer">
     <div class="container">
       <p><span class="js-footer-text">Valentine's Day Love</span> - <time class="js-date" datetime="2026-02-14">February 14, 2026</time></p>
-      <p class="privacy-note js-privacy-note">Privacy note: This is a lightweight gate for casual privacy, not true security.</p>
+      <p class="privacy-note js-privacy-note">Made with love for Bodin.</p>
     </div>
   </footer>
 </body>

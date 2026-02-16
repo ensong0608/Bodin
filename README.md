@@ -1,22 +1,18 @@
 ﻿# Private-ish Multi-Page Anniversary Website
 
-This project is a static, mobile-first, accessible love-story site with a lightweight passphrase gate.
+This project is a static, mobile-first, accessible love-story site.
 
 ## Project Structure
 
-- `index.html` - Home + passphrase gate
-- `timeline.html` - Timeline page (protected)
-- `gallery.html` - Gallery page with lightbox (protected)
-- `letter.html` - Letter page (protected)
-- `songs.html` - Songs page with lyrics and download dropdowns (protected)
+- `index.html` - Home page
+- `timeline.html` - Timeline page
+- `gallery.html` - Gallery page with lightbox
+- `letter.html` - Letter page
+- `songs.html` - Songs page with lyrics and download dropdowns
 - `assets/css/styles.css` - Shared styles
-- `assets/js/main.js` - Gate logic, rendering, timeline reveal, gallery lightbox
+- `assets/js/main.js` - Rendering, timeline reveal, gallery lightbox, music player
 - `assets/data/content.json` - Main editable content source
 - `assets/images/` - Place your photos here
-
-## Important Privacy Note
-
-This gate is only a **lightweight privacy layer** using `sessionStorage` in the browser. It is **not true security** and should not be used to protect sensitive/private data.
 
 ## Edit Website Content
 
@@ -26,7 +22,6 @@ Edit these sections:
 
 - `site.brand`, `site.homeTitle`, `site.homeIntro`, `site.homeSummary`
 - `site.anniversaryDateISO`, `site.anniversaryDateText`
-- `site.passphrase` (the unlock passphrase)
 - `site.enableLyrics` (`true` or `false` to show/hide lyrics panel)
 - `site.musicTracks` (array of songs for the player; each song can include `title`, `src`, and `lyrics`)
 - `timeline.events` (array of `{ "label", "text" }`)
@@ -82,4 +77,3 @@ Use a tiny local static server so `assets/data/content.json` loads correctly.
 - No frameworks, no external libraries, no CDNs.
 - All page links are local relative links.
 - Gallery lightbox supports keyboard navigation (`Left`, `Right`, `Escape`) and focus trapping.
-- Non-home pages redirect to `index.html` if the session is locked.

@@ -109,7 +109,6 @@ code {
 }
 
 .menu-toggle,
-.lock-button,
 .button,
 .lightbox-control,
 .gallery-trigger {
@@ -152,8 +151,7 @@ code {
   transform: translateY(0);
 }
 
-.site-nav a,
-.lock-button {
+.site-nav a {
   min-height: 2.7rem;
   display: inline-flex;
   align-items: center;
@@ -172,13 +170,6 @@ code {
   color: var(--ink);
   background: #fff;
   border-color: var(--line);
-}
-
-.lock-button {
-  background: var(--accent-soft);
-  color: #52261f;
-  border-color: #f2c7a5;
-  cursor: pointer;
 }
 
 .page-section {
@@ -334,8 +325,7 @@ h3 {
 .soft-card,
 .gallery-card,
 .timeline-card,
-.letter-card,
-.gate-card {
+.letter-card {
   border-radius: var(--radius-card);
   border: 1px solid var(--line);
   background: var(--surface);
@@ -393,60 +383,6 @@ h3 {
 .preview-card figcaption {
   padding: 0.7rem 0.85rem;
   color: var(--muted);
-}
-
-.gate-screen {
-  min-height: calc(100vh - 4.25rem);
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-}
-
-.gate-card {
-  width: min(100%, 33rem);
-  padding: 1.3rem;
-  text-align: center;
-  background: linear-gradient(180deg, #fffdf9, #fff6eb);
-}
-
-.gate-illust {
-  width: 4.6rem;
-  margin: 0 auto 0.5rem;
-}
-
-.gate-form {
-  margin-top: 0.8rem;
-  display: grid;
-  gap: 0.6rem;
-  text-align: left;
-}
-
-.gate-form label {
-  font-weight: 700;
-}
-
-.gate-form input {
-  min-height: 2.85rem;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: #fff;
-  padding: 0.6rem 0.75rem;
-  color: var(--ink);
-}
-
-.gate-error {
-  margin: 0;
-  min-height: 1.1rem;
-  color: #ab2f2f;
-  font-weight: 700;
-}
-
-body[data-locked="true"] .protected-content {
-  display: none;
-}
-
-body[data-locked="false"] #gateScreen {
-  display: none;
 }
 
 .timeline-list {

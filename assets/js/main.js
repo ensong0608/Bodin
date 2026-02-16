@@ -1,5 +1,4 @@
 (function () {
-  const SESSION_KEY = 'anniversary_unlocked';
   const MUSIC_SESSION_KEY = 'music_player_state';
   let enableLyrics = false;
   const body = document.body;
@@ -17,8 +16,7 @@
       footerText: "Valentine's Day Love",
       anniversaryDateISO: '2026-02-14',
       anniversaryDateText: 'February 14, 2026',
-      privacyNote: 'Privacy note: This is a lightweight gate for casual privacy, not true security.',
-      passphrase: 'teacher',
+      privacyNote: 'Made with love for Bodin.',
       enableLyrics: false
     },
     timeline: {
@@ -55,27 +53,9 @@
   };
 
   initNavigation();
-  initLockButton();
   initSmoothAnchors();
 
-  if (page !== 'home' && !isUnlocked()) {
-    window.location.replace('index.html');
-    return;
-  }
-
   init();
-
-  function isUnlocked() {
-    return sessionStorage.getItem(SESSION_KEY) === 'true';
-  }
-
-  function setUnlocked(value) {
-    sessionStorage.setItem(SESSION_KEY, value ? 'true' : 'false');
-  }
-
-  function clearUnlocked() {
-    sessionStorage.removeItem(SESSION_KEY);
-  }
 
   async function init() {
     const content = await loadContent();
@@ -90,7 +70,6 @@
     }
 
     if (page === 'home') {
-      initGate(content.site.passphrase || '');
       renderHome(content);
       renderSongGallery();
     }
@@ -140,78 +119,6 @@
         nav.dataset.open = 'false';
       });
     });
-  }
-
-  function initLockButton() {
-    const lockButton = document.getElementById('lockButton');
-    if (!lockButton) return;
-
-    lockButton.addEventListener('click', function () {
-      clearUnlocked();
-      if (page === 'home') {
-        applyGateState(false);
-      } else {
-        window.location.replace('index.html');
-      }
-    });
-  }
-
-  function initGate(passphrase) {
-    const form = document.getElementById('gateForm');
-    const input = document.getElementById('passphraseInput');
-    const error = document.getElementById('gateError');
-
-    applyGateState(isUnlocked());
-
-    if (!form || !input || !error) return;
-
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      const value = normalizePassphrase(input.value);
-      const expected = normalizePassphrase(passphrase);
-
-      if (!passphrase) {
-        error.textContent = 'Passphrase is not configured yet in assets/data/content.json.';
-        return;
-      }
-
-      if (value === expected) {
-        setUnlocked(true);
-        error.textContent = '';
-        input.value = '';
-        applyGateState(true);
-        try {
-          initMusicPlayer();
-        } catch (error) {
-          console.warn('Music player init failed:', error);
-        }
-        const target = document.querySelector('.js-home-title');
-        if (target) {
-          target.setAttribute('tabindex', '-1');
-          target.focus();
-        }
-      } else {
-        error.textContent = 'Close, but not quite. Try your favorite inside joke.';
-      }
-    });
-  }
-
-  function normalizePassphrase(value) {
-    return String(value || '').trim().toLowerCase();
-  }
-
-  function applyGateState(unlocked) {
-    body.dataset.locked = unlocked ? 'false' : 'true';
-    const gate = document.getElementById('gateScreen');
-    const content = document.getElementById('homeContent');
-
-    if (gate) {
-      gate.setAttribute('aria-hidden', unlocked ? 'true' : 'false');
-    }
-
-    if (content) {
-      content.setAttribute('aria-hidden', unlocked ? 'false' : 'true');
-    }
   }
 
   function renderShared(content) {
@@ -904,7 +811,6 @@
 
   function initMusicPlayer() {
     if (document.getElementById('musicPlayer')) return;
-    if (page === 'home' && !isUnlocked()) return;
 
     const wrapper = document.createElement('aside');
     wrapper.id = 'musicPlayer';
