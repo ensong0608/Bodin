@@ -14,8 +14,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>25 Years of Us | Bodin + Ensong</title>
   <link rel="preload" as="image" href="assets/images/journey-hero-grain-v1.png">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-pop1">
-  <script defer src="assets/js/main.js?v=20260829-pop1"></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-pop2">
+  <script defer src="assets/js/main.js?v=20260829-pop2"></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -45,22 +45,42 @@
   <main id="main-content">
     
       <section class="journey-hero js-reveal">
-        <div class="journey-hero-image" role="img" aria-label="Grainy black-and-white portrait of Bodin"></div>
+        <div class="journey-backgrounds" role="img" aria-label="Grainy black-and-white memories of Bodin and Ensong">
+          <div class="journey-bg is-active" style="background-image:url('assets/images/journey-hero-grain-v1.png')"></div>
+          <div class="journey-bg" style="background-image:url('assets/images/memory-3-hk/20170715_190003.jpg')"></div>
+          <div class="journey-bg" style="background-image:url('assets/images/Older%20and%20Grayer%20but%20better/493912560_10232565537775828_6919675917212718169_n.jpg')"></div>
+          <div class="journey-bg" style="background-image:url('assets/images/older-and-grayer-but-better-06.jpg')"></div>
+          <div class="journey-bg" style="background-image:url('assets/images/bodin%26papold.png')"></div>
+        </div>
         <div class="journey-hero-grain" aria-hidden="true"></div>
         <div class="container journey-hero-content">
           <div class="journey-hero-copy">
-            <p class="eyebrow js-eyebrow">25 Years Together · August 29, 2026</p>
-            <h1 class="kinetic-title" data-text="Our 25 Year Journey"><span>Our 25 Year</span><span>Journey</span></h1>
-            <p class="lead js-home-intro">Twenty-five years ago, you poked me and started all this trouble. We have grown older, grayer, and possibly even more annoying—but I would still choose you every single time.</p>
-            <div id="anniversaryCountdown" class="anniversary-countdown" role="status" aria-live="polite">
+            <div class="journey-signature"><strong>BODIN + ENSONG</strong><small>present</small></div>
+            <h1 class="collage-title" aria-label="25 Years">
+              <span class="collage-letter is-blue">2</span>
+              <span class="collage-letter is-orange">5</span>
+              <span class="collage-space" aria-hidden="true"></span>
+              <span class="collage-letter is-paper">Y</span>
+              <span class="collage-letter is-blue">E</span>
+              <span class="collage-letter is-orange">A</span>
+              <span class="collage-letter is-paper">R</span>
+              <span class="collage-letter is-blue">S</span>
+            </h1>
+            <p class="journey-subtitle">Our 25 Year Journey · an interactive story of love, laughter, and beautiful trouble.</p>
+            <div id="anniversaryCountdown" class="anniversary-countdown journey-countdown" role="status" aria-live="polite">
               <span class="countdown-kicker">Our silver anniversary</span>
               <strong id="anniversaryCountdownValue">August 29, 2026</strong>
               <span id="anniversaryCountdownLabel">25 years and counting</span>
             </div>
-            <div class="cta-row">
-              <a class="button button-primary" href="#our-story">Enter our journey</a>
-              <a class="button button-secondary" href="letter.html">My Love Letter</a>
+            <div class="journey-launch-row">
+              <strong>Hold</strong>
+              <button id="journeyLaunch" class="journey-launch" type="button" aria-label="Hold to enter our 25 year journey">
+                <span class="journey-launch-progress" aria-hidden="true"></span>
+                <span class="journey-launch-label">spacebar</span>
+              </button>
+              <strong>to enter our journey.</strong>
             </div>
+            <a class="journey-love-link" href="letter.html">My Love Letter</a>
           </div>
         </div>
       </section>
