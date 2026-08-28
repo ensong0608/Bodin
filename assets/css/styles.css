@@ -1244,3 +1244,759 @@ h3 {
     transform: none;
   }
 }
+
+/* Modern heirloom design */
+:root {
+  --bg: #f4f1ec;
+  --bg-soft: #e9e5df;
+  --ink: #211a1d;
+  --muted: #70666a;
+  --accent: #70263e;
+  --accent-soft: #eadde1;
+  --accent-cool: #8c8789;
+  --line: #d5cfca;
+  --surface: #fbfaf7;
+  --surface-strong: #efeae5;
+  --silver: #b7b4b2;
+  --silver-light: #eeece9;
+  --burgundy-deep: #4b1428;
+  --radius-card: 8px;
+  --radius-soft: 6px;
+  --shadow-soft: 0 8px 30px rgba(33, 26, 29, 0.06);
+  --shadow-card: 0 18px 60px rgba(33, 26, 29, 0.08);
+  --ring: 0 0 0 3px rgba(112, 38, 62, 0.22);
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Aptos", "Segoe UI Variable", "Segoe UI", Arial, sans-serif;
+  line-height: 1.7;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(112, 38, 62, 0.055), transparent 26rem),
+    linear-gradient(180deg, #f8f6f2, var(--bg));
+}
+
+.container {
+  width: min(100% - 2rem, 76rem);
+}
+
+.site-header {
+  min-height: 4.75rem;
+  border-bottom: 1px solid rgba(112, 102, 106, 0.2);
+  background: rgba(248, 246, 242, 0.9);
+  backdrop-filter: blur(18px);
+}
+
+.nav-wrap {
+  min-height: 4.75rem;
+}
+
+.brand {
+  font-family: "Iowan Old Style", Baskerville, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(1.2rem, 1rem + 0.65vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+.site-nav {
+  gap: 0.15rem;
+  background: rgba(251, 250, 247, 0.98);
+}
+
+.site-nav a,
+.nav-dropdown summary {
+  min-height: 2.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0;
+  border-radius: 0;
+  padding: 0.5rem 0.7rem;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.79rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a[aria-current="page"],
+.nav-dropdown summary:hover,
+.nav-dropdown summary:focus-visible,
+.nav-dropdown summary.has-current {
+  color: var(--accent);
+  border-color: transparent;
+  background: transparent;
+}
+
+.site-nav a[aria-current="page"],
+.nav-dropdown summary.has-current {
+  text-decoration: underline;
+  text-decoration-color: var(--silver);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4rem;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown summary {
+  list-style: none;
+}
+
+.nav-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-dropdown summary::after {
+  content: "⌄";
+  margin-left: 0.35rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+  transition: transform 180ms ease;
+}
+
+.nav-dropdown[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.page-section {
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+}
+
+.page-section:nth-of-type(odd),
+.page-section:nth-of-type(even) {
+  background: transparent;
+}
+
+.page-section:nth-of-type(even):not(.anniversary-letter-preview) {
+  border-block: 1px solid rgba(112, 102, 106, 0.08);
+  background: rgba(233, 229, 223, 0.38);
+}
+
+.section-grid {
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.section-copy {
+  gap: 1.1rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.display,
+h1,
+h2,
+h3 {
+  font-family: "Iowan Old Style", Baskerville, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  color: var(--ink);
+}
+
+.display,
+h1 {
+  font-size: clamp(2.8rem, 8vw, 5.8rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 5.8vw, 4.2rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+.lead {
+  max-width: 55ch;
+  color: #50464a;
+  font-size: clamp(1.08rem, 1rem + 0.45vw, 1.35rem);
+  line-height: 1.72;
+}
+
+.section-sub {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.hero-section {
+  min-height: calc(100svh - 4.75rem);
+  display: grid;
+  align-items: center;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  border-bottom: 1px solid rgba(112, 102, 106, 0.14);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.9), transparent 25rem),
+    radial-gradient(circle at 88% 20%, rgba(112, 38, 62, 0.1), transparent 26rem),
+    linear-gradient(145deg, #f8f5f1, #ece7e1);
+}
+
+.hero-section .section-grid {
+  gap: clamp(3rem, 7vw, 7rem);
+}
+
+.hero-section .section-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .section-art {
+  isolation: isolate;
+  width: min(100%, 31rem);
+  min-height: clamp(24rem, 58vw, 37rem);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  border: 1px solid rgba(112, 102, 106, 0.22);
+  border-radius: 50% 50% 10px 10px / 36% 36% 10px 10px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.85), transparent 32%),
+    linear-gradient(160deg, #ddd8d3, #f4f1ec 62%, #cfc7c9);
+  box-shadow: 0 28px 80px rgba(75, 20, 40, 0.12);
+}
+
+.hero-section .section-art::before {
+  content: "";
+  position: absolute;
+  inset: 0.65rem;
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: inherit;
+}
+
+.hero-section .illustration {
+  width: 112%;
+  max-width: none;
+  margin: 0 -6% -1% -6%;
+  transform: none;
+  filter: drop-shadow(0 14px 20px rgba(33, 26, 29, 0.14));
+}
+
+.anniversary-title-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(0.8rem, 2vw, 1.25rem);
+}
+
+.anniversary-mark {
+  width: clamp(4rem, 10vw, 5.25rem);
+  border-color: #aaa5a5;
+  color: var(--burgundy-deep);
+  background:
+    radial-gradient(circle at 32% 24%, #fff, transparent 23%),
+    linear-gradient(145deg, #f7f6f4, #bbb7b7 54%, #e9e6e5);
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.38), 0 12px 36px rgba(75, 20, 40, 0.12);
+}
+
+.anniversary-mark strong {
+  font-size: clamp(1.8rem, 5vw, 2.55rem);
+}
+
+.anniversary-countdown {
+  border: 1px solid rgba(112, 38, 62, 0.22);
+  border-left: 1px solid rgba(112, 38, 62, 0.22);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  background: rgba(251, 250, 247, 0.72);
+  box-shadow: none;
+}
+
+.anniversary-countdown strong {
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-weight: 600;
+}
+
+.cta-row {
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.button {
+  min-height: 3rem;
+  border-radius: 999px;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.button-primary {
+  background: var(--accent);
+  box-shadow: none;
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--burgundy-deep);
+  transform: translateY(-1px);
+}
+
+.button-secondary {
+  border-color: rgba(112, 38, 62, 0.3);
+  color: var(--accent);
+  background: transparent;
+  box-shadow: none;
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  color: var(--burgundy-deep);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.soft-card,
+.gallery-card,
+.timeline-card,
+.letter-card {
+  border-radius: var(--radius-card);
+  border-color: var(--line);
+  background: transparent;
+  box-shadow: none;
+}
+
+.highlight-grid {
+  gap: 0;
+  border-block: 1px solid var(--line);
+}
+
+.highlight-grid .soft-card,
+.highlight-grid .soft-card:nth-child(2n) {
+  min-height: 9rem;
+  display: grid;
+  align-content: center;
+  gap: 0.35rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 1.3rem 0;
+  background: transparent;
+}
+
+.highlight-grid .soft-card:last-child {
+  border-bottom: 0;
+}
+
+.highlight-grid h3 {
+  color: var(--accent);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 500;
+}
+
+.preview-grid {
+  gap: 1.1rem;
+}
+
+.preview-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.preview-card img,
+.preview-card video {
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-card);
+  filter: saturate(0.9);
+}
+
+.preview-card figcaption {
+  padding: 0.7rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.then-now-grid {
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.then-now-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.then-now-image-wrap {
+  min-height: clamp(20rem, 48vw, 31rem);
+  border: 1px solid rgba(112, 102, 106, 0.2);
+  border-radius: 48% 48% 8px 8px / 30% 30% 8px 8px;
+  background:
+    radial-gradient(circle at 50% 56%, rgba(255, 255, 255, 0.9), transparent 36%),
+    linear-gradient(150deg, #ded9d4, #f3efeb);
+}
+
+.then-now-card figcaption {
+  padding: 1rem 0 0;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.05rem;
+}
+
+.photo-year {
+  border: 0;
+  border-radius: 0;
+  padding: 0.35rem 0;
+  background: transparent;
+  font-size: 0.71rem;
+  letter-spacing: 0.15em;
+}
+
+.then-now-connector {
+  color: var(--accent);
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  filter: none;
+}
+
+.timeline-list::before {
+  left: 0.5rem;
+  width: 1px;
+  background: linear-gradient(var(--silver), var(--accent));
+}
+
+.timeline-card {
+  padding: 0.3rem 0 1.5rem 2rem;
+  border: 0;
+  border-radius: 0;
+}
+
+.timeline-card::before {
+  left: 0.22rem;
+  top: 0.7rem;
+  width: 0.58rem;
+  height: 0.58rem;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 5px var(--bg);
+}
+
+.timeline-marker {
+  color: var(--accent);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.gallery-grid {
+  gap: clamp(1.25rem, 3vw, 2.2rem);
+}
+
+.gallery-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.gallery-card:hover,
+.gallery-card:focus-within {
+  transform: none;
+  box-shadow: none;
+}
+
+.gallery-trigger img,
+.gallery-trigger video {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-card);
+  filter: saturate(0.9);
+}
+
+.gallery-card figcaption {
+  padding: 0.8rem 0 0;
+  color: var(--muted);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1rem;
+}
+
+.letter-card {
+  max-width: 44rem;
+  padding: 0.5rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.letter-card h1 {
+  margin-bottom: 1.4rem;
+  font-size: clamp(2.7rem, 7vw, 4.8rem);
+}
+
+.letter-card > p:not(.letter-date) {
+  color: #3f363a;
+  font-family: "Iowan Old Style", Baskerville, "Palatino Linotype", Georgia, serif;
+  font-size: clamp(1.08rem, 0.98rem + 0.34vw, 1.25rem);
+  line-height: 1.88;
+}
+
+.letter-card p + p {
+  margin-top: 1.35rem;
+}
+
+.letter-card h1 + p {
+  color: var(--accent);
+  font-size: 1.28rem;
+  font-style: italic;
+}
+
+.letter-card h1 + p + p::first-letter {
+  float: left;
+  margin: 0.1rem 0.5rem 0 0;
+  color: var(--accent);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 4rem;
+  line-height: 0.78;
+}
+
+.letter-date {
+  margin-bottom: 1rem;
+  letter-spacing: 0.18em;
+}
+
+.signature-flourish {
+  opacity: 0.6;
+}
+
+.letter-switcher {
+  max-width: 44rem;
+  margin-top: 3.5rem;
+  border: 0;
+  border-block: 1px solid var(--line);
+  border-radius: 0;
+  padding: 1.25rem 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.anniversary-letter-preview {
+  padding-block: clamp(5rem, 10vw, 9rem);
+  background:
+    linear-gradient(rgba(52, 12, 28, 0.88), rgba(52, 12, 28, 0.9)),
+    radial-gradient(circle at center, #8a4158, var(--burgundy-deep)) !important;
+}
+
+.letter-preview-card blockquote {
+  max-width: 32ch;
+  font-size: clamp(1.8rem, 4.8vw, 3.7rem);
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+.song-lyrics-card,
+.songs-accordion,
+.songs-carousel {
+  border-color: var(--line);
+  border-radius: var(--radius-card);
+  background: rgba(251, 250, 247, 0.65);
+  box-shadow: none;
+}
+
+.songs-accordion summary {
+  background: transparent;
+}
+
+.song-track-button,
+.song-download-link,
+.songs-carousel-button {
+  border-color: var(--line);
+  border-radius: 999px;
+  background: transparent;
+}
+
+.song-track-button.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.music-player {
+  left: auto;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  width: min(88vw, 23rem);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(112, 38, 62, 0.24);
+  border-radius: 999px;
+  background: rgba(251, 250, 247, 0.96);
+  box-shadow: 0 12px 40px rgba(33, 26, 29, 0.14);
+  transform: none;
+  transition: border-radius 180ms ease, box-shadow 180ms ease;
+}
+
+.music-player.is-open {
+  border-radius: 14px;
+  box-shadow: 0 18px 60px rgba(33, 26, 29, 0.18);
+}
+
+.music-player-toggle {
+  width: 100%;
+  min-height: 3.2rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+  border: 0;
+  padding: 0.65rem 1rem;
+  color: var(--accent);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.music-player-toggle strong {
+  text-align: left;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.music-player-toggle-state {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.music-player-body {
+  display: none;
+  padding: 0 0.85rem 0.85rem;
+}
+
+.music-player.is-open .music-player-body {
+  display: block;
+}
+
+.music-player.is-open .music-player-toggle {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0.75rem;
+}
+
+.site-footer {
+  padding: 2.5rem 0 5rem;
+  border-top-color: var(--line);
+  font-size: 0.86rem;
+}
+
+.js-float {
+  animation: none;
+}
+
+.illustration {
+  will-change: auto;
+}
+
+@media (max-width: 47.99rem) {
+  .site-nav {
+    inset: 4.76rem 0 auto;
+    max-height: calc(100svh - 4.76rem);
+    overflow-y: auto;
+    padding: 1rem;
+    border-bottom-color: var(--line);
+  }
+
+  .site-nav a,
+  .nav-dropdown summary {
+    width: 100%;
+    padding-inline: 0.4rem;
+  }
+
+  .nav-dropdown-menu {
+    padding: 0 0 0.55rem 0.75rem;
+    border-left: 1px solid var(--line);
+  }
+
+  .anniversary-title-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .anniversary-mark {
+    width: 4.2rem;
+  }
+
+  .hero-section .section-art {
+    min-height: min(115vw, 31rem);
+  }
+
+  .then-now-connector {
+    transform: rotate(90deg);
+  }
+
+  .music-player {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    width: min(90vw, 21rem);
+  }
+}
+
+@media (min-width: 48rem) {
+  .site-nav {
+    overflow: visible;
+    background: transparent;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    right: 0;
+    z-index: 80;
+    width: 14.5rem;
+    padding: 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: rgba(251, 250, 247, 0.98);
+    box-shadow: var(--shadow-card);
+  }
+
+  .nav-dropdown-menu a {
+    width: 100%;
+  }
+
+  .hero-section .section-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
+  }
+
+  .highlight-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .highlight-grid .soft-card,
+  .highlight-grid .soft-card:nth-child(2n) {
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+    padding: 1.25rem;
+  }
+
+  .highlight-grid .soft-card:first-child {
+    padding-left: 0;
+  }
+
+  .highlight-grid .soft-card:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+}

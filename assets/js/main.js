@@ -51,11 +51,11 @@
     letter: {
       date: 'August 29, 2026 · Our 25th Anniversary',
       title: 'Twenty-Five Years, Still You',
-      greeting: 'Bodin, my Baby,',
+      greeting: 'Dear Claudine Diwata,',
       paragraphs: [
-        'Twenty-five years. That number sounds very serious. We, however, are still not very serious people.',
-        'You started the best trouble of my life.',
-        'We made it to twenty-five years, Baby. Still laughing. Still fighting for each other. Still us.'
+        'I keep looking at that number and wondering how we got here so fast.',
+        'Twenty-five years have passed, but you have never become ordinary to me.',
+        'If I could go back to August 29, 2001, knowing exactly what the next twenty-five years would bring, I would still choose you.'
       ],
       closing: 'Always yours,',
       signature: 'Papi'
@@ -916,6 +916,17 @@
     wrapper.className = 'music-player';
     wrapper.setAttribute('aria-label', 'Site music player');
 
+    const playerToggle = document.createElement('button');
+    playerToggle.type = 'button';
+    playerToggle.className = 'music-player-toggle';
+    playerToggle.setAttribute('aria-expanded', 'false');
+    playerToggle.setAttribute('aria-controls', 'musicPlayerBody');
+    playerToggle.innerHTML = '<span aria-hidden="true">♪</span><strong>Our Songs</strong><span class="music-player-toggle-state">Open</span>';
+
+    const playerBody = document.createElement('div');
+    playerBody.id = 'musicPlayerBody';
+    playerBody.className = 'music-player-body';
+
     const label = document.createElement('label');
     label.className = 'music-label';
     label.setAttribute('for', 'musicTrackSelect');
@@ -964,20 +975,35 @@
     lyricsPanel.appendChild(lyricsStatus);
     lyricsPanel.appendChild(lyricsBody);
 
-    wrapper.appendChild(label);
-    wrapper.appendChild(select);
-    wrapper.appendChild(nowPlaying);
-    wrapper.appendChild(audio);
+    playerBody.appendChild(label);
+    playerBody.appendChild(select);
+    playerBody.appendChild(nowPlaying);
+    playerBody.appendChild(audio);
     if (enableLyrics) {
-      wrapper.appendChild(lyricsToggle);
-      wrapper.appendChild(lyricsPanel);
+      playerBody.appendChild(lyricsToggle);
+      playerBody.appendChild(lyricsPanel);
     }
+    wrapper.appendChild(playerToggle);
+    wrapper.appendChild(playerBody);
     document.body.appendChild(wrapper);
 
     const state = getMusicState();
     const letterDefaultIndex = 0;
     const selectedIndex = clampIndex(Number(state.index));
     const startIndex = Number.isInteger(selectedIndex) ? selectedIndex : letterDefaultIndex;
+
+    function setPlayerOpen(isOpen) {
+      wrapper.classList.toggle('is-open', isOpen);
+      playerToggle.setAttribute('aria-expanded', String(isOpen));
+      const stateLabel = playerToggle.querySelector('.music-player-toggle-state');
+      if (stateLabel) stateLabel.textContent = isOpen ? 'Close' : 'Open';
+    }
+
+    playerToggle.addEventListener('click', function () {
+      setPlayerOpen(!wrapper.classList.contains('is-open'));
+    });
+
+    setPlayerOpen(state.playing === true);
 
     function handleTrackSelection() {
       const idx = Number(select.value);
@@ -995,7 +1021,10 @@
       });
     }
 
-    audio.addEventListener('play', saveMusicState);
+    audio.addEventListener('play', function () {
+      setPlayerOpen(true);
+      saveMusicState();
+    });
     audio.addEventListener('pause', saveMusicState);
     audio.addEventListener('timeupdate', saveMusicState);
     audio.addEventListener('error', function () {
