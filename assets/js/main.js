@@ -742,15 +742,73 @@
   function initThenNowComparison() {
     const comparison = document.getElementById('thenNowComparison');
     const range = document.getElementById('comparisonRange');
-    if (!comparison || !range) return;
+    const previous = document.getElementById('comparisonPrev');
+    const next = document.getElementById('comparisonNext');
+    const dots = document.getElementById('comparisonDots');
+    const status = document.getElementById('comparisonStatus');
+    if (!comparison || !range || !previous || !next || !dots || !status) return;
+
+    const slides = Array.from(comparison.querySelectorAll('.comparison-slide'));
+    let activeIndex = 0;
+    let touchStartX = 0;
 
     function updateComparison() {
       comparison.style.setProperty('--reveal', range.value + '%');
       range.setAttribute('aria-valuetext', range.value + '% of the current-day image revealed');
     }
 
+    function showSlide(index) {
+      activeIndex = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, slideIndex) {
+        const isActive = slideIndex === activeIndex;
+        slide.hidden = !isActive;
+        slide.classList.toggle('is-active', isActive);
+      });
+      dots.querySelectorAll('.comparison-dot').forEach(function (dot, dotIndex) {
+        const isActive = dotIndex === activeIndex;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+      const title = slides[activeIndex].dataset.slideTitle || 'Photo comparison';
+      status.textContent = (activeIndex + 1) + ' of ' + slides.length + ' · ' + title;
+    }
+
+    slides.forEach(function (slide, index) {
+      const dot = document.createElement('button');
+      dot.className = 'comparison-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Show photo pair ' + (index + 1));
+      dot.addEventListener('click', function () { showSlide(index); });
+      dots.appendChild(dot);
+    });
+
+    previous.addEventListener('click', function () { showSlide(activeIndex - 1); });
+    next.addEventListener('click', function () { showSlide(activeIndex + 1); });
     range.addEventListener('input', updateComparison);
+    comparison.addEventListener('keydown', function (event) {
+      if (event.target === range) return;
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        showSlide(activeIndex - 1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        showSlide(activeIndex + 1);
+      }
+    });
+    comparison.addEventListener('touchstart', function (event) {
+      if (event.target === range) return;
+      if (!event.changedTouches[0]) return;
+      touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+    comparison.addEventListener('touchend', function (event) {
+      if (event.target === range) return;
+      if (!event.changedTouches[0]) return;
+      const deltaX = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(deltaX) < 60) return;
+      showSlide(deltaX > 0 ? activeIndex - 1 : activeIndex + 1);
+    }, { passive: true });
     updateComparison();
+    showSlide(0);
   }
 
   function groupGalleryItems(items) {

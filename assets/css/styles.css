@@ -2094,3 +2094,82 @@ h2 { font-size: clamp(2.25rem, 5vw, 4.2rem); }
   .comparison-stage { min-height: 22rem; }
   .timeline-details { padding-right: 1.25rem; }
 }
+
+/* Comparison carousel */
+.comparison-slide[hidden] { display: none; }
+.comparison-slide:not(.is-sketch) .comparison-layer img { object-fit: cover; }
+.comparison-slide:not(.is-sketch) .comparison-stage { background: #dbe7e5; }
+.comparison-slide.is-active { animation: comparison-slide-in 280ms ease both; }
+
+.comparison-nav {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.comparison-arrow {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(15, 113, 109, 0.25);
+  border-radius: 50%;
+  color: #fff;
+  background: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.comparison-arrow:hover,
+.comparison-arrow:focus-visible {
+  transform: scale(1.08);
+  background: var(--accent-deep);
+}
+
+.comparison-dots {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.comparison-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(15, 113, 109, 0.25);
+  cursor: pointer;
+  transition: width 180ms ease, background 180ms ease;
+}
+
+.comparison-dot.is-active {
+  width: 1.8rem;
+  border-radius: 999px;
+  background: var(--coral);
+}
+
+.comparison-status {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@keyframes comparison-slide-in {
+  from { opacity: 0; transform: translateX(0.75rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 35rem) {
+  .comparison-nav { grid-template-columns: auto 1fr auto; }
+  .comparison-dots { justify-content: center; }
+  .comparison-status { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comparison-slide.is-active { animation: none; }
+}

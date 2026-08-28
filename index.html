@@ -13,8 +13,8 @@
   <meta property="og:image:alt" content="Bodin and Ensong together">
   <meta name="twitter:card" content="summary_large_image">
   <title>25 Years of Us | Bodin + Ensong</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-fresh1">
-  <script defer src="assets/js/main.js?v=20260829-fresh1"></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-fresh2">
+  <script defer src="assets/js/main.js?v=20260829-fresh2"></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -91,14 +91,40 @@
             <h2>Then and now</h2>
             <p class="section-sub">Different years. More gray hair. The same two people still choosing each other.</p>
           </div>
-          <div id="thenNowComparison" class="comparison-card js-reveal" style="--reveal: 50%;">
-            <div class="comparison-stage">
-              <div class="comparison-layer comparison-then"><img src="assets/images/bodin%26pap1stdate-cutout.png" alt="Bodin and Ensong near the beginning of their story" loading="lazy" decoding="async"><span class="comparison-label">Then · 2001</span></div>
-              <div class="comparison-layer comparison-now"><img src="assets/images/bodin%26papold-cutout.png" alt="Bodin and Ensong together twenty-five years later" loading="lazy" decoding="async"><span class="comparison-label">Now · 2026</span></div>
-              <span class="comparison-divider" aria-hidden="true"></span>
+          <div id="thenNowComparison" class="comparison-card js-reveal" style="--reveal: 50%;" tabindex="0" aria-label="Then and now photo comparison carousel">
+            <div class="comparison-slides" aria-live="polite">
+              <div class="comparison-slide is-active is-sketch" data-slide-title="The beginning and now">
+                <div class="comparison-stage">
+                  <div class="comparison-layer comparison-then"><img src="assets/images/bodin%26pap1stdate-cutout.png" alt="Bodin and Ensong near the beginning of their story" loading="lazy" decoding="async"><span class="comparison-label">Then · 2001</span></div>
+                  <div class="comparison-layer comparison-now"><img src="assets/images/bodin%26papold-cutout.png" alt="Bodin and Ensong together twenty-five years later" loading="lazy" decoding="async"><span class="comparison-label">Now · 2026</span></div>
+                  <span class="comparison-divider" aria-hidden="true"></span>
+                </div>
+                <div class="comparison-captions"><p>The beginning of twenty-five years of beautiful trouble.</p><p>Older, grayer, better—and still very much us.</p></div>
+              </div>
+              <div class="comparison-slide" data-slide-title="Honeymoon to today" hidden>
+                <div class="comparison-stage">
+                  <div class="comparison-layer comparison-then"><img src="assets/images/memory-3-hk/20170715_190003.jpg" alt="Bodin and Ensong during their honeymoon" loading="lazy" decoding="async"><span class="comparison-label">Then · Honeymoon</span></div>
+                  <div class="comparison-layer comparison-now"><img src="assets/images/Older%20and%20Grayer%20but%20better/493912560_10232565537775828_6919675917212718169_n.jpg" alt="Bodin and Ensong together more recently" loading="lazy" decoding="async"><span class="comparison-label">Now · Still us</span></div>
+                  <span class="comparison-divider" aria-hidden="true"></span>
+                </div>
+                <div class="comparison-captions"><p>A honeymoon adventure together.</p><p>Still finding reasons to smile side by side.</p></div>
+              </div>
+              <div class="comparison-slide" data-slide-title="Another chapter together" hidden>
+                <div class="comparison-stage">
+                  <div class="comparison-layer comparison-then"><img src="assets/images/memory-3-hk/20170719_155429.jpg" alt="Bodin and Ensong sharing an earlier adventure" loading="lazy" decoding="async"><span class="comparison-label">Then · Adventures</span></div>
+                  <div class="comparison-layer comparison-now"><img src="assets/images/older-and-grayer-but-better-06.jpg" alt="Bodin and Ensong sharing a recent adventure" loading="lazy" decoding="async"><span class="comparison-label">Now · More stories</span></div>
+                  <span class="comparison-divider" aria-hidden="true"></span>
+                </div>
+                <div class="comparison-captions"><p>Collecting stories wherever we went.</p><p>Twenty-five years in, still making new ones.</p></div>
+              </div>
             </div>
             <label class="comparison-control" for="comparisonRange"><span>Drag to travel through our story</span><input id="comparisonRange" type="range" min="0" max="100" value="50" aria-label="Compare then and now"></label>
-            <div class="comparison-captions"><p>The beginning of twenty-five years of beautiful trouble.</p><p>Older, grayer, better—and still very much us.</p></div>
+            <div class="comparison-nav">
+              <button id="comparisonPrev" class="comparison-arrow" type="button" aria-label="Previous photo pair">←</button>
+              <div id="comparisonDots" class="comparison-dots" aria-label="Choose a photo pair"></div>
+              <span id="comparisonStatus" class="comparison-status">1 of 3 · The beginning and now</span>
+              <button id="comparisonNext" class="comparison-arrow" type="button" aria-label="Next photo pair">→</button>
+            </div>
           </div>
         </div>
       </section>
