@@ -1,14 +1,15 @@
 {
     "site":  {
                  "brand":  "Bodin + Ensong",
-                 "eyebrow":  "Valentine\u0027s Day 2026",
-                 "homeTitle":  "Bodin, My Baby",
-                 "homeIntro":  "We\u0027ve been together for almost 25 years now and you still annoy me a lot. I thought that as we grew older we would mellow out, but I was wrong. I will always try to get on your nerves so you know I love you very much.",
-                 "homeSummary":  "Almost 25 years in and we still have the same chaotic energy.",
-                 "footerText":  "Valentine\u0027s Day Love",
-                 "anniversaryDateISO":  "2026-02-14",
-                 "anniversaryDateText":  "February 14, 2026",
-                 "privacyNote":  "Made with love for Bodin.",
+                 "eyebrow":  "25 Years Together · August 29, 2026",
+                 "homeTitle":  "25 Years of Us",
+                 "homeIntro":  "Twenty-five years ago, you poked me and started all this trouble. We have grown older, grayer, and possibly even more annoying—but I would still choose you every single time.",
+                 "homeSummary":  "A quarter century in, and we still have the same chaotic energy.",
+                 "footerText":  "Bodin + Ensong · 25 Years and Counting",
+                 "relationshipStartISO":  "2001-08-29",
+                 "anniversaryDateISO":  "2026-08-29",
+                 "anniversaryDateText":  "August 29, 2026",
+                 "privacyNote":  "Made with 25 years of love for Bodin.",
                  "enableLyrics":  false,
                  "musicTracks":  [
                                      {
@@ -50,38 +51,61 @@
              },
     "timeline":  {
                      "title":  "Us, Over Time",
-                     "subtitle":  "Our version of romance: sarcastic, goofy, and serious when it counts.",
+                     "subtitle":  "Twenty-five years of love, laughter, growing up, and refusing to stop annoying each other.",
                      "events":  [
                                     {
-                                        "label":  "First Encounter",
-                                        "text":  "You poked my ass and I was embarassed. You did not care."
+                                        "label":  "2001 · The Beginning of Trouble",
+                                        "text":  "You poked my ass, I was embarrassed, and you did not care. Somehow, that was the beginning of us."
                                     },
                                     {
-                                        "label":  "Your First Occupation",
-                                        "text":  "I was nervous. You were perfect. Teacher"
+                                        "label":  "Learning Life Together",
+                                        "text":  "You became a teacher, and we began figuring out adulthood side by side."
                                     },
                                     {
-                                        "label":  "First time apart",
-                                        "text":  "It was hard. But nothing will keep me away from you."
+                                        "label":  "Our First Time Apart",
+                                        "text":  "It was hard, but distance proved that nothing could keep me away from you."
                                     },
                                     {
-                                        "label":  "First Home of our own",
-                                        "text":  "I get to impress you with my home rennovation skills."
+                                        "label":  "Our First Home",
+                                        "text":  "We built a place of our own, and I got to impress you with my home renovation skills."
                                     },
                                     {
-                                        "label":  "Today",
-                                        "text":  "More Gray hair, more wrinkles, still hot and sexy."
+                                        "label":  "2026 · Twenty-Five Years",
+                                        "text":  "More gray hair, more wrinkles, more stories—and you are still hot, sexy, and my baby."
                                     }
                                 ]
                  },
+    "highlights":  {
+                       "cards":  [
+                                      {
+                                          "title":  "25 years",
+                                          "text":  "Of choosing each other."
+                                      },
+                                      {
+                                          "title":  "9,131 days",
+                                          "text":  "Of love, laughter, and beautiful trouble."
+                                      },
+                                      {
+                                          "title":  "One famous expression",
+                                          "text":  "Those pouting lips still get me every time."
+                                      },
+                                      {
+                                          "title":  "Still my baby",
+                                          "text":  "Still hot, funny, demanding, and sexy."
+                                      }
+                                  ]
+                   },
     "gallery":  {
-                    "title":  "Photo Gallery",
-                    "subtitle":  "Honeymoon in HK",
+                    "title":  "Twenty-Five Years of Memories",
+                    "subtitle":  "The adventures, ordinary days, and beautiful trouble that made us.",
+                    "featuredItems":  [
+
+                                      ],
                     "items":  [
                                   {
-                                      "src":  "assets/videos/memory-1-the-beggining-of-trouble.mp4",
-                                      "alt":  "The beggining of trouble",
-                                      "caption":  "The beggining of trouble."
+                                      "src":  "assets/videos/memory-1-the-beginning-of-trouble.mp4",
+                                      "alt":  "The beginning of trouble",
+                                      "caption":  "The beginning of trouble."
                                   },
                                   {
                                       "src":  "assets/images/memory-3-hk/20170715_190003.jpg",
@@ -430,43 +454,40 @@
                               ]
                 },
     "letter":  {
-                   "title":  "A Letter to My Baby Bodin",
-                   "greeting":  "Bodin my Baby,",
+                   "date":  "August 29, 2026 · Our 25th Anniversary",
+                   "title":  "Twenty-Five Years, Still You",
+                   "greeting":  "Bodin, my Baby,",
                    "paragraphs":  [
-                                      "Almost 25 years together... and somehow you are still my favorite person to argue with about absolutely nothing.",
-                                      "I honestly thought by now we\u0027d be calm, mature adults who handle disagreements with wisdom and grace. Instead, we still debate like it\u0027s a competitive sport. Bu I guess we both both are just very passionate. We have Olympic-level stamina for teasing each other, misunderstanding each other, and then laughing about it five minutes later.",
-                                      "You drive me crazy. And somehow, that is still one of my favorite places to be.",
-                                      "You are demanding - yes, you are. You always want to be treated like a baby. You want to be taken care of. You want attention. You want cuddles. You want reassurance. You want to feel assurance every single day. You want to feel chosen every single day.",
-                                      "And the truth is... I love that about you.",
-                                      "I love that you want all of that from me. It annoys me like crazy. But it also makes me feel so special. It makes me feel like the most important person in the world to you.",
-                                      "Because it means I am your safe place. It means I\u0027m the one you trust to hold you when you\u0027re tired. It means I\u0027m the one you expect to show up.",
-                                      "And I always have and I will always be there..",
-                                      "You are gorgeous. Not just \"pretty.\" Not just \"cute.\" Gorgeous.",
-                                      "For almost 25 years, I still look at you and think, \"How did I get this hot, sexy woman to choose me?\" The way you smile. The way you laugh when I tell the worst corny joke. The way you look at me when you\u0027re annoyed but still secretly entertained. The way you pout when your lips form that little expression that says, \"You better fix this.\"",
-                                      "You are stunning. Yes, physically - that part is undeniable and unfairly impressive for me even though you don\u0027t agree. I don\u0027t care!- but even more in the way you carry yourself. Your determination. Your standards. The way you protect what\u0027s yours. The way you fight for our family like a viking warrior.",
-                                      "You demand the best from me - even when I don\u0027t want to give it. And because of you, I grow. Because of you, I try harder. Because of you, I am not the same man I was 25 years ago.",
-                                      "You make me better. Even when your lips are pouting at me about something small. Even when you\u0027re giving me that look that says I messed up. Even when you\u0027re refolding the clothes that I already folded.",
-                                      "You sharpen me. You steady me. You challenge me.",
-                                      "And you love me.",
-                                      "Thank you for loving me. The stubborn one. The immature one. The quiet one. The loud one. The one who pretends he doesn\u0027t care but cares deeply. The version of me that was still figuring life out. The version that made mistakes. The version that didn\u0027t always say the right thing.",
-                                      "Through all of it... you stayed.",
-                                      "You chose me. Again and again. Not just on easy days - but on the complicated ones. On the tired ones. On the \"we\u0027re not talking right now\" ones.",
-                                      "That kind of love isn\u0027t luck.",
-                                      "That\u0027s commitment. That\u0027s loyalty. That\u0027s real.",
-                                      "If I had to start over - if I had to relive every argument, every blanket stealing battle, every snoring war, every cleanliness inspection and memory lapse disagreement - I would still pick you.",
-                                      "Every time.",
-                                      "Not because we\u0027re perfect.",
-                                      "But because we\u0027re us.",
-                                      "And behind all the sarcasm and teasing, here\u0027s the truth I don\u0027t joke about:",
-                                      "You are my home. You are my comfort. You are my fire. You are my peace. You are my chaos and my calm. You are my baby.",
-                                      "And after 25 years, I don\u0027t love you out of habit.",
-                                      "I love you with intention.",
-                                      "I love you because I see you. I know you. And I choose you.",
-                                      "For as long as I breathe, I will keep choosing you - on the loud days, on the quiet days, on the annoying days, on the passionate days.",
-                                      "Even if you steal the blankets first.",
-                                      "I love you. Happy Valentine\u0027s Day, Baby."
+                                      "Twenty-five years. That number sounds very serious. We, however, are still not very serious people.",
+                                      "On August 29, 2001, neither of us knew exactly what we were beginning. You poked my ass, I was embarrassed, you did not care, and somehow you started the best trouble of my life.",
+                                      "Now look at us. A quarter of a century later, we are older, grayer, wiser in a few places, and still capable of arguing about something so small that neither of us remembers how it started.",
+                                      "People call twenty-five years the silver anniversary. Silver sounds elegant and peaceful. After everything we have survived—and everything we have put each other through—I think ours should be made of titanium.",
+                                      "We have lived through the exciting days, the difficult days, the tired days, and all those ordinary days nobody takes pictures of. Those ordinary days matter to me more than I knew they would.",
+                                      "Because that is where our life really happened.",
+                                      "It happened in the routines. In the teasing. In the pouting lips. In the checking on each other. In making a home. In being apart and finding our way back. In laughing five minutes after we both swore we were still annoyed.",
+                                      "I used to think love was mostly about the big moments. After twenty-five years, I know better.",
+                                      "Love is showing up when it would be easier to stay quiet. Love is learning the same person again as both of you change. Love is knowing exactly how to get on each other's nerves—and also knowing exactly how to make things right.",
+                                      "You still demand attention. You still expect to be babied. You still give me that look when I have failed one of your inspections. And yes, sometimes you still drive me completely crazy.",
+                                      "But you are my favorite kind of crazy.",
+                                      "I love the woman you were when we met, but I am even more in love with the woman you are now. Stronger. More certain. More beautiful. Still stubborn. Still gorgeous. Still able to make me wonder how this hot, sexy woman kept choosing me.",
+                                      "I have watched you protect our family, carry more than people realize, and keep going even when life asked too much from you. I hope you know how deeply I admire you.",
+                                      "You did not just share twenty-five years with me. You helped shape the man I became.",
+                                      "You challenged me when I needed it. You believed in me when I did not say I needed it. You made our home feel like home because you were in it.",
+                                      "Twenty-five years does not mean we were perfect. It means we kept coming back, kept reaching for each other, and kept choosing us.",
+                                      "That is what I am proud of.",
+                                      "I am proud of the laughter. I am proud of the scars. I am proud of every version of us that refused to give up on the next one.",
+                                      "If I could go back to the beginning, knowing every argument, every hard season, every ridiculous misunderstanding, and every blanket-stealing battle ahead of us, I would still walk straight toward you.",
+                                      "I might protect my ass this time, but I would still choose you.",
+                                      "And I will keep choosing you—not only because of everything we have already lived, but because I still want everything that comes next.",
+                                      "I want more ordinary mornings. More corny jokes. More trips. More projects you supervise while I pretend I am in charge. More gray hair. More memories. More years of you being my baby.",
+                                      "I cannot promise that I will suddenly become mature after twenty-five years. At this point, we should both accept that the evidence is against me.",
+                                      "But I can promise to show up. To reach for your hand. To take care of you. To make you laugh. To annoy you with commitment and consistency. And to love you on purpose.",
+                                      "Bodin, you are still the person I want beside me when life is wonderful, when life is hard, and when absolutely nothing special is happening.",
+                                      "We made it to twenty-five years, Baby. Still laughing. Still fighting for each other. Still us.",
+                                      "Happy 25th anniversary to the woman who started all this trouble—and made every year worth it.",
+                                      "I love you, Bodin. Then, now, and in every year still waiting for us."
                                   ],
-                   "closing":  "Forever yours,",
+                   "closing":  "Always yours,",
                    "signature":  "Papi"
                }
 }

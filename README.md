@@ -1,4 +1,4 @@
-﻿# Private-ish Multi-Page Anniversary Website
+﻿# Bodin + Ensong · 25th-Anniversary Website
 
 This project is a static, mobile-first, accessible love-story site.
 
@@ -20,11 +20,12 @@ All major content comes from `assets/data/content.json`.
 Edit these sections:
 
 - `site.brand`, `site.homeTitle`, `site.homeIntro`, `site.homeSummary`
-- `site.anniversaryDateISO`, `site.anniversaryDateText`
+- `site.relationshipStartISO`, `site.anniversaryDateISO`, `site.anniversaryDateText`
 - `site.enableLyrics` (`true` or `false` to show/hide lyrics panel)
 - `site.musicTracks` (array of songs for the player; each song can include `title`, `src`, and `lyrics`)
-- `gallery.items` (array of `{ "src", "alt", "caption" }`)
-- `letter.title`, `letter.greeting`, `letter.paragraphs`, `letter.signature`
+- `gallery.featuredItems` (the new 25-photo anniversary collection)
+- `gallery.items` (the complete gallery)
+- `letter.date`, `letter.title`, `letter.greeting`, `letter.paragraphs`, `letter.signature`
 
 ## Add Real Photos
 
@@ -32,8 +33,27 @@ Edit these sections:
 2. Update each `gallery.items[].src` in `assets/data/content.json`.
 3. Use relative paths, for example:
    - `assets/images/our-first-trip.jpg`
-   - `assets/images/valentines-2026.png`
+   - `assets/images/anniversary-2026.png`
 4. Add meaningful `alt` text for accessibility.
+
+## Add the 25th-Anniversary Photos
+
+The anniversary layout is already prepared for your photos:
+
+1. **Then and now:** in `index.html`, replace the two image `src` values inside the `then-now-grid` section. The current early-date and recent cutouts will remain as fallbacks until you do.
+2. **25 featured memories:** place the selected photos in `assets/images/anniversary/`, then add them to `gallery.featuredItems` in `assets/data/content.json`.
+3. Each featured item should look like:
+
+```json
+{
+  "src": "assets/images/anniversary/01-our-beginning.jpg",
+  "alt": "Bodin and Ensong together near the beginning of their relationship",
+  "caption": "2001 — The beginning of our beautiful trouble.",
+  "memory": "anniversary-01"
+}
+```
+
+Featured items automatically appear first in the full gallery. The home page uses the first three as its anniversary preview. Add up to 25 without changing any JavaScript.
 
 ## Song Gallery + Lyrics
 

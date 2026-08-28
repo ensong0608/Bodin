@@ -8,26 +8,35 @@
 
   const fallbackContent = {
     site: {
-      brand: 'Bodin + You',
-      eyebrow: "Valentine's Day 2026",
-      homeTitle: 'Bodin, My Baby',
-      homeIntro: "We've been together for almost 25 years now and you still annoy me a lot.",
-      homeSummary: 'Almost 25 years in and we still have the same chaotic energy.',
-      footerText: "Valentine's Day Love",
-      anniversaryDateISO: '2026-02-14',
-      anniversaryDateText: 'February 14, 2026',
-      privacyNote: 'Made with love for Bodin.',
+      brand: 'Bodin + Ensong',
+      eyebrow: '25 Years Together · August 29, 2026',
+      homeTitle: '25 Years of Us',
+      homeIntro: 'Twenty-five years ago, you poked me and started all this trouble. We have grown older, grayer, and possibly even more annoying—but I would still choose you every single time.',
+      homeSummary: 'A quarter century in, and we still have the same chaotic energy.',
+      footerText: 'Bodin + Ensong · 25 Years and Counting',
+      relationshipStartISO: '2001-08-29',
+      anniversaryDateISO: '2026-08-29',
+      anniversaryDateText: 'August 29, 2026',
+      privacyNote: 'Made with 25 years of love for Bodin.',
       enableLyrics: false
     },
     timeline: {
       title: 'Us, Over Time',
       subtitle: 'Our version of romance: sarcastic, goofy, and serious when it counts.',
       events: [
-        { label: 'First Message', text: 'You poked my ass and I pretended to be cool. You saw through it.' },
-        { label: 'First Official Date', text: 'I was nervous. You were perfect.' },
-        { label: 'Officially Us', text: 'It was already official from day one.' },
-        { label: 'First Trip', text: 'We packed too much, laughed even more.' },
-        { label: 'Today', text: 'Gray hair, less teeth, still hot and sexy.' }
+        { label: '2001 · The Beginning of Trouble', text: 'You poked my ass, I was embarrassed, and somehow that was the beginning of us.' },
+        { label: 'Learning Life Together', text: 'We began figuring out adulthood side by side.' },
+        { label: 'Our First Time Apart', text: 'Distance proved that nothing could keep me away from you.' },
+        { label: 'Our First Home', text: 'We built a place and a life of our own.' },
+        { label: '2026 · Twenty-Five Years', text: 'More gray hair, more stories, and still very much us.' }
+      ]
+    },
+    highlights: {
+      cards: [
+        { title: '25 years', text: 'Of choosing each other.' },
+        { title: '9,131 days', text: 'Of love, laughter, and beautiful trouble.' },
+        { title: 'One famous expression', text: 'Those pouting lips still get me every time.' },
+        { title: 'Still my baby', text: 'Still hot, funny, demanding, and sexy.' }
       ]
     },
     gallery: {
@@ -40,14 +49,15 @@
       ]
     },
     letter: {
-      title: 'A Letter to My Baby Bodin',
-      greeting: 'Bodin my Baby,',
+      date: 'August 29, 2026 · Our 25th Anniversary',
+      title: 'Twenty-Five Years, Still You',
+      greeting: 'Bodin, my Baby,',
       paragraphs: [
-        'Almost 25 years together... and somehow you are still my favorite person to argue with about absolutely nothing.',
-        'You are my home. You are my comfort. You are my fire. You are my peace.',
-        'I love you with intention.'
+        'Twenty-five years. That number sounds very serious. We, however, are still not very serious people.',
+        'You started the best trouble of my life.',
+        'We made it to twenty-five years, Baby. Still laughing. Still fighting for each other. Still us.'
       ],
-      closing: 'Forever yours,',
+      closing: 'Always yours,',
       signature: 'Papi'
     }
   };
@@ -136,32 +146,41 @@
       if (site.anniversaryDateISO) node.setAttribute('datetime', site.anniversaryDateISO);
       if (site.anniversaryDateText) node.textContent = site.anniversaryDateText;
     });
+
+    initAnniversaryCountdown(site);
   }
 
   function renderHome(content) {
     const timelineEvents = Array.isArray(content.timeline && content.timeline.events) ? content.timeline.events : [];
     const galleryItems = Array.isArray(content.gallery && content.gallery.items) ? content.gallery.items : [];
-    const galleryGroups = groupGalleryItems(galleryItems);
+    const featuredItems = Array.isArray(content.gallery && content.gallery.featuredItems)
+      ? content.gallery.featuredItems
+      : [];
+    const galleryGroups = groupGalleryItems(featuredItems.length ? featuredItems : galleryItems);
     const letterParagraphs = Array.isArray(content.letter && content.letter.paragraphs) ? content.letter.paragraphs : [];
 
-    const highlights = [
+    const fallbackHighlights = [
       {
-        title: 'Year we met',
-        text: 'Is the time you like to poke.'
+        title: '25 years',
+        text: 'Of choosing each other.'
       },
       {
-        title: 'Favorite expression',
-        text: 'Pouting Lips.'
+        title: '9,131 days',
+        text: 'Of love, laughter, and beautiful trouble.'
       },
       {
-        title: 'Favorite memory',
-        text: 'First time cutting you hair.'
+        title: 'One famous expression',
+        text: 'Those pouting lips still get me every time.'
       },
       {
         title: 'Still my baby',
-        text: 'Still hot, still funny and sexy.'
+        text: 'Still hot, funny, demanding, and sexy.'
       }
     ];
+    const configuredHighlights = content.highlights && Array.isArray(content.highlights.cards)
+      ? content.highlights.cards
+      : [];
+    const highlights = configuredHighlights.length ? configuredHighlights : fallbackHighlights;
 
     const highlightsGrid = document.getElementById('highlightsGrid');
     if (highlightsGrid) {
@@ -173,6 +192,26 @@
         article.querySelector('h3').textContent = card.title;
         article.querySelector('p').textContent = card.text;
         highlightsGrid.appendChild(article);
+      });
+    }
+
+    setTextAll('.js-timeline-title', content.timeline && content.timeline.title);
+    setTextAll('.js-timeline-subtitle', content.timeline && content.timeline.subtitle);
+
+    const timelineList = document.getElementById('timelineList');
+    if (timelineList && timelineEvents.length) {
+      timelineList.innerHTML = '';
+      timelineEvents.forEach(function (event) {
+        const item = document.createElement('li');
+        item.className = 'timeline-card js-reveal';
+        const marker = document.createElement('span');
+        marker.className = 'timeline-marker';
+        marker.textContent = event.label || 'Our story';
+        const text = document.createElement('p');
+        text.textContent = event.text || '';
+        item.appendChild(marker);
+        item.appendChild(text);
+        timelineList.appendChild(item);
       });
     }
 
@@ -198,6 +237,41 @@
     if (letterExcerpt && letterParagraphs.length) {
       letterExcerpt.textContent = letterParagraphs.slice(0, 2).join(' ');
     }
+  }
+
+  function initAnniversaryCountdown(site) {
+    const container = document.getElementById('anniversaryCountdown');
+    const value = document.getElementById('anniversaryCountdownValue');
+    const label = document.getElementById('anniversaryCountdownLabel');
+    if (!container || !value || !label || !site.anniversaryDateISO) return;
+
+    const target = new Date(site.anniversaryDateISO + 'T00:00:00');
+    if (Number.isNaN(target.getTime())) return;
+
+    function update() {
+      const remainingMs = target.getTime() - Date.now();
+      if (remainingMs <= 0) {
+        value.textContent = '25 years';
+        label.textContent = 'and counting';
+        container.classList.add('is-celebrating');
+        return;
+      }
+
+      const totalMinutes = Math.max(1, Math.ceil(remainingMs / 60000));
+      const days = Math.floor(totalMinutes / 1440);
+      const hours = Math.floor((totalMinutes % 1440) / 60);
+
+      if (days > 0) {
+        value.textContent = days + (days === 1 ? ' day' : ' days') + ' · ' + hours + (hours === 1 ? ' hour' : ' hours');
+      } else {
+        value.textContent = totalMinutes + (totalMinutes === 1 ? ' minute' : ' minutes');
+      }
+      label.textContent = 'until ' + (site.anniversaryDateText || 'our anniversary');
+      container.classList.remove('is-celebrating');
+    }
+
+    update();
+    window.setInterval(update, 60000);
   }
 
   function renderSongGallery() {
@@ -419,7 +493,12 @@
     setTextAll('.js-gallery-subtitle', gallery.subtitle);
 
     const grid = document.getElementById('galleryGrid');
-    const items = Array.isArray(gallery.items) ? gallery.items : [];
+    const standardItems = Array.isArray(gallery.items) ? gallery.items : [];
+    const featuredItems = Array.isArray(gallery.featuredItems) ? gallery.featuredItems : [];
+    const featuredSources = new Set(featuredItems.map(function (item) { return item && item.src; }));
+    const items = featuredItems.concat(standardItems.filter(function (item) {
+      return !featuredSources.has(item && item.src);
+    }));
     const groups = groupGalleryItems(items);
     if (!grid || !groups.length) return;
 
@@ -654,7 +733,7 @@
       video.src = source;
       video.muted = true;
       video.loop = true;
-      video.autoplay = true;
+      video.autoplay = false;
       video.playsInline = true;
       video.preload = 'metadata';
       video.setAttribute('aria-label', alt);
@@ -665,6 +744,8 @@
     const img = document.createElement('img');
     img.src = source;
     img.alt = alt;
+    img.loading = 'lazy';
+    img.decoding = 'async';
     if (className) img.className = className;
     return img;
   }
@@ -676,6 +757,13 @@
     if (!article) return;
 
     article.innerHTML = '';
+
+    if (letter.date) {
+      const date = document.createElement('p');
+      date.className = 'letter-date';
+      date.textContent = letter.date;
+      article.appendChild(date);
+    }
 
     const h1 = document.createElement('h1');
     h1.id = 'letter-title';
@@ -925,7 +1013,7 @@
       });
     }
 
-    const shouldAutoPlay = page === 'letter' || state.playing === true;
+    const shouldAutoPlay = state.playing === true;
     if (shouldAutoPlay) {
       audio.play().catch(function () {
         // Autoplay can be blocked by browser policy.

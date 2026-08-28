@@ -3,10 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Private-ish anniversary website for Bodin and her partner.">
-  <title>Home | Our Story</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260213i">
-  <script defer src="assets/js/main.js?v=20260213i"></script>
+  <meta name="description" content="Bodin and Ensong celebrate 25 years together on August 29, 2026.">
+  <meta name="theme-color" content="#6f263d">
+  <meta property="og:title" content="25 Years of Us | Bodin + Ensong">
+  <meta property="og:description" content="Twenty-five years of love, laughter, and beautiful trouble.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ensong0608.github.io/Bodin/">
+  <meta property="og:image" content="https://ensong0608.github.io/Bodin/assets/images/bodin%26papold.png">
+  <meta property="og:image:alt" content="Bodin and Ensong together">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>25 Years of Us | Bodin + Ensong</title>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260829">
+  <script defer src="assets/js/main.js?v=20260829"></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -32,12 +40,20 @@
       <section class="page-section hero-section js-reveal">
         <div class="container section-grid">
           <div class="section-copy">
-            <p class="eyebrow js-eyebrow">Valentine's Day 2026</p>
-            <h1 class="display js-home-title">Bodin, My Baby</h1>
-            <p class="lead js-home-intro">We've been together for almost 25 years now and you still annoy me a lot.</p>
+            <p class="eyebrow js-eyebrow">25 Years Together · August 29, 2026</p>
+            <div class="anniversary-title-row">
+              <span class="anniversary-mark" aria-hidden="true"><strong>25</strong><small>years</small></span>
+              <h1 class="display js-home-title">25 Years of Us</h1>
+            </div>
+            <p class="lead js-home-intro">Twenty-five years ago, you poked me and started all this trouble. We have grown older, grayer, and possibly even more annoying—but I would still choose you every single time.</p>
+            <div id="anniversaryCountdown" class="anniversary-countdown" role="status" aria-live="polite">
+              <span class="countdown-kicker">Our silver anniversary</span>
+              <strong id="anniversaryCountdownValue">August 29, 2026</strong>
+              <span id="anniversaryCountdownLabel">25 years and counting</span>
+            </div>
             <div class="cta-row">
-              <a class="button button-primary" href="gallery.html">Start our story</a>
-              <a class="button button-secondary" href="letter.html">Read the letter</a>
+              <a class="button button-primary" href="#our-story">Relive our story</a>
+              <a class="button button-secondary" href="letter.html">Read my anniversary letter</a>
             </div>
           </div>
           <div class="section-art js-reveal">
@@ -46,16 +62,17 @@
         </div>
       </section>
 
-      <section class="page-section js-reveal">
+      <section id="our-story" class="page-section js-reveal">
         <div class="container section-grid section-grid-flip">
           <div class="section-copy">
-            <h2>Highlights</h2>
-            <p class="section-sub">The moments we still laugh about, cry about, and keep choosing.</p>
+            <p class="eyebrow">By the numbers</p>
+            <h2>Twenty-five years, still us</h2>
+            <p class="section-sub js-home-summary">A quarter century in, and we still have the same chaotic energy.</p>
             <div id="highlightsGrid" class="highlight-grid">
-              <article class="soft-card js-reveal"><h3>Year we met</h3><p>Is the time you like to poke.</p></article>
-              <article class="soft-card js-reveal"><h3>Favorite expression</h3><p>Pouting Lips.</p></article>
-              <article class="soft-card js-reveal"><h3>Favorite memory</h3><p>First time cutting you hair.</p></article>
-              <article class="soft-card js-reveal"><h3>Still my baby</h3><p>Still hot, still funny and sexy.</p></article>
+              <article class="soft-card js-reveal"><h3>25 years</h3><p>Of choosing each other.</p></article>
+              <article class="soft-card js-reveal"><h3>9,131 days</h3><p>Of love, laughter, and trouble.</p></article>
+              <article class="soft-card js-reveal"><h3>One favorite expression</h3><p>Those famous pouting lips.</p></article>
+              <article class="soft-card js-reveal"><h3>Still my baby</h3><p>Still hot, funny, and sexy.</p></article>
             </div>
           </div>
           <div class="section-art">
@@ -65,16 +82,58 @@
       </section>
 
       <section class="page-section js-reveal">
+        <div class="container">
+          <div class="section-heading centered-copy">
+            <p class="eyebrow">Same two troublemakers</p>
+            <h2>Then and now</h2>
+            <p class="section-sub">Different years. More gray hair. The same two people still choosing each other.</p>
+          </div>
+          <div class="then-now-grid">
+            <!-- Replace these two src values with your chosen anniversary photos when ready. -->
+            <figure class="then-now-card js-reveal">
+              <div class="then-now-image-wrap">
+                <img src="assets/images/bodin%26pap1stdate-cutout.png" alt="Bodin and Ensong near the beginning of their story" loading="lazy" decoding="async">
+                <span class="photo-year">Then · 2001</span>
+              </div>
+              <figcaption>The beginning of twenty-five years of beautiful trouble.</figcaption>
+            </figure>
+            <div class="then-now-connector" aria-hidden="true">♥</div>
+            <figure class="then-now-card js-reveal">
+              <div class="then-now-image-wrap">
+                <img src="assets/images/bodin%26papold-cutout.png" alt="Bodin and Ensong together twenty-five years later" loading="lazy" decoding="async">
+                <span class="photo-year">Now · 2026</span>
+              </div>
+              <figcaption>Older, grayer, better—and still very much us.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section js-reveal">
+        <div class="container section-grid">
+          <div class="section-copy">
+            <p class="eyebrow">A quarter century</p>
+            <h2 class="js-timeline-title">Us, over time</h2>
+            <p class="section-sub js-timeline-subtitle">Our version of romance: sarcastic, goofy, and serious when it counts.</p>
+          </div>
+          <ol id="timelineList" class="timeline-list" aria-label="Our relationship timeline">
+            <li class="timeline-card"><span class="timeline-marker">2001</span><p>The beginning of trouble.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="page-section js-reveal">
         <div class="container section-grid section-grid-flip">
           <div class="section-copy">
-            <h2>Gallery Preview</h2>
-            <p class="section-sub">Photos now, more memories later.</p>
+            <p class="eyebrow">Our photo story</p>
+            <h2>25 memories for 25 years</h2>
+            <p class="section-sub">A few chapters from the life we built together. Our featured twenty-five can be added here when the photos are ready.</p>
             <div id="galleryPreview" class="preview-grid">
               <figure class="soft-card preview-card"><img src="assets/images/memory-1.svg" alt="Memory preview"><figcaption>The beginning of trouble.</figcaption></figure>
               <figure class="soft-card preview-card"><img src="assets/images/memory-2.svg" alt="Memory preview"><figcaption>We clean up nice.</figcaption></figure>
               <figure class="soft-card preview-card"><img src="assets/images/memory-3.svg" alt="Memory preview"><figcaption>Still hand in hand.</figcaption></figure>
             </div>
-            <a class="text-link" href="gallery.html">Open gallery</a>
+            <a class="text-link" href="gallery.html">Open our full gallery</a>
           </div>
           <div class="section-art">
             <img class="illustration small js-float js-parallax" src="assets/illust/heart-doodle.svg" alt="Heart doodle illustration">
@@ -82,11 +141,22 @@
         </div>
       </section>
 
+      <section class="page-section anniversary-letter-preview js-reveal">
+        <div class="container">
+          <article class="letter-preview-card">
+            <p class="eyebrow">For Bodin, on our silver anniversary</p>
+            <blockquote>“Twenty-five years does not mean we were perfect. It means we kept coming back, kept reaching for each other, and kept choosing us.”</blockquote>
+            <a class="button button-primary" href="letter.html">Read the new letter</a>
+          </article>
+        </div>
+      </section>
+
       <section id="songGallerySection" class="page-section js-reveal">
         <div class="container section-grid">
           <div class="section-copy">
-            <h2>Song Gallery</h2>
-            <p class="section-sub">Pick a song to read lyrics here, even if player lyrics are off.</p>
+            <p class="eyebrow">The soundtrack to us</p>
+            <h2>Our songs</h2>
+            <p class="section-sub">Start with “Poked Into Forever,” then keep the music going through twenty-five years of us.</p>
             <div id="songGalleryGrid" class="song-gallery-grid"></div>
           </div>
           <div class="section-copy">
@@ -111,7 +181,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p><span class="js-footer-text">Valentine's Day Love</span> - <time class="js-date" datetime="2026-02-14">February 14, 2026</time></p>
+      <p><span class="js-footer-text">Bodin + Ensong · 25 Years and Counting</span> · <time class="js-date" datetime="2026-08-29">August 29, 2026</time></p>
       <p class="privacy-note js-privacy-note">Made with love for Bodin.</p>
     </div>
   </footer>
