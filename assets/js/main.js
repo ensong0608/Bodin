@@ -104,6 +104,7 @@
     if (page === 'letter' || page === 'birthday-letter') {
       renderLetter(page === 'letter' ? content.letter : content.birthdayLetter);
       initReadProgress();
+      if (page === 'letter') initRotatingBackgrounds('.letter-bg');
     }
 
     if (page === 'songs') {
@@ -813,106 +814,20 @@
   }
 
   function initJourneyExperience() {
-    const hero = document.querySelector('.journey-hero');
-    const backgrounds = Array.from(document.querySelectorAll('.journey-bg'));
-    const launch = document.getElementById('journeyLaunch');
-    const launchLabel = launch && launch.querySelector('.journey-launch-label');
-    if (!hero || !launch || !launchLabel) return;
+    initRotatingBackgrounds('.journey-bg');
+  }
 
+  function initRotatingBackgrounds(selector) {
+    const backgrounds = Array.from(document.querySelectorAll(selector));
+    if (backgrounds.length < 2 || prefersReducedMotion) return;
     let backgroundIndex = 0;
-    let holdStartedAt = 0;
-    let holdFrame = 0;
-    let completed = false;
-    const holdDuration = 1100;
-
-    function showBackground(index) {
-      backgroundIndex = (index + backgrounds.length) % backgrounds.length;
+    window.setInterval(function () {
+      if (document.hidden) return;
+      backgroundIndex = (backgroundIndex + 1) % backgrounds.length;
       backgrounds.forEach(function (background, itemIndex) {
         background.classList.toggle('is-active', itemIndex === backgroundIndex);
       });
-    }
-
-    if (backgrounds.length > 1 && !prefersReducedMotion) {
-      window.setInterval(function () {
-        if (!document.hidden) showBackground(backgroundIndex + 1);
-      }, 2600);
-    }
-
-    function resetHold() {
-      window.cancelAnimationFrame(holdFrame);
-      holdFrame = 0;
-      holdStartedAt = 0;
-      launch.classList.remove('is-holding');
-      launch.style.setProperty('--hold-progress', '0%');
-      launchLabel.textContent = 'spacebar';
-    }
-
-    function completeLaunch() {
-      if (completed) return;
-      completed = true;
-      window.cancelAnimationFrame(holdFrame);
-      launch.classList.remove('is-holding');
-      launch.classList.add('is-complete');
-      launch.style.setProperty('--hold-progress', '100%');
-      launchLabel.textContent = 'welcome';
-      hero.classList.add('is-launched');
-      window.setTimeout(function () {
-        const story = document.getElementById('our-story');
-        if (story) story.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-        window.setTimeout(function () {
-          completed = false;
-          launch.classList.remove('is-complete');
-          resetHold();
-        }, 900);
-      }, 320);
-    }
-
-    function updateHold(timestamp) {
-      if (!holdStartedAt || completed) return;
-      const progress = Math.min(1, (timestamp - holdStartedAt) / holdDuration);
-      launch.style.setProperty('--hold-progress', (progress * 100) + '%');
-      if (progress >= 1) {
-        completeLaunch();
-        return;
-      }
-      holdFrame = window.requestAnimationFrame(updateHold);
-    }
-
-    function beginHold() {
-      if (holdStartedAt || completed) return;
-      holdStartedAt = performance.now();
-      launch.classList.add('is-holding');
-      launchLabel.textContent = 'keep holding';
-      holdFrame = window.requestAnimationFrame(updateHold);
-    }
-
-    function endHold() {
-      if (completed) return;
-      resetHold();
-    }
-
-    launch.addEventListener('pointerdown', function (event) {
-      event.preventDefault();
-      beginHold();
-    });
-    launch.addEventListener('click', function (event) { event.preventDefault(); });
-    window.addEventListener('pointerup', endHold);
-    window.addEventListener('pointercancel', endHold);
-
-    document.addEventListener('keydown', function (event) {
-      if (event.code !== 'Space' || event.repeat) return;
-      const interactive = event.target && event.target.closest
-        ? event.target.closest('a, button, input, textarea, select, [contenteditable="true"]')
-        : null;
-      if (interactive && interactive !== launch) return;
-      event.preventDefault();
-      beginHold();
-    });
-    document.addEventListener('keyup', function (event) {
-      if (event.code !== 'Space') return;
-      event.preventDefault();
-      endHold();
-    });
+    }, 2600);
   }
 
   function groupGalleryItems(items) {
