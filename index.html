@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Bodin and Ensong celebrate 25 years together on August 29, 2026.">
-  <meta name="theme-color" content="#6f263d">
+  <meta name="theme-color" content="#0f6f6b">
   <meta property="og:title" content="25 Years of Us | Bodin + Ensong">
   <meta property="og:description" content="Twenty-five years of love, laughter, and beautiful trouble.">
   <meta property="og:type" content="website">
@@ -13,8 +13,8 @@
   <meta property="og:image:alt" content="Bodin and Ensong together">
   <meta name="twitter:card" content="summary_large_image">
   <title>25 Years of Us | Bodin + Ensong</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-modern1">
-  <script defer src="assets/js/main.js?v=20260829-modern1"></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-fresh1">
+  <script defer src="assets/js/main.js?v=20260829-fresh1"></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -69,8 +69,8 @@
       </section>
 
       <section id="our-story" class="page-section js-reveal">
-        <div class="container section-grid section-grid-flip">
-          <div class="section-copy">
+        <div class="container stats-section">
+          <div class="section-copy stats-copy">
             <p class="eyebrow">By the numbers</p>
             <h2>Twenty-five years, still us</h2>
             <p class="section-sub js-home-summary">A quarter century in, and we still have the same chaotic energy.</p>
@@ -80,9 +80,6 @@
               <article class="soft-card js-reveal"><h3>One favorite expression</h3><p>Those famous pouting lips.</p></article>
               <article class="soft-card js-reveal"><h3>Still my baby</h3><p>Still hot, funny, and sexy.</p></article>
             </div>
-          </div>
-          <div class="section-art">
-            <img class="illustration small js-float js-parallax" src="assets/images/bodin-cutout.png" alt="Hand-drawn sketch portrait">
           </div>
         </div>
       </section>
@@ -94,23 +91,14 @@
             <h2>Then and now</h2>
             <p class="section-sub">Different years. More gray hair. The same two people still choosing each other.</p>
           </div>
-          <div class="then-now-grid">
-            <!-- Replace these two src values with your chosen anniversary photos when ready. -->
-            <figure class="then-now-card js-reveal">
-              <div class="then-now-image-wrap">
-                <img src="assets/images/bodin%26pap1stdate-cutout.png" alt="Bodin and Ensong near the beginning of their story" loading="lazy" decoding="async">
-                <span class="photo-year">Then · 2001</span>
-              </div>
-              <figcaption>The beginning of twenty-five years of beautiful trouble.</figcaption>
-            </figure>
-            <div class="then-now-connector" aria-hidden="true">♥</div>
-            <figure class="then-now-card js-reveal">
-              <div class="then-now-image-wrap">
-                <img src="assets/images/bodin%26papold-cutout.png" alt="Bodin and Ensong together twenty-five years later" loading="lazy" decoding="async">
-                <span class="photo-year">Now · 2026</span>
-              </div>
-              <figcaption>Older, grayer, better—and still very much us.</figcaption>
-            </figure>
+          <div id="thenNowComparison" class="comparison-card js-reveal" style="--reveal: 50%;">
+            <div class="comparison-stage">
+              <div class="comparison-layer comparison-then"><img src="assets/images/bodin%26pap1stdate-cutout.png" alt="Bodin and Ensong near the beginning of their story" loading="lazy" decoding="async"><span class="comparison-label">Then · 2001</span></div>
+              <div class="comparison-layer comparison-now"><img src="assets/images/bodin%26papold-cutout.png" alt="Bodin and Ensong together twenty-five years later" loading="lazy" decoding="async"><span class="comparison-label">Now · 2026</span></div>
+              <span class="comparison-divider" aria-hidden="true"></span>
+            </div>
+            <label class="comparison-control" for="comparisonRange"><span>Drag to travel through our story</span><input id="comparisonRange" type="range" min="0" max="100" value="50" aria-label="Compare then and now"></label>
+            <div class="comparison-captions"><p>The beginning of twenty-five years of beautiful trouble.</p><p>Older, grayer, better—and still very much us.</p></div>
           </div>
         </div>
       </section>
@@ -129,7 +117,7 @@
       </section>
 
       <section class="page-section js-reveal">
-        <div class="container section-grid section-grid-flip">
+        <div class="container gallery-preview-section">
           <div class="section-copy">
             <p class="eyebrow">Our photo story</p>
             <h2>25 memories for 25 years</h2>
@@ -140,9 +128,6 @@
               <figure class="soft-card preview-card"><img src="assets/images/memory-3.svg" alt="Memory preview"><figcaption>Still hand in hand.</figcaption></figure>
             </div>
             <a class="text-link" href="gallery.html">Open our full gallery</a>
-          </div>
-          <div class="section-art">
-            <img class="illustration small js-float js-parallax" src="assets/illust/heart-doodle.svg" alt="Heart doodle illustration">
           </div>
         </div>
       </section>

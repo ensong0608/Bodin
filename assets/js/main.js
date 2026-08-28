@@ -93,6 +93,7 @@
     if (page === 'home') {
       renderHome(content);
       renderSongGallery();
+      initThenNowComparison();
     }
 
     if (page === 'gallery') {
@@ -212,16 +213,43 @@
     const timelineList = document.getElementById('timelineList');
     if (timelineList && timelineEvents.length) {
       timelineList.innerHTML = '';
-      timelineEvents.forEach(function (event) {
+      timelineEvents.forEach(function (event, index) {
         const item = document.createElement('li');
         item.className = 'timeline-card js-reveal';
+        const toggle = document.createElement('button');
+        toggle.className = 'timeline-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-expanded', String(index === 0));
         const marker = document.createElement('span');
         marker.className = 'timeline-marker';
         marker.textContent = event.label || 'Our story';
+        const symbol = document.createElement('span');
+        symbol.className = 'timeline-symbol';
+        symbol.setAttribute('aria-hidden', 'true');
+        symbol.textContent = index === 0 ? '−' : '+';
+        const details = document.createElement('div');
+        details.className = 'timeline-details';
+        details.hidden = index !== 0;
         const text = document.createElement('p');
         text.textContent = event.text || '';
-        item.appendChild(marker);
-        item.appendChild(text);
+        toggle.appendChild(marker);
+        toggle.appendChild(symbol);
+        details.appendChild(text);
+        item.appendChild(toggle);
+        item.appendChild(details);
+        toggle.addEventListener('click', function () {
+          const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+          timelineList.querySelectorAll('.timeline-toggle').forEach(function (otherToggle) {
+            otherToggle.setAttribute('aria-expanded', 'false');
+            otherToggle.querySelector('.timeline-symbol').textContent = '+';
+            otherToggle.nextElementSibling.hidden = true;
+          });
+          if (willOpen) {
+            toggle.setAttribute('aria-expanded', 'true');
+            symbol.textContent = '−';
+            details.hidden = false;
+          }
+        });
         timelineList.appendChild(item);
       });
     }
@@ -231,16 +259,23 @@
       galleryPreview.innerHTML = '';
       galleryGroups.slice(0, 3).forEach(function (group) {
         const cover = group.cover || {};
-        const figure = document.createElement('figure');
-        figure.className = 'soft-card preview-card js-reveal';
+        const link = document.createElement('a');
+        link.className = 'soft-card preview-card js-reveal';
+        link.href = 'gallery.html?memory=' + encodeURIComponent(group.memoryId);
+        link.setAttribute('aria-label', 'Open ' + group.title + ' album');
         const media = createGalleryMediaElement(cover, 'preview-media');
-        const cap = document.createElement('figcaption');
+        const cap = document.createElement('span');
+        cap.className = 'preview-caption';
         cap.textContent = group.items.length > 1
           ? (group.title + ' album (' + group.items.length + ' photos)')
           : (group.caption || 'Memory');
-        figure.appendChild(media);
-        figure.appendChild(cap);
-        galleryPreview.appendChild(figure);
+        const action = document.createElement('span');
+        action.className = 'preview-action';
+        action.textContent = 'Open album →';
+        link.appendChild(media);
+        link.appendChild(cap);
+        link.appendChild(action);
+        galleryPreview.appendChild(link);
       });
     }
 
@@ -271,11 +306,14 @@
       const totalMinutes = Math.max(1, Math.ceil(remainingMs / 60000));
       const days = Math.floor(totalMinutes / 1440);
       const hours = Math.floor((totalMinutes % 1440) / 60);
+      const minutes = totalMinutes % 60;
 
       if (days > 0) {
         value.textContent = days + (days === 1 ? ' day' : ' days') + ' · ' + hours + (hours === 1 ? ' hour' : ' hours');
       } else {
-        value.textContent = totalMinutes + (totalMinutes === 1 ? ' minute' : ' minutes');
+        value.textContent = hours > 0
+          ? hours + (hours === 1 ? ' hr' : ' hrs') + ' · ' + minutes + ' min'
+          : minutes + (minutes === 1 ? ' min' : ' mins');
       }
       label.textContent = 'until ' + (site.anniversaryDateText || 'our anniversary');
       container.classList.remove('is-celebrating');
@@ -689,6 +727,30 @@
       }
       trapFocus(event);
     });
+
+    const requestedMemory = new URLSearchParams(window.location.search).get('memory');
+    if (requestedMemory) {
+      const requestedIndex = groups.findIndex(function (group) {
+        return String(group.memoryId) === String(requestedMemory);
+      });
+      if (requestedIndex >= 0) {
+        window.setTimeout(function () { open(requestedIndex); }, 120);
+      }
+    }
+  }
+
+  function initThenNowComparison() {
+    const comparison = document.getElementById('thenNowComparison');
+    const range = document.getElementById('comparisonRange');
+    if (!comparison || !range) return;
+
+    function updateComparison() {
+      comparison.style.setProperty('--reveal', range.value + '%');
+      range.setAttribute('aria-valuetext', range.value + '% of the current-day image revealed');
+    }
+
+    range.addEventListener('input', updateComparison);
+    updateComparison();
   }
 
   function groupGalleryItems(items) {
@@ -809,11 +871,6 @@
       article.appendChild(signature);
     }
 
-    const flourish = document.createElement('img');
-    flourish.src = 'assets/illust/flower-doodle.svg';
-    flourish.alt = 'Decorative flourish near signature';
-    flourish.className = 'signature-flourish js-float';
-    article.appendChild(flourish);
   }
 
   function initReveal() {
