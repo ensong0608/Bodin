@@ -771,6 +771,25 @@ h3 {
   margin-top: 1rem;
 }
 
+.letter-switcher {
+  max-width: 46rem;
+  margin: 1rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-soft);
+  padding: 0.9rem 1rem;
+  background: rgba(255, 253, 251, 0.82);
+  box-shadow: var(--shadow-soft);
+}
+
+.letter-switcher p {
+  color: var(--muted);
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   padding: 1.4rem 0 1.8rem;

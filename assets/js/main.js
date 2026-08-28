@@ -59,6 +59,17 @@
       ],
       closing: 'Always yours,',
       signature: 'Papi'
+    },
+    birthdayLetter: {
+      title: 'A Letter to My Baby Bodin',
+      greeting: 'Bodin my Baby,',
+      paragraphs: [
+        'Almost 25 years together... and somehow you are still my favorite person to argue with about absolutely nothing.',
+        'You drive me crazy. And somehow, that is still one of my favorite places to be.',
+        "I love you. Happy Valentine's Day, Baby."
+      ],
+      closing: 'Forever yours,',
+      signature: 'Papi'
     }
   };
 
@@ -88,8 +99,8 @@
       renderGallery(content.gallery);
     }
 
-    if (page === 'letter') {
-      renderLetter(content.letter);
+    if (page === 'letter' || page === 'birthday-letter') {
+      renderLetter(page === 'letter' ? content.letter : content.birthdayLetter);
       initReadProgress();
     }
 

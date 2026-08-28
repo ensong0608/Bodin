@@ -7,6 +7,7 @@ This project is a static, mobile-first, accessible love-story site.
 - `index.html` - Home page
 - `gallery.html` - Gallery page with lightbox
 - `letter.html` - Letter page
+- `birthday-letter.html` - Preserved original birthday letter
 - `songs.html` - Songs page with lyrics and download dropdowns
 - `assets/css/styles.css` - Shared styles
 - `assets/js/main.js` - Rendering, gallery lightbox, and music player
@@ -26,6 +27,7 @@ Edit these sections:
 - `gallery.featuredItems` (the new 25-photo anniversary collection)
 - `gallery.items` (the complete gallery)
 - `letter.date`, `letter.title`, `letter.greeting`, `letter.paragraphs`, `letter.signature`
+- `birthdayLetter` - the preserved original birthday letter
 
 ## Add Real Photos
 
