@@ -13,8 +13,9 @@
   <meta property="og:image:alt" content="Bodin and Ensong together">
   <meta name="twitter:card" content="summary_large_image">
   <title>25 Years of Us | Bodin + Ensong</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-fresh2">
-  <script defer src="assets/js/main.js?v=20260829-fresh2"></script>
+  <link rel="preload" as="image" href="assets/images/journey-hero-grain-v1.png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260829-pop1">
+  <script defer src="assets/js/main.js?v=20260829-pop1"></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,14 +44,13 @@
 
   <main id="main-content">
     
-      <section class="page-section hero-section js-reveal">
-        <div class="container section-grid">
-          <div class="section-copy">
+      <section class="journey-hero js-reveal">
+        <div class="journey-hero-image" role="img" aria-label="Grainy black-and-white portrait of Bodin"></div>
+        <div class="journey-hero-grain" aria-hidden="true"></div>
+        <div class="container journey-hero-content">
+          <div class="journey-hero-copy">
             <p class="eyebrow js-eyebrow">25 Years Together · August 29, 2026</p>
-            <div class="anniversary-title-row">
-              <span class="anniversary-mark" aria-hidden="true"><strong>25</strong><small>years</small></span>
-              <h1 class="display js-home-title">25 Years of Us</h1>
-            </div>
+            <h1 class="kinetic-title" data-text="Our 25 Year Journey"><span>Our 25 Year</span><span>Journey</span></h1>
             <p class="lead js-home-intro">Twenty-five years ago, you poked me and started all this trouble. We have grown older, grayer, and possibly even more annoying—but I would still choose you every single time.</p>
             <div id="anniversaryCountdown" class="anniversary-countdown" role="status" aria-live="polite">
               <span class="countdown-kicker">Our silver anniversary</span>
@@ -58,33 +58,22 @@
               <span id="anniversaryCountdownLabel">25 years and counting</span>
             </div>
             <div class="cta-row">
-              <a class="button button-primary" href="#our-story">Relive our story</a>
-              <a class="button button-secondary" href="letter.html">Read my anniversary letter</a>
+              <a class="button button-primary" href="#our-story">Enter our journey</a>
+              <a class="button button-secondary" href="letter.html">My Love Letter</a>
             </div>
-          </div>
-          <div class="section-art js-reveal">
-            <img class="illustration js-float js-parallax" src="assets/images/bodin%26papold-cutout.png" alt="Hand-drawn sketch of you both together">
           </div>
         </div>
       </section>
+
+      <div class="memory-marquee" aria-hidden="true">
+        <div class="memory-marquee-track">
+          <span>LOVE · CHAOS · LAUGHTER · 25 YEARS · STILL US · </span>
+          <span>LOVE · CHAOS · LAUGHTER · 25 YEARS · STILL US · </span>
+        </div>
+      </div>
 
       <section id="our-story" class="page-section js-reveal">
-        <div class="container stats-section">
-          <div class="section-copy stats-copy">
-            <p class="eyebrow">By the numbers</p>
-            <h2>Twenty-five years, still us</h2>
-            <p class="section-sub js-home-summary">A quarter century in, and we still have the same chaotic energy.</p>
-            <div id="highlightsGrid" class="highlight-grid">
-              <article class="soft-card js-reveal"><h3>25 years</h3><p>Of choosing each other.</p></article>
-              <article class="soft-card js-reveal"><h3>9,131 days</h3><p>Of love, laughter, and trouble.</p></article>
-              <article class="soft-card js-reveal"><h3>One favorite expression</h3><p>Those famous pouting lips.</p></article>
-              <article class="soft-card js-reveal"><h3>Still my baby</h3><p>Still hot, funny, and sexy.</p></article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="page-section js-reveal">
+        <div class="section-number" aria-hidden="true">01</div>
         <div class="container">
           <div class="section-heading centered-copy">
             <p class="eyebrow">Same two troublemakers</p>
@@ -129,7 +118,8 @@
         </div>
       </section>
 
-      <section class="page-section js-reveal">
+      <section class="page-section recollection-section js-reveal">
+        <div class="recollection-backdrop" aria-hidden="true"></div>
         <div class="container section-grid">
           <div class="section-copy">
             <p class="eyebrow">A quarter century</p>
@@ -163,7 +153,7 @@
           <article class="letter-preview-card">
             <p class="eyebrow">For Bodin, on our silver anniversary</p>
             <blockquote>“Twenty-five years have passed, but you have never become ordinary to me.”</blockquote>
-            <a class="button button-primary" href="letter.html">Read the new letter</a>
+            <a class="button button-primary" href="letter.html">My Love to you</a>
           </article>
         </div>
       </section>
