@@ -3063,3 +3063,191 @@ body[data-page="letter"] .read-progress span { background: var(--acid); }
   body::after,
   .letter-bg { animation: none; transition: none; }
 }
+
+/* Mobile reliability and layout hardening */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body[data-page="letter"] .letter-card.js-reveal,
+body[data-page="birthday-letter"] .letter-card.js-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 47.99rem) {
+  html { scroll-padding-top: 4.5rem; }
+
+  .container { width: calc(100% - 1rem); }
+  .page-section { padding-block: 3.6rem; }
+
+  h1,
+  h2,
+  h3,
+  blockquote {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .journey-hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+  }
+
+  .journey-hero-content {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 5.75rem 0.25rem 3rem;
+  }
+
+  .journey-signature { margin-bottom: 1.8rem; }
+  .collage-title { font-size: clamp(3rem, 14.5vw, 5.25rem); }
+  .journey-subtitle { font-size: 0.86rem; line-height: 1.55; }
+  .journey-countdown {
+    width: min(100%, 19rem);
+    min-width: 0;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .journey-love-link {
+    margin-top: 1.75rem;
+    font-size: 0.72rem;
+  }
+
+  .section-number { margin-bottom: -1.8rem; font-size: 4.4rem; }
+  .page-section h2 { font-size: clamp(2rem, 11vw, 3.25rem); }
+  .section-sub { font-size: 0.98rem; }
+
+  .comparison-card {
+    width: calc(100% - 0.35rem);
+    margin-top: 1.5rem;
+    padding: 0.4rem;
+    box-shadow: 4px 4px 0 var(--accent);
+  }
+
+  .comparison-stage {
+    min-height: min(118vw, 28rem);
+    border-radius: 0;
+  }
+
+  .comparison-label {
+    top: 0.6rem;
+    padding: 0.4rem 0.55rem;
+    font-size: 0.62rem;
+  }
+
+  .comparison-then .comparison-label { right: 0.6rem; }
+  .comparison-now .comparison-label { left: 0.6rem; }
+  .comparison-control { padding: 0.8rem 0.25rem 0.25rem; font-size: 0.86rem; }
+  .comparison-nav { gap: 0.55rem; padding: 0.7rem 0.2rem 0.25rem; }
+  .comparison-arrow { width: 2.4rem; height: 2.4rem; }
+  .comparison-status { font-size: 0.73rem; }
+
+  .timeline-toggle { padding: 1rem; }
+  .timeline-marker { font-size: 1rem; }
+  .timeline-details { padding: 0 1rem 1rem; }
+
+  .preview-grid,
+  .gallery-grid,
+  .song-gallery-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .preview-card,
+  .gallery-card,
+  .song-card { min-width: 0; }
+
+  .letter-preview-card {
+    padding: 1.25rem 0.9rem;
+    box-shadow: 5px 5px 0 #0b0b0b;
+  }
+
+  .letter-preview-card blockquote {
+    font-size: clamp(1.6rem, 9vw, 2.45rem);
+    line-height: 1.08;
+  }
+
+  body[data-page="letter"] main {
+    min-height: 100svh;
+    padding: 5.5rem 0 4rem;
+  }
+
+  body[data-page="letter"] main .container {
+    width: calc(100% - 0.8rem);
+  }
+
+  body[data-page="letter"] .page-section { padding: 0; }
+
+  body[data-page="letter"] .letter-backgrounds {
+    min-height: 100svh;
+    pointer-events: none;
+  }
+
+  body[data-page="letter"] .letter-bg {
+    background-position: 60% center;
+  }
+
+  body[data-page="letter"] .letter-card {
+    display: block;
+    width: 100%;
+    min-height: 15rem;
+    margin: 0;
+    padding: 1.35rem 1.15rem 2rem;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    color: #fff;
+    background: rgba(3,3,3,.86);
+    box-shadow: 4px 4px 0 rgba(255,255,255,.14);
+  }
+
+  body[data-page="letter"] .letter-card h1 {
+    margin-bottom: 1.1rem;
+    font-size: clamp(2.15rem, 11vw, 3.25rem);
+    line-height: 0.98;
+  }
+
+  body[data-page="letter"] .letter-card > p:not(.letter-date) {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  body[data-page="letter"] .letter-card h1 + p {
+    font-size: 1.08rem;
+  }
+
+  body[data-page="letter"] .letter-card h1 + p + p::first-letter {
+    margin-right: 0.35rem;
+    font-size: 3.1rem;
+  }
+
+  body[data-page="birthday-letter"] main {
+    padding-top: 5.5rem;
+  }
+
+  body[data-page="birthday-letter"] .letter-card {
+    width: 100%;
+    padding-inline: 0.35rem;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .music-player {
+    right: 0.5rem;
+    bottom: max(0.5rem, env(safe-area-inset-bottom));
+    left: 0.5rem;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+
+  .site-footer { padding-bottom: 6.5rem; }
+}
+
+@supports not (overflow: clip) {
+  html,
+  body { overflow-x: hidden; }
+}
