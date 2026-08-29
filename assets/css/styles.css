@@ -2497,6 +2497,31 @@ body {
   background: var(--acid);
 }
 
+/* Keep the anniversary invitation readable against its dark cinematic panel. */
+.anniversary-letter-preview .letter-preview-card,
+.anniversary-letter-preview .letter-preview-card blockquote,
+.anniversary-letter-preview .letter-preview-card .eyebrow {
+  color: #eeeeea;
+}
+
+.anniversary-letter-preview .letter-preview-card {
+  border-color: rgba(238, 238, 234, 0.82);
+  background: rgba(10, 8, 9, 0.38);
+  box-shadow: 12px 12px 0 rgba(238, 238, 234, 0.14);
+}
+
+.anniversary-letter-preview .letter-preview-card .button-primary {
+  color: #eeeeea;
+  border-color: rgba(238, 238, 234, 0.9);
+  background: rgba(238, 238, 234, 0.08);
+}
+
+.anniversary-letter-preview .letter-preview-card .button-primary:hover,
+.anniversary-letter-preview .letter-preview-card .button-primary:focus-visible {
+  color: #171315;
+  background: #eeeeea;
+}
+
 #songGallerySection { background: #d9e6e2; }
 
 .letter-card {
