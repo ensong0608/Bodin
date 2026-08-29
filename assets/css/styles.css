@@ -3077,9 +3077,41 @@ body[data-page="birthday-letter"] .letter-card.js-reveal {
   transform: none;
 }
 
+body[data-page="letter"] main .js-reveal,
+body[data-page="birthday-letter"] main .js-reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+@media (min-width: 48rem) {
+  .site-header .nav-wrap { justify-content: center; }
+  .site-header .site-nav { margin-inline: auto; }
+  .journey-countdown {
+    right: auto;
+    left: clamp(1rem, 3vw, 3rem);
+    transform-origin: top left;
+  }
+}
+
+.journey-hero > .memory-marquee {
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: none;
+}
+
+.journey-hero-content {
+  padding-bottom: clamp(6rem, 11vh, 8rem);
+}
+
 @media (max-width: 47.99rem) {
   html { scroll-padding-top: 4.5rem; }
 
+  .site-header .nav-wrap { justify-content: flex-end; }
   .container { width: calc(100% - 1rem); }
   .page-section { padding-block: 3.6rem; }
 
