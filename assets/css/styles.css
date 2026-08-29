@@ -2925,7 +2925,19 @@ body:not([data-page="home"]):not([data-page="letter"]) .site-header {
 
 body:not([data-page="home"]):not([data-page="letter"]) .site-header .site-nav > a,
 body:not([data-page="home"]):not([data-page="letter"]) .site-header .nav-dropdown > summary {
-  text-shadow: 0 1px 10px rgba(255,255,255,.95);
+  color: #f2f2ee;
+  text-shadow: 0 1px 10px rgba(0,0,0,.82);
+}
+
+body:not([data-page="home"]):not([data-page="letter"]) .site-header .site-nav {
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  color: #f2f2ee;
+  background: rgba(7,7,7,.68);
+  box-shadow: 0 8px 30px rgba(0,0,0,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .site-header .nav-dropdown-menu {
@@ -3066,7 +3078,9 @@ body[data-page="letter"] .read-progress span { background: var(--acid); }
     padding: 0.85rem;
     color: #fff;
     border: 1px solid rgba(255,255,255,.28);
+    border-radius: 1rem;
     background: rgba(7,7,7,.92);
+    box-shadow: 0 12px 36px rgba(0,0,0,.3);
     backdrop-filter: blur(14px);
   }
   .site-header .site-nav > a,
