@@ -3283,3 +3283,93 @@ body[data-page="birthday-letter"] main .js-reveal {
   html,
   body { overflow-x: hidden; }
 }
+
+/* Film grain belongs above photographs and below interface/text */
+body::after { display: none; }
+
+.journey-hero-grain,
+.letter-backgrounds::before,
+.recollection-section::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='filmNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='5' seed='7' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filmNoise)' opacity='.95'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  mix-blend-mode: overlay;
+  animation: global-grain-shift 140ms steps(2, end) infinite;
+}
+
+.journey-hero-grain {
+  z-index: 1;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  opacity: 0.42;
+}
+
+.journey-hero-content {
+  z-index: 2;
+}
+
+.journey-hero > .memory-marquee {
+  z-index: 3;
+  color: #fff;
+  border-color: rgba(255,255,255,.5);
+  background: rgba(0,0,0,.68);
+  backdrop-filter: blur(4px);
+}
+
+.memory-marquee span {
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(0,0,0,.55);
+}
+
+.letter-backgrounds {
+  isolation: isolate;
+}
+
+.letter-bg { z-index: 0; }
+
+.letter-backgrounds::after {
+  z-index: 1;
+}
+
+.letter-backgrounds::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  opacity: 0.44;
+  pointer-events: none;
+}
+
+.recollection-section::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -25%;
+  width: 150%;
+  height: 150%;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.recollection-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 47.99rem) {
+  .journey-hero-grain,
+  .letter-backgrounds::before { opacity: 0.36; }
+
+  .journey-hero > .memory-marquee {
+    background: rgba(0,0,0,.76);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-hero-grain,
+  .letter-backgrounds::before,
+  .recollection-section::before { animation: none; }
+}
